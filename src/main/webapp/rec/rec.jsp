@@ -12,7 +12,7 @@
 	<form action="/rec/RecSelectedRound.rec">
 	    <div id="wrap">
 	        <div id="img">
-	            <img src="img/trophy.png">
+	            <img src="/movie/img/trophy.png">
 	        </div>
 	        <h1>영화 추천</h1>
 	        <p>당신의 인생 영화를 선택해주세요</p>

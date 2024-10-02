@@ -40,7 +40,7 @@
                 </a>
             </div>
             <div id="vs">
-                <img src="img/vs.png">
+                <img src="/movie/img/vs.png">
             </div>
         </div>
     </div>
