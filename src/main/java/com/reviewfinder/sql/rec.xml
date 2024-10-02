@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Rec">
+	<select id="selectMovie" parameterType="_int" resultType="moviedto">
+		SELECT * FROM (SELECT * FROM MOVIE_DB ORDER BY DBMS_RANDOM.VALUE) WHERE ROWNUM &lt;= #{round}
+	</select>
+	<insert id="insertRecMovie" parameterType="_int">
+		INSERT INTO RECOMMEND_MOVIE (MOVIE_NUM) VALUES(#{movie_num})
+	</insert>
+	<delete id="deleteRecMovie">
+		DELETE FROM RECOMMEND_MOVIE
+	</delete>
+	<select id="selectTopUnselectedMovies" resultType="recdto">
+		SELECT * FROM (SELECT * FROM RECOMMEND_MOVIE ORDER BY movie_num) WHERE rownum &lt;= 2 AND is_selected = 0
+	</select>
+	<select id="getMoviesByMovieNumList" parameterType="recdto" resultType="moviedto">
+		SELECT * FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
+	<update id="updateIsSelected" parameterType="recdto">
+		UPDATE RECOMMEND_MOVIE SET IS_SELECTED = 1 WHERE MOVIE_NUM = #{movie_num}
+	</update>
+	<delete id="deleteUnSelectedMovie" parameterType="_int">
+		DELETE FROM RECOMMEND_MOVIE WHERE movie_num = #{movie_num}
+	</delete>
+	<select id="selectRecMovieCnt" resultType="_int">
+		SELECT count(*) FROM RECOMMEND_MOVIE WHERE IS_SELECTED = 0 ORDER BY MOVIE_NUM
+	</select>
+	<update id="updateIsSelectedAll">
+		UPDATE RECOMMEND_MOVIE SET IS_SELECTED = 0
+	</update>
+	<select id="getWinnerNum" resultType="_int">
+		SELECT * FROM RECOMMEND_MOVIE
+	</select>
+	<select id="getMovieByMovieNum" parameterType="_int" resultType="moviedto">
+		SELECT * FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
+</mapper>
+
+

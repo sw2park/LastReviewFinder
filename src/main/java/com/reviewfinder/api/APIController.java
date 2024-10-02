@@ -1,4 +1,4 @@
-package com.reviewfinder.json;
+package com.reviewfinder.api;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class APIController {
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
 		// 상태 코드 출력
-		 System.out.println("Response code: " + conn.getResponseCode());
+//		 System.out.println("Response code: " + conn.getResponseCode());
 		 if(conn.getResponseCode()!=200) {
 			return callAPI(url_key, var_data);
 		 }

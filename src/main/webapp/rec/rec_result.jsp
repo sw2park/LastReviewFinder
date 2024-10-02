@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,7 @@
     <title>영화 추천 결과 화면</title>
 </head>
 <body>
+	<c:set var="movie" value="${requestScope.movie }"/>
     <div id="wrap">
         <div id="title">
             <h1>영화 추천 우승작</h1>
@@ -16,14 +19,14 @@
         </div>
 
         <div>
-            <a href="rec.html">
+            <a href="/rec/RecMain.rec">
                 <input type="button" value="다시하기" id="restart">
             </a>
         </div>
 
         <div id="result">
-            <a href="rec.html">
-                <img src="img/poster_1.jpg">
+            <a href="/movie/MovieDetails.mv?movie_title=${movie.movie_title }&movie_date=${movie.movie_date}">
+                <img src="${movie.movie_poster }">
             </a>
         </div>
     </div>

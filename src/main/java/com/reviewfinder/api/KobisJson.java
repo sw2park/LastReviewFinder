@@ -1,4 +1,4 @@
-package com.reviewfinder.json;
+package com.reviewfinder.api;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -73,7 +73,7 @@ public class KobisJson extends APIController{
 	public List<MovieDTO> getRecommendList() throws IOException, ParseException{
 		List<MovieDTO> movieList = new ArrayList<MovieDTO>();
 		
-		for(int i=0;i<5;i++) {
+		for(int i=0;i<10;i++) {
 			HashMap<String, MovieDTO> movieMap = null;
 			String date = null;
 			switch(i) {
@@ -95,6 +95,34 @@ public class KobisJson extends APIController{
 				break;
 			case 4:
 				date = "20240501";
+				url_key.put("key", "6974fb00d854190ff2f7728d4a150966");
+				break;
+			case 5:
+				date = "20220701";
+				url_key.put("key", "6974fb00d854190ff2f7728d4a150966");
+				break;
+				/*
+				 * case 1: date = "20240701"; url_key.put("key",
+				 * "b841d040f088509344cac5574340c4cd"); break;
+				 */
+			case 6:
+				date = "20240901";
+				url_key.put("key", "6974fb00d854190ff2f7728d4a150966");
+				break;
+			case 7:
+				date = "20230901";
+				url_key.put("key", "b841d040f088509344cac5574340c4cd");
+				break;
+			case 8:
+				date = "20231101";
+				url_key.put("key", "6974fb00d854190ff2f7728d4a150966");
+				break;
+			case 9:
+				date = "20221101";
+				url_key.put("key", "b841d040f088509344cac5574340c4cd");
+				break;
+			case 10:
+				date = "20220901";
 				url_key.put("key", "6974fb00d854190ff2f7728d4a150966");
 				break;
 			}
