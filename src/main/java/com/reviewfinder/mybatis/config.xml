@@ -7,6 +7,7 @@
 		<typeAlias type="com.reviewfinder.movie.dao.MovieDTO" alias="moviedto"/>
 		<typeAlias type="com.reviewfinder.member.dao.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.reviewfinder.board.dao.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.reviewfinder.rec.dao.RecDTO" alias="recdto"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -20,9 +21,10 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="com/reviewfinder/sql/dbtest.xml"/>
+		<mapper resource="com/reviewfinder/sql/movie.xml"/>
 		<mapper resource="com/reviewfinder/sql/member.xml"/>
 		<mapper resource="com/reviewfinder/sql/board.xml"/>
+		<mapper resource="com/reviewfinder/sql/rec.xml"/>
 	</mappers>
 </configuration>
 

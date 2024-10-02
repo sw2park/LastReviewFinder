@@ -1,4 +1,4 @@
-package com.reviewfinder.json;
+package com.reviewfinder.api;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class KoreafilmJson extends APIController{
 		JSONArray data = (JSONArray)objData.get("Data");
 		
 		// data 돌면서 result배열에서 title 빼오기, 
-		// result배열의 ratings객체의 rating배열 0번째 releaseDate (substring(0,8) 할것) 빼오기
+		// result배열의 ratings객체의 rating배열 0번째 releaseDate (substring(0,8) 할 것) 빼오기
 		// title이랑 date 구했으면 getMovieInfo 메서드에 dto 넣고 상세정보까지 가져오기
 		for(Object obj : data) {
 			JSONObject movieData = (JSONObject)obj;
@@ -57,7 +57,7 @@ public class KoreafilmJson extends APIController{
 				moviedto = new MovieDTO();
 				
 				String title = (String)movieData2.get("title");
-				// 개봉일자 빼기
+				// 개봉일자 빼오기
 				JSONObject ratings = (JSONObject)movieData2.get("ratings");
 				JSONObject rating = (JSONObject)((JSONArray)ratings.get("rating")).get(0);
 				String date = (String)rating.get("releaseDate");
@@ -113,9 +113,17 @@ public class KoreafilmJson extends APIController{
 				String posters = (String)movieresult.get("posters");
 				movie.setMovie_poster(posters);
 				
-				// 스틸 이미지
-				String stlls = (String)movieresult.get("stlls");
+				// 고화질 스틸 이미지를 위한 movieId, movieSeq 가져오기
+				String movieId = (String)movieresult.get("movieId");
+				String movieSeq = (String)movieresult.get("movieSeq");
+				
+				String stlls = new StillImageCrawling().stillImageCrawling(movieId, movieSeq);
 				movie.setMovie_still_image(stlls);
+				
+				// 스틸 이미지
+//				String stlls = (String)movieresult.get("stlls");
+//				movie.setMovie_still_image(stlls);
+				
 			}
 		}
 		return movie;

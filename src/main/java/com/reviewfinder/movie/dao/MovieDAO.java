@@ -20,7 +20,7 @@ public class MovieDAO {
 	// DB에 영화가 있으면 true, 없으면 false
 	public boolean checkMoiveDB() {
 		boolean result = false;
-		int cnt = session.selectOne("Dbtest.checkMoiveDB");
+		int cnt = session.selectOne("Movie.checkMoiveDB");
 		if(cnt > 0){
 			result = true;
 		}
@@ -34,7 +34,7 @@ public class MovieDAO {
 			movie.add(moviemap.get(""+i+""));
 		}
 		for(int i=0;i<movie.size();i++) {
-			if(session.insert("Dbtest.insertMovieDB",movie.get(i))==1) {
+			if(session.insert("Movie.insertMovieDB",movie.get(i))==1) {
 				System.out.println("db저장 성공");
 			}else {
 				System.out.println("실패");
@@ -44,7 +44,7 @@ public class MovieDAO {
 	// 오버로딩
 	public void insertMovieDB(List<MovieDTO> movie) {
 		for(int i=0;i<movie.size();i++) {
-			if(session.insert("Dbtest.insertMovieDB",movie.get(i))==1) {
+			if(session.insert("Movie.insertMovieDB",movie.get(i))==1) {
 				System.out.println("db저장 성공");
 			}else {
 				System.out.println("실패");
@@ -59,7 +59,7 @@ public class MovieDAO {
 			movie.add(moviemap.get(""+i+""));
 		}
 		for(int i=0;i<movie.size();i++) {
-			if(session.insert("Dbtest.insertBoxOffice",movie.get(i))==1) {
+			if(session.insert("Movie.insertBoxOffice",movie.get(i))==1) {
 				System.out.println("BOXOFFICE_RANK db저장 성공");
 			}else {
 				System.out.println("BOXOFFICE_RANK db저장 실패");
@@ -73,7 +73,7 @@ public class MovieDAO {
 		title_date.put("movie_title", movie_title);
 		title_date.put("movie_date", movie_date);
 		
-		movie = session.selectOne("Dbtest.selectMovieFromDB",title_date);
+		movie = session.selectOne("Movie.selectMovieFromDB",title_date);
 		
 		return movie;
 	}
