@@ -34,3 +34,5 @@ CREATE TABLE BOXOFFICE_RANK(
 	boxoffice_date	DATE,
 	CONSTRAINTS movie_num_fk FOREIGN KEY (movie_num) REFERENCES MOVIE_DB(movie_num) ON DELETE CASCADE
 );
+
+test
