@@ -109,3 +109,16 @@
         	alert("입력하신 내용을 다시 확인해 주세요");
    		}
     }
+	
+	
+	
+	function DeleteMember(userid){
+		console.log(userid)
+		var result = confirm("정말로 탈퇴하시겠어요? 이 작업은 되돌릴 수 없습니다.");
+				 if(result){
+				document.deleteMember.action = "/mypage/DeleteMember.mp?userid="+userid;
+				document.deleteMember.submit();
+				 } else{
+					 alert("삭제를 취소합니다.");
+				 }
+		  	}

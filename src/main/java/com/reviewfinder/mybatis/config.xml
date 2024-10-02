@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="com.reviewfinder.movie.dao.MovieDTO" alias="moviedto"/>
 		<typeAlias type="com.reviewfinder.member.dao.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.reviewfinder.member.dao.MemberContentsDTO" alias="MemberContentsDTO"/>
 		<typeAlias type="com.reviewfinder.board.dao.BoardDTO" alias="BoardDTO"/>
 	</typeAliases>
 	<environments default="development">

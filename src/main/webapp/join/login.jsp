@@ -91,6 +91,8 @@ html {
 		<a href="/join/join_view.jsp"> 회원가입 </a>
 	</div>
 
+	<input type="button" id="loginbutton" value="로그아웃" onclick="logout()"/>
+	
 	<script>
 
  	function login(){
@@ -114,6 +116,10 @@ html {
 		frm.submit();
 	
 	 }
+ 	
+ 	function logout(){
+ 		location.href="/join/logout.lo"
+	}
  	
 /*  	function find_it() {
  		location.href="/join/find_it.lo"

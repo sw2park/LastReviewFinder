@@ -3,4 +3,53 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "Board">
+	<select id="getBoardList" parameterType="hashmap" resultType="BoardDTO">
+	SELECT * FROM (SELECT rownum R, A.* FROM 
+		(SELECT * FROM QNABOARD ORDER BY BOARDNUM DESC) A) B
+			WHERE b.R BETWEEN #{startRow} AND #{endRow}
+  	</select>
+
+	<select id="getBoardCnt" resultType="_int">
+		SELECT count(*) FROM QNABOARD
+  	</select>
+
+	<select id="getCategoryCnt" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM QNABOARD WHERE BOARDCATE = #{boardcate}
+	</select>
+	
+	
+	<select id="getCategory" parameterType="hashmap" resultType="BoardDTO">
+		SELECT FROM QNABOARD WHERE BOARDCATE = #{boardcate} ORDER BY boardnum DESC LIMIT #{startRow}, #{endRow}
+	</select>
+
+	<insert id="insertBoard" parameterType="BoardDTO">
+  		INSERT INTO QNABOARD VALUES (board_seq.nextval, #{boardcate}
+  		, #{username}, #{boardtitle}, #{boardcontents}, sysdate, NULL)
+  	</insert>
+  	
+  	<select id="getSeq" resultType="_int">
+		SELECT board_seq.currval FROM dual
+  	</select>
+  	
+  	 <select id="getDetail" parameterType="_int" resultType="boardDTO">
+		SELECT * FROM QNABOARD WHERE BOARDNUM = #{boardnum}
+  	</select>
+  	
+  	<update id="UpdateBoard" parameterType="hashmap">
+  		UPDATE QNABOARD SET boardcate = #{boardcate}, boardtitle = #{boardtitle}, boardcontents = #{boardcontents}
+  		WHERE BOARDNUM = #{boardnum}
+  	</update>
+  	
+  	<update id="UpdateReply" parameterType="hashmap">
+  		UPDATE QNABOARD SET adminreply = #{adminreply} WHERE BOARDNUM = #{boardnum}
+  	</update>
+  	
+  	<update id="deleteReply" parameterType="_int">
+  		UPDATE QNABOARD SET adminreply = NULL WHERE BOARDNUM = #{boardnum}
+  	</update>
+  	
+  	<delete id="deleteBoard" parameterType="_int">
+    	DELETE FROM QNABOARD WHERE BOARDNUM = #{boardnum}
+	</delete>
+
 </mapper>
