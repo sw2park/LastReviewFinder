@@ -73,5 +73,5 @@ local.properties
 .classpath
 build
 *.class
-.project
-.sql
+*.project
+*.sql
