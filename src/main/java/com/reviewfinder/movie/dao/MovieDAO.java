@@ -28,26 +28,35 @@ public class MovieDAO {
 		return result;
 	}
 
+	// 첫 로딩 때 MOVIE_DB에 영화 넣기
 	public void insertMovieDB(HashMap<String, MovieDTO> moviemap) {
 		List<MovieDTO> movie = new ArrayList<MovieDTO>();
 		for(int i=1;i<=moviemap.size();i++) {
 			movie.add(moviemap.get(""+i+""));
 		}
 		for(int i=0;i<movie.size();i++) {
-			if(session.insert("Movie.insertMovieDB",movie.get(i))==1) {
-				System.out.println("db저장 성공");
+			if(!checkDistinct(movie.get(i))) {
+				if(session.insert("Movie.insertMovieDB",movie.get(i))==1) {
+					System.out.println("db저장 성공");
+				}else {
+					System.out.println("실패");
+				}
 			}else {
-				System.out.println("실패");
+				System.out.println(movie.get(i).getMovie_title()+"중복 감지");
 			}
 		}
 	}
 	// 오버로딩
 	public void insertMovieDB(List<MovieDTO> movie) {
 		for(int i=0;i<movie.size();i++) {
-			if(session.insert("Movie.insertMovieDB",movie.get(i))==1) {
-				System.out.println("db저장 성공");
+			if(!checkDistinct(movie.get(i))) {
+				if(session.insert("Movie.insertMovieDB",movie.get(i))==1) {
+					System.out.println("db저장 성공");
+				}else {
+					System.out.println("실패");
+				}
 			}else {
-				System.out.println("실패");
+				System.out.println(movie.get(i).getMovie_title()+"중복 감지");
 			}
 		}
 	}
@@ -76,5 +85,17 @@ public class MovieDAO {
 		movie = session.selectOne("Movie.selectMovieFromDB",title_date);
 		
 		return movie;
+	}
+	
+	// 영화 넣기 전 중복 확인 => 중복이면 ture / 중복 아니면 false
+	public boolean checkDistinct(MovieDTO movie) {
+		boolean result = false;
+		
+		int cnt = session.selectOne("Movie.checkDistinct",movie);
+		if(cnt != 0) {
+			result = true;
+		}
+		
+		return result;
 	}
 }
