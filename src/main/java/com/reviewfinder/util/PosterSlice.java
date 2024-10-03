@@ -1,5 +1,9 @@
 package com.reviewfinder.util;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
 import com.reviewfinder.movie.dao.MovieDTO;
 
 public class PosterSlice {
@@ -32,5 +36,19 @@ public class PosterSlice {
 
 		return still_img;
 	}
-
+	
+	public static List<String> getStillUrlArray(MovieDTO movie) {
+		String still_img = movie.getMovie_still_image();
+		
+		still_img = still_img.trim();
+		
+		if (still_img != null || still_img.equals("")) {
+			String[] temp = still_img.split("\\|");
+			return Arrays.asList(temp);
+		}
+		
+		return null;
+	}
+	
+	
 }

@@ -1,5 +1,7 @@
 package com.reviewfinder.movie;
 
+import java.util.List;
+
 import com.reviewfinder.action.Action;
 import com.reviewfinder.action.ActionForward;
 import com.reviewfinder.movie.dao.MovieDAO;
@@ -24,11 +26,17 @@ public class MovieDetails implements Action{
 		
 		String poster = PosterSlice.slicePosterUrl(movie);
 		String still_img = PosterSlice.sliceStillUrl(movie);
+		List<String> still_list = PosterSlice.getStillUrlArray(movie);
 		
 		movie.setMovie_poster(poster);
 		movie.setMovie_still_image(still_img);
 		
+//		System.out.println(still_list.get(0));
+//		System.out.println(still_list.get(1));
+		
 		req.setAttribute("moviedto", movie);
+		req.setAttribute("still_list", still_list);
+		
 		
 		forward.setRedirect(false);
 		forward.setPath("/movie/moviedetails.jsp");
