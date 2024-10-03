@@ -15,4 +15,7 @@
 	<select id="selectMovieFromDB" parameterType="hashmap" resultType="moviedto">
 		SELECT * FROM MOVIE_DB WHERE MOVIE_TITLE = #{movie_title} AND MOVIE_DATE = #{movie_date}
 	</select>
+	<select id="checkDistinct" parameterType="moviedto" resultType="_int">
+		SELECT count(*) FROM MOVIE_DB WHERE MOVIE_TITLE = #{movie_title} AND MOVIE_DATE = #{movie_date}
+	</select>
 </mapper>
