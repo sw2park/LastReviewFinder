@@ -9,7 +9,12 @@
 <title>Insert title here</title>
 
  <link rel="stylesheet" href="boardlist.css">	
- 
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+	html {
+	  	  font-family: 'Pretendard';
+	    }
+</style>
 </head>
 
 <body>
