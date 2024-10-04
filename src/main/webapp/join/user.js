@@ -5,6 +5,7 @@
 	let isIDValid = false;
     let isPasswordValid = false;
     let isNameValid = false;
+	let isPasswordValid2 = false;
 	
     let idInput = document.getElementById('userid');
     let idmessage = document.getElementById('idmessage');
@@ -46,8 +47,10 @@
     
     let passwordInput = document.getElementById('userpw');
     let pwmessage = document.getElementById('pwmessage');
-
-    passwordInput.addEventListener('input', () => {
+	let passwordCheck = document.getElementById('confirm_pw')
+	let pwmessage2 = document.getElementById('pwmessage2');
+    	
+	passwordInput.addEventListener('input', () => {
     	let passwordValue = passwordInput.value;
     	let passwordPattern = /^(?=.*[a-zA-Z])(?=.*[\W_])(?=.*\d)[A-Za-z\d\W_]{7,16}$/;
 
@@ -62,6 +65,22 @@
         	isPasswordValid = true;
         }
     });
+	
+	passwordCheck.addEventListener('input', () => {
+	    	let passCheckValue = passwordCheck.value;
+			let passwordValue = passwordInput.value;
+
+	        if (passCheckValue === '') {
+	        	pwmessage.textContent = '비밀번호를 다시 한 번 입력해주세요';
+	        	let isPasswordValid2 = false
+	        } else if (passCheckValue !== passwordValue) {
+	        	  pwmessage.textContent = '비밀번호가 동일하지 않습니다';
+	        	let isPasswordValid2 = false
+	        } else {
+	        	pwmessage.textContent = ''
+	        	isPasswordValid2 = true;
+	        }
+	    });
     
     let nameInput = document.getElementById('username');
     let namemessage = document.getElementById('namemessage');
@@ -109,3 +128,6 @@
         	alert("입력하신 내용을 다시 확인해 주세요");
    		}
     }
+	
+	
+	

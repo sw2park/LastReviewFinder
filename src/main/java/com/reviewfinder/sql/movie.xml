@@ -18,7 +18,10 @@
 	<select id="checkDistinct" parameterType="moviedto" resultType="_int">
 		SELECT count(*) FROM MOVIE_DB WHERE MOVIE_TITLE = #{movie_title} AND MOVIE_DATE = #{movie_date}
 	</select>
-	<insert id="insertRating" parameterType="_int">
-	
+	<select id="selectMovieNum" parameterType="string" resultType="_int">
+		SELECT MOVIE_NUM FROM MOVIE_DB WHERE MOVIE_TITLE = #{movie_title}
+	</select>
+	<insert id="insertBoxOffice" parameterType="boxDTO">
+		INSERT INTO BOXOFFICE_RANK VALUES(#{movie_num}, #{movie_rank}, #{boxoffice_date})
 	</insert>
 </mapper>

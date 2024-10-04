@@ -33,11 +33,11 @@ public class JoinAction implements com.reviewfinder.action.Action{
 		forward.setRedirect(true);
 		
 		if(mdao.join(mdto)) { 
-			forward.setPath("http://localhost:8081/join/login.jsp");
+			forward.setPath("../join/login.jsp");
 			
 		} else {
 			
-			forward.setPath("http://localhost:8081/join/join_view.jsp");
+			forward.setPath("../join/join_view.jsp");
 		}
 		
 

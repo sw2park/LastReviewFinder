@@ -1,4 +1,4 @@
-package com.reviewfinder.join;
+package com.reviewfinder.member;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("*.lo")
-public class JoinFrontController extends HttpServlet {
+@WebServlet("*.mp")
+public class MypageFrontController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,24 +28,38 @@ public class JoinFrontController extends HttpServlet {
 	
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
-		
+	
 		switch(requestURI) {
-		case "/join/login.lo":
-			//로그인
-			forward = new LoginAction().execute(request, response);
-			break;
+		
+		case "/mypage/UpdatePassword.mp":
+			//비밀번호 변경
+			forward = new UpdatePasswordAction().execute(request, response);
+			break;	
+		
+		case "/mypage/UpdateName.mp":
+			//닉네임 변경
+			forward = new UpdateNameAction().execute(request, response);
+			break;	
 			
-		case "/join/join.lo":
-			//회원가입
-			forward = new JoinAction().execute(request, response);
-			break;
+		case "/mypage/DeleteMember.mp":
+			//회원 탈퇴
+			forward = new DeleteMemberAction().execute(request, response);
+			break;	
+	
+		case "/mypage/ShowMyContents.mp":
+			//'보관함' 전체 조회
+			forward = new ShowMyContentsDetailAction().execute(request, response);
+			break;	
 		
-    case "/join/logout.lo":
-      //로그아웃
-      forward = new LogoutAction().execute(request, response);
-      break;
-		}
-		
+		case "/mypage/ShowMyContentsMain.mp":
+			//'보관함' 마이페이지 메인 조회
+			forward = new ShowMyContentsMainAction().execute(request, response);
+			break;	
+	}
+
+
+
+
 		if(forward != null) {
 	         if(forward.isRedirect()) {
 	        	 response.sendRedirect(forward.getPath());
@@ -57,4 +71,6 @@ public class JoinFrontController extends HttpServlet {
 		
 	
 	}
+	
 }
+

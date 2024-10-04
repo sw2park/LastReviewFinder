@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.reviewfinder.boxoffice.dao.BoxOfficeDTO;
 import com.reviewfinder.mybatis.SqlMapConfig;
 
 public class MovieDAO {
@@ -98,9 +99,23 @@ public class MovieDAO {
 		
 		return result;
 	}
-	
-	// 별점 추가 () => 평균 별점 계산
+
+  // 별점 추가 () => 평균 별점 계산
 	public void insertRating(int rating) {
 		session.insert("Movie.insertRating", rating);
+
+	// 박스오피스 테이블 추가
+	public void insertBoxOffice(BoxOfficeDTO bDto) {		
+		session.insert("Movie.insertBoxOffice", bDto);
+	}
+	
+	public int selectMovieNum(HashMap<String, MovieDTO> boxOffice, String date, int _rank) {
+		int month = Integer.parseInt(date);
+		String rank = ""+_rank;
+		
+		String movieTitle = boxOffice.get(rank).getMovie_title();
+		
+		return session.selectOne("Movie.selectMovieNum", movieTitle);
+
 	}
 }
