@@ -47,10 +47,16 @@ public class MypageFrontController extends HttpServlet {
 			break;	
 	
 		case "/mypage/ShowMyContents.mp":
-			//'보관함' 조회
-			forward = new ShowMyContentsAction().execute(request, response);
+			//'보관함' 전체 조회
+			forward = new ShowMyContentsDetailAction().execute(request, response);
 			break;	
-		}
+		
+		case "/mypage/ShowMyContentsMain.mp":
+			//'보관함' 마이페이지 메인 조회
+			forward = new ShowMyContentsMainAction().execute(request, response);
+			break;	
+	}
+
 
 
 

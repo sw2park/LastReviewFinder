@@ -19,7 +19,7 @@
 	
 	
 	<select id="getCategory" parameterType="hashmap" resultType="BoardDTO">
-		SELECT FROM QNABOARD WHERE BOARDCATE = #{boardcate} ORDER BY boardnum DESC LIMIT #{startRow}, #{endRow}
+		SELECT * FROM QNABOARD WHERE BOARDCATE = #{boardcate} ORDER BY boardnum DESC LIMIT #{startRow}, #{endRow}
 	</select>
 
 	<insert id="insertBoard" parameterType="BoardDTO">

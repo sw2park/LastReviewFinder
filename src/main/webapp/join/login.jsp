@@ -7,10 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <style>
-html {
-    font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
-}
+	html {
+	  	  font-family: 'Pretendard';
+	    }
 	* {
     box-sizing: border-box; /* 모든 요소의 박스 모델을 border-box로 설정 */
 }

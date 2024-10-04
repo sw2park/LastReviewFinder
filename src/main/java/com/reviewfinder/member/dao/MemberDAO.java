@@ -66,7 +66,6 @@ public class MemberDAO {
 		HashMap<String, String> datas = new HashMap<>();
 		datas.put("userid", userid);
 		datas.put("username", username);
-		System.out.println("다오");
 		if (Session.update("Member.UpdateName", datas) == 1) {
 			result = true;
 		}
@@ -75,20 +74,17 @@ public class MemberDAO {
 
 	public boolean deleteMember(String userid) {
 		boolean result = false;
+		//찜목록 삭제
+		Session.delete("Member.DeleteMemberContents", userid);
+		//실제 회원 삭제
 		if (Session.delete("Member.DeleteMember", userid) == 1) {
 			result = true;
-		}
+			}
 		return result;
 	}
 	
-	public List<MemberContentsDTO> getContentsList(){
-		/*
-		 * List<MemberContentsDTO> contentsList = new ArrayList<>(); contentsList =
-		 * Session.selectList("Member.getContentsList", datas);
-		 * 
-		 * return contentsList;
-		 */
-		return Session.selectList("Member.getContentsList");
+	public List<MemberContentsDTO> getContentsList(String userid){
+		return Session.selectList("Member.getContentsList", userid);
 	}
 	
 	

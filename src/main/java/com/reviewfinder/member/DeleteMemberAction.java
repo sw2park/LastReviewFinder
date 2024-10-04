@@ -3,9 +3,11 @@ package com.reviewfinder.member;
 import com.reviewfinder.action.Action;
 import com.reviewfinder.action.ActionForward;
 import com.reviewfinder.member.dao.MemberDAO;
+import com.reviewfinder.member.dao.MemberDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class DeleteMemberAction implements Action{
 
@@ -14,15 +16,16 @@ public class DeleteMemberAction implements Action{
 
 		ActionForward forward = new ActionForward();
 		MemberDAO mdao = new MemberDAO();
+		HttpSession session = req.getSession();
+		MemberDTO mdto = (MemberDTO) session.getAttribute("session_id");
+		String userid = mdto.getUserid();
 		
-		String userid = req.getParameter("userid");
-
 		if(mdao.deleteMember(userid)) {
 			forward.setRedirect(true);
-			forward.setPath("/main/main.jsp");
+			forward.setPath("../main/main.jsp");
 		}
 		
-		return null;
+		return forward;
 	}
 
 }
