@@ -172,8 +172,8 @@ public class KobisJson extends APIController{
 			
 			movie.setMovie_title((String)movieData.get("movieNm"));
 			movie.setMovie_date((String)movieData.get("openDt"));
-			// 영화 상세정보 전부 받아오기
 			
+			// 영화 상세정보 전부 받아오기
 			movie = new KoreafilmJson().getMovieInfo(movie);
 			
 			boxOfficeList.put((String)movieData.get("rank"), movie);

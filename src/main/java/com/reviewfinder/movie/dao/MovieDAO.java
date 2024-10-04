@@ -99,7 +99,11 @@ public class MovieDAO {
 		
 		return result;
 	}
-	
+
+  // 별점 추가 () => 평균 별점 계산
+	public void insertRating(int rating) {
+		session.insert("Movie.insertRating", rating);
+
 	// 박스오피스 테이블 추가
 	public void insertBoxOffice(BoxOfficeDTO bDto) {		
 		session.insert("Movie.insertBoxOffice", bDto);
@@ -112,5 +116,6 @@ public class MovieDAO {
 		String movieTitle = boxOffice.get(rank).getMovie_title();
 		
 		return session.selectOne("Movie.selectMovieNum", movieTitle);
+
 	}
 }
