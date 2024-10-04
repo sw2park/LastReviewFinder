@@ -57,8 +57,8 @@
 						<button type="button" id="total-rating" class="btn">
 							<img src="../movie/img/star.png"><br>평점 매기기
 						</button>
-						<!-- 기존 0점 부분 -->
-						<span id="rating-score">&nbsp;&nbsp;&nbsp;0점</span>
+						<!-- 평점(평균) 보이는 부분 -->
+						<span id="rating-score">&nbsp;&nbsp;&nbsp;0</span><span style="font-size: large;">점</span>
 						<!-- 기존 total-rating 내에 버튼 추가 -->
 					</div>
 					<!-- 버튼을 추가 -->

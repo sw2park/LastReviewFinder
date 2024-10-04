@@ -98,4 +98,9 @@ public class MovieDAO {
 		
 		return result;
 	}
+	
+	// 별점 추가 () => 평균 별점 계산
+	public void insertRating(int rating) {
+		session.insert("Movie.insertRating", rating);
+	}
 }
