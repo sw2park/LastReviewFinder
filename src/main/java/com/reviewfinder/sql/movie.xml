@@ -9,7 +9,7 @@
 	<insert id="insertMovieDB" parameterType="moviedto">
 		INSERT INTO MOVIE_DB VALUES(
 		movie_seq.nextval, #{movie_title}, #{movie_date}, #{movie_plot}, 
-		#{movie_genre}, #{movie_poster}, #{movie_still_image}, #{movie_star_rate}
+		#{movie_genre}, #{movie_poster}, #{movie_still_image}, #{movie_star_rate}, #{movie_actor}, #{movie_director}
 		)
 	</insert>
 	<select id="selectMovieFromDB" parameterType="hashmap" resultType="moviedto">

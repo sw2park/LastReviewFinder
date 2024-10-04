@@ -56,7 +56,7 @@ public class MovieDAO {
 					System.out.println("실패");
 				}
 			}else {
-				System.out.println(movie.get(i).getMovie_title()+"중복 감지");
+				System.out.println(movie.get(i).getMovie_title()+" 중복 감지");
 			}
 		}
 	}

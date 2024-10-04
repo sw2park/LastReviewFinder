@@ -7,7 +7,7 @@ import com.reviewfinder.action.ActionForward;
 import com.reviewfinder.movie.dao.MovieDTO;
 import com.reviewfinder.rec.dao.RecDAO;
 import com.reviewfinder.rec.dao.RecDTO;
-import com.reviewfinder.util.PosterSlice;
+import com.reviewfinder.util.StringSlice;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -46,7 +46,7 @@ public class GetSelectMovieAction implements Action{
 		
 		// movieList의 포스터 URL 잘라주기
 		for(int i=0;i<movieList.size();i++) {
-			String poster = PosterSlice.slicePosterUrl(movieList.get(i));
+			String poster = StringSlice.slicePosterUrl(movieList.get(i));
 			movieList.get(i).setMovie_poster(poster);
 		}
 		

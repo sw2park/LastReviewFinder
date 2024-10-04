@@ -6,7 +6,8 @@ import java.util.List;
 
 import com.reviewfinder.movie.dao.MovieDTO;
 
-public class PosterSlice {
+public class StringSlice {
+	// 포스터 url 하나만 가져오기
 	public static String slicePosterUrl(MovieDTO movie) {
 		String poster = movie.getMovie_poster();
 
@@ -21,7 +22,8 @@ public class PosterSlice {
 
 		return poster;
 	}
-
+	
+	// 스틸이미지 url 하나만 가져오기
 	public static String sliceStillUrl(MovieDTO movie) {
 		String still_img = movie.getMovie_still_image();
 
@@ -37,6 +39,7 @@ public class PosterSlice {
 		return still_img;
 	}
 	
+	// 스틸이미지 리스트로 반환
 	public static List<String> getStillUrlArray(MovieDTO movie) {
 		String still_img = movie.getMovie_still_image();
 		
@@ -50,5 +53,29 @@ public class PosterSlice {
 		return null;
 	}
 	
+	// 배우 목록 리스트로 반환
+	public static List<String> getActors(MovieDTO movie){
+		String actors = movie.getMovie_actor();
+		
+		actors = actors.trim();
+		
+		if(actors != null || actors.equals("")) {
+			String[] temp = actors.split("\\|");
+			return Arrays.asList(temp);
+		}
+		return null;
+	}
 	
+	// 감독 목록 리스트로 반환
+	public static List<String> getDirectors(MovieDTO movie){
+		String directors = movie.getMovie_director();
+		
+		directors = directors.trim();
+		
+		if(directors != null || directors.equals("")) {
+			String[] temp = directors.split("\\|");
+			return Arrays.asList(temp);
+		}
+		return null;
+	}
 }

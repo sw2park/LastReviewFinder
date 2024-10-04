@@ -6,7 +6,7 @@ import com.reviewfinder.action.Action;
 import com.reviewfinder.action.ActionForward;
 import com.reviewfinder.movie.dao.MovieDTO;
 import com.reviewfinder.rec.dao.RecDAO;
-import com.reviewfinder.util.PosterSlice;
+import com.reviewfinder.util.StringSlice;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,7 +26,7 @@ public class ShowResultAction implements Action{
 		movie_num = rdao.getWinnerNum();
 		movie = rdao.getMovieByMovieNum(movie_num);
 		
-		String poster = PosterSlice.slicePosterUrl(movie);
+		String poster = StringSlice.slicePosterUrl(movie);
 		movie.setMovie_poster(poster);
 		
 		// 날짜에서 시간 자르기

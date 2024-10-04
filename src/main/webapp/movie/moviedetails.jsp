@@ -16,6 +16,9 @@
 <body>
 	<c:set var="movie" value="${requestScope.moviedto }" />
 	<c:set var="still_list" value="${requestScope.still_list }" />
+	<c:set var="actors" value="${requestScope.actors }"/>
+	<c:set var="directors" value="${requestScope.directors }"/>
+	<c:set var="commentList" value="${requestScope.commentList }"/>
 	<main>
 		<!-- 영화 스틸 이미지와 영화 정보 섹션 -->
 		<section class="movie-banner">
@@ -84,59 +87,50 @@
 		<section class="cast">
 			<table class="cast-table">
 				<h2>출연/제작</h2>
-				<tr>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-				</tr>
-				<tr>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-				</tr>
-				<tr>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-				</tr>
+				<c:if test="${actors != null}">
+					<c:set var="i" value="0"/>
+					<c:forEach var="actor" items="${actors }">
+						<c:if test="${i>3 }">
+							<tr>
+						</c:if>
+							<td><img src="../movie/img/profile.png"> ${actor }</td>
+							<span hidden>${i=i+1 }</span>
+						<c:if test="${i>3 }">
+							</tr>
+							<span hidden>${i=0 }</span>
+						</c:if>
+					</c:forEach>
+				</c:if>
+				
 			</table>
 		</section>
 		<br> <br>
 		<!-- 코멘트 섹션 -->
-		<section class="comment">
-			<table class="comment-table">
-				<h2>코멘트</h2>
-				<tr>
-					<td><img src="../movie/img/profile.png"> 장이수
-						<div>
-							<hr>
-							왜 이렇게 아쉬울까 관람이 끝난 후 한참 고민을 했는데 내가 생각한 이유는 이러함 영제목을 체포로 정한 만큼 이
-							작품은 악당을 체포하는 과정에서 주는 카타르시스가 매우 중요함 왜 이렇게 아쉬울까 관람이 끝난 후 한참 고민을 했는데
-							내가 생각한 이유는 이러함 영제목을 체포로 정한 만큼 이 작품은 악당을 체포하는 과정에서 주는 카타르시스가 매우
-							중요함 왜 이렇게 아쉬울까 관람이 끝난 후 한참 고민을 했는데 내가 생각한 이유는 이러함 영제목을 체포로 정한 만큼
-							이 작품은 악당을 체포하는 과정에서 주는 카타르시스가 매우 중요함
-						</div></td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-				</tr>
-				<tr>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-				</tr>
-				<tr>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-					<td><img src="../movie/img/profile.png"> 장이수</td>
-				</tr>
-			</table>
-		</section>
+		<c:if test="${fn:length(commentList)!=0 }">
+			<section class="comment">
+				<table class="comment-table">
+					<h2>코멘트</h2>
+					<c:if test="${commentList != null}">
+					<c:set var="i" value="0"/>
+					<c:forEach var="comment" items="${commentList }">
+						<c:if test="${i>3 }">
+							<tr>
+						</c:if>
+							<td><img src="../movie/img/profile.png"> ${comment.username }
+							<div>
+								<hr>
+								${comment.comment_contents }
+							</div></td>
+							<span hidden>${i=i+1 }</span>
+						<c:if test="${i>3 }">
+							</tr>
+							<span hidden>${i=0 }</span>
+						</c:if>
+					</c:forEach>
+				</c:if>
+				</table>
+			</section>
+		</c:if>
 		<br> <br>
 		<!-- 갤러리 섹션 -->
 		<c:if test="${movie.movie_still_image != null}">

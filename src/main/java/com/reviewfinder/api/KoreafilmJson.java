@@ -105,6 +105,30 @@ public class KoreafilmJson extends APIController{
 				
 				movie.setMovie_plot(plotText);
 				
+				// 감독
+				JSONObject directors = (JSONObject)movieresult.get("directors");
+				JSONArray director = (JSONArray)directors.get("director");
+				String directorNm = "";
+				if(director != null) {
+					for(Object obj2 : director) {
+						JSONObject director_ = (JSONObject)obj2;
+						directorNm = directorNm + (String)director_.get("directorNm") + "|";
+					}
+				}
+				movie.setMovie_director(directorNm);
+				
+				// 배우
+				JSONObject actors = (JSONObject)movieresult.get("actors");
+				JSONArray actor = (JSONArray)actors.get("actor");
+				String actorNm = "";
+				if(actor != null) {
+					for(Object obj2 : actor) {
+						JSONObject actor_ = (JSONObject)obj2;
+						actorNm = actorNm + (String)actor_.get("actorNm") + "|";
+					}
+				}
+				movie.setMovie_actor(actorNm);
+				
 				// 장르
 				String genre = (String)movieresult.get("genre");
 				movie.setMovie_genre(genre);

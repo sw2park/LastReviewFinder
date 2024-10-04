@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.reviewfinder.movie.dao.MovieDTO" alias="moviedto"/>
+		<typeAlias type="com.reviewfinder.comment.dao.CommentDTO" alias="commentdto"/>
 		<typeAlias type="com.reviewfinder.member.dao.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.reviewfinder.board.dao.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.reviewfinder.rec.dao.RecDTO" alias="recdto"/>
@@ -25,6 +26,7 @@
 		<mapper resource="com/reviewfinder/sql/member.xml"/>
 		<mapper resource="com/reviewfinder/sql/board.xml"/>
 		<mapper resource="com/reviewfinder/sql/rec.xml"/>
+		<mapper resource="com/reviewfinder/sql/comment.xml"/>
 	</mappers>
 </configuration>
 
