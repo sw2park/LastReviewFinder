@@ -12,7 +12,7 @@ public class MoveMainAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(true);
-		forward.setPath("/main/main.jsp");
+		forward.setPath("/main/GetBoxOffice.ma");
 		return forward;
 	}
 }
