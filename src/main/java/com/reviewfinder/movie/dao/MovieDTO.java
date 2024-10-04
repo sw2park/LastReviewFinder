@@ -9,7 +9,21 @@ public class MovieDTO {
 	private String movie_poster;
 	private String movie_still_image;
 	private int movie_star_rate;
+	private String movie_actor;
+	private String movie_director;
 	
+	public String getMovie_actor() {
+		return movie_actor;
+	}
+	public void setMovie_actor(String movie_actor) {
+		this.movie_actor = movie_actor;
+	}
+	public String getMovie_director() {
+		return movie_director;
+	}
+	public void setMovie_director(String movie_director) {
+		this.movie_director = movie_director;
+	}
 	public int getMovie_num() {
 		return movie_num;
 	}
