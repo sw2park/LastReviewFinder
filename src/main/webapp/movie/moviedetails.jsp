@@ -19,6 +19,9 @@
 	<c:set var="actors" value="${requestScope.actors }"/>
 	<c:set var="directors" value="${requestScope.directors }"/>
 	<c:set var="commentList" value="${requestScope.commentList }"/>
+	<c:set var="user" value="#{sessionScope.session_id}"/>
+	<input id="movie_num" type="text" value="${movie.movie_num }" hidden=true/>
+	<input id="userid" type="text" value="${user.userid }" hidden=true/>
 	<main>
 		<!-- 영화 스틸 이미지와 영화 정보 섹션 -->
 		<section class="movie-banner">
@@ -54,19 +57,42 @@
 						<span class="star" data-value="5">&#9733;</span>
 					</div>
 					<div class="total-rating">
-						<button type="button" id="total-rating" class="btn">
-							<img src="../movie/img/star.png"><br>평점 매기기
-						</button>
+						<c:choose>
+							<c:when test="${user==null }">
+								<button type="button" id="n-total-rating" class="btn total-rating">					
+								<img src="../movie/img/star.png"><br>평점 매기기
+								</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button" id="total-rating" class="btn total-rating">	
+								<img src="../movie/img/star.png"><br>평점 매기기
+								</button>	
+							</c:otherwise>
+						</c:choose>
 						<!-- 평점(평균) 보이는 부분 -->
-						<span id="rating-score">&nbsp;&nbsp;&nbsp;0</span><span style="font-size: large;">점</span>
+						<span>&nbsp;&nbsp;&nbsp;</span><span id="rating-score">${requestScope.rating }</span><span style="font-size: large;">점</span>
 						<!-- 기존 total-rating 내에 버튼 추가 -->
 					</div>
 					<!-- 버튼을 추가 -->
 					<div class="wishlist-comment-buttons">
-						<button id="wishlist-button" class="btn">
+						<c:choose>
+							<c:when test="${user==null }">
+								<button id="wishlist-button" class="btn" onclick="user_null()">
+							</c:when>
+							<c:otherwise>
+								<button id="wishlist-button" class="btn" onclick="wishlist()"> <!-- userid, movienum 넘기기 -->
+							</c:otherwise>
+						</c:choose>
 							<img src="../movie/img/+.png"><br> <br>보고싶어요
 						</button>
-						<button id="comment-button" class="btn">
+						<c:choose>
+							<c:when test="${user==null }">
+								<button id="comment-button" class="btn" onclick="user_null()">
+							</c:when>
+							<c:otherwise>
+								<button id="comment-button" class="btn" onclick="comment()">
+							</c:otherwise>
+						</c:choose>
 							<img src="../movie/img/coment.png"><br> <br>코멘트
 							달기
 						</button>

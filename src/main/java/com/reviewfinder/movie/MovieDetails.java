@@ -38,14 +38,15 @@ public class MovieDetails implements Action{
 		movie.setMovie_poster(poster);
 		movie.setMovie_still_image(still_img);
 		
-//		System.out.println(still_list.get(0));
-//		System.out.println(still_list.get(1));
+		String rating = ""+((int)mdao.selectTotalRating(movie.getMovie_num()));
+		
 		
 		req.setAttribute("moviedto", movie);
 		req.setAttribute("still_list", still_list);
 		req.setAttribute("actors", actors);
 		req.setAttribute("directors", directors);
 		req.setAttribute("commentList", commentList);
+		req.setAttribute("rating", rating);
 		
 		forward.setRedirect(false);
 		forward.setPath("/movie/moviedetails.jsp");

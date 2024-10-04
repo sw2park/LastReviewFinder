@@ -99,11 +99,7 @@ public class MovieDAO {
 		
 		return result;
 	}
-
-  // 별점 추가 () => 평균 별점 계산
-	public void insertRating(int rating) {
-		session.insert("Movie.insertRating", rating);
-
+	
 	// 박스오피스 테이블 추가
 	public void insertBoxOffice(BoxOfficeDTO bDto) {		
 		session.insert("Movie.insertBoxOffice", bDto);
@@ -118,4 +114,22 @@ public class MovieDAO {
 		return session.selectOne("Movie.selectMovieNum", movieTitle);
 
 	}
+
+	public void updateRating(int rating, int movie_num) {
+		HashMap<String, Integer> rating_num = new HashMap<String, Integer>();
+		rating_num.put("rating", rating);
+		rating_num.put("movie_num", movie_num);
+		
+		session.update("Movie.updateRating",rating_num);
+	}
+
+	public void updateRatingCount(int movie_num) {
+		session.update("Movie.updateRatingCount",movie_num);
+	}
+	
+	public double selectTotalRating(int movie_num) {
+		return session.selectOne("Movie.selectTotalRating", movie_num);
+	}
 }
+
+

@@ -129,7 +129,7 @@ body {
 }
 
 /* 버튼 스타일 */
-.wishlist-comment-buttons .btn, #total-rating {
+.wishlist-comment-buttons .btn, .total-rating {
 	font-family: 'Pretendard';
 	border: none;
 	border-radius: 5px;
@@ -142,7 +142,7 @@ body {
 	transform: scale(1.1);
 }
 
-#total-rating img:hover {
+.total-rating img:hover {
 	transform: scale(1.1);
 	background-image: url('../movie/img/star_full.png');
 	background-size: cover;
@@ -154,7 +154,7 @@ body {
 	height: 50px;
 }
 
-#total-rating img {
+.total-rating img {
 	width: 50px;
 	height: 50px;
 	margin-bottom: 5px;
