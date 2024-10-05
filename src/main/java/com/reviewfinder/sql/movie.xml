@@ -9,7 +9,7 @@
 	<insert id="insertMovieDB" parameterType="moviedto">
 		INSERT INTO MOVIE_DB VALUES(
 		movie_seq.nextval, #{movie_title}, #{movie_date}, #{movie_plot}, 
-		#{movie_genre}, #{movie_poster}, #{movie_still_image}, #{movie_star_rate}, #{movie_actor}, #{movie_director}
+		#{movie_genre}, #{movie_poster}, #{movie_still_image}, 0, #{movie_actor}, #{movie_director} ,0
 		)
 	</insert>
 	<select id="selectMovieFromDB" parameterType="hashmap" resultType="moviedto">
@@ -24,4 +24,15 @@
 	<insert id="insertBoxOffice" parameterType="boxDTO">
 		INSERT INTO BOXOFFICE_RANK VALUES(#{movie_num}, #{movie_rank}, #{boxoffice_date})
 	</insert>
+	<update id="updateRating" parameterType="hashmap">
+		UPDATE MOVIE_DB SET MOVIE_STAR_RATE = MOVIE_STAR_RATE + #{rating} WHERE MOVIE_NUM = #{movie_num}
+	</update>
+	<update id="updateRatingCount" parameterType="_int">
+		UPDATE MOVIE_DB SET MOVIE_RATE_CNT = MOVIE_RATE_CNT +1 WHERE MOVIE_NUM = #{movie_num}
+	</update>
+	<select id="selectTotalRating" parameterType="_int" resultType="double">
+		SELECT MOVIE_STAR_RATE/MOVIE_RATE_CNT FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
 </mapper>
+
+

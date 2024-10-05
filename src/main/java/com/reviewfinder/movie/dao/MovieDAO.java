@@ -112,5 +112,24 @@ public class MovieDAO {
 		String movieTitle = boxOffice.get(rank).getMovie_title();
 		
 		return session.selectOne("Movie.selectMovieNum", movieTitle);
+
+	}
+
+	public void updateRating(int rating, int movie_num) {
+		HashMap<String, Integer> rating_num = new HashMap<String, Integer>();
+		rating_num.put("rating", rating);
+		rating_num.put("movie_num", movie_num);
+		
+		session.update("Movie.updateRating",rating_num);
+	}
+
+	public void updateRatingCount(int movie_num) {
+		session.update("Movie.updateRatingCount",movie_num);
+	}
+	
+	public double selectTotalRating(int movie_num) {
+		return session.selectOne("Movie.selectTotalRating", movie_num);
 	}
 }
+
+
