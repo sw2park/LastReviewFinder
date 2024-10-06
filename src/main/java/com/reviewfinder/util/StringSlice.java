@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.reviewfinder.main.dao.MainDTO;
 import com.reviewfinder.movie.dao.MovieDTO;
 
 public class StringSlice {
@@ -23,6 +24,22 @@ public class StringSlice {
 
 		return poster;
 	}
+	// 포스터 url 하나만 가져오기 MainDTO 오버로딩
+	public static String slicePosterUrl(MainDTO main) {
+		String poster = main.getMovie_poster();
+
+		poster = poster.trim();
+
+		if (poster != null || poster.equals("")) {
+			int idx = poster.indexOf("|");
+			if (idx != -1) {
+				poster = poster.substring(0, idx);
+			}
+		}
+
+		return poster;
+	}
+	
 	
 	// 스틸이미지 url 하나만 가져오기
 	public static String sliceStillUrl(MovieDTO movie) {

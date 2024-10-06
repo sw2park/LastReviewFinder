@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.ibatis.javassist.Loader.Simple;
+
 public class DateController {
 	// 반복문 용 통합
 	public String getDay(int i) {

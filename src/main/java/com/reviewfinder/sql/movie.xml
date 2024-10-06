@@ -32,7 +32,7 @@
 	</update>
 	<select id="selectTotalRating" parameterType="_int" resultType="double">
 		SELECT MOVIE_STAR_RATE/MOVIE_RATE_CNT FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
-	</select>
+  </select>
 	<select id="selectRatingCount" parameterType="_int" resultType="_int">
 		SELECT MOVIE_RATE_CNT FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
 	</select>
@@ -41,6 +41,8 @@
 	</select>
 	<select id="selectSimilarMovie" parameterType="string" resultType="moviedto">
 		SELECT * FROM MOVIE_DB WHERE MOVIE_GENRE LIKE '%' || #{first_genre} || '%' AND rownum &lt; 8
+	<select id="checkBoxOfficeRank" resultType="_int">
+		SELECT COUNT(MOVIE_NUM) FROM BOXOFFICE_RANK
 	</select>
 </mapper>
 

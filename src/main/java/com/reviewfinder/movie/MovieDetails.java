@@ -2,7 +2,7 @@ package com.reviewfinder.movie;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;import javax.xml.stream.events.Comment;
+import java.util.List;
 
 import org.json.simple.parser.ParseException;
 

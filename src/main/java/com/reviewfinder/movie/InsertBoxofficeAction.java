@@ -27,21 +27,24 @@ public class InsertBoxofficeAction implements Action {
 		BoxOfficeDTO bDto = new BoxOfficeDTO();
 		
 		try {
-			for(int i=0; i>-3; i--) {
-				String month = ""+(Integer.parseInt(date.getDay(i))-1);
-				// BoxOffice 데이터를 가져옴
-				boxOffice = kobisJson.getBoxOffice(month);
-				mdao.insertMovieDB(boxOffice);
-				
-				
-				for(int j=1; j<=10; j++) {
-					int movieNum = mdao.selectMovieNum(boxOffice, month, j);
+			// BoxOfficeRank에 데이터 있는지 여부 확인 후
+			if(!mdao.checkBoxOfficeRank()) { // 값이 없을때
+				for(int i=0; i>-3; i--) {
+					String month = ""+(Integer.parseInt(date.getDay(i))-1);
+					// BoxOffice 데이터를 가져옴
+					boxOffice = kobisJson.getBoxOffice(month);
+					mdao.insertMovieDB(boxOffice);
 					
-					bDto.setBoxoffice_date(month);
-					bDto.setMovie_num(movieNum);
-					bDto.setMovie_rank(j);
 					
-					mdao.insertBoxOffice(bDto);
+					for(int j=1; j<=10; j++) {
+						int movieNum = mdao.selectMovieNum(boxOffice, month, j);
+						
+						bDto.setBoxoffice_date(month);
+						bDto.setMovie_num(movieNum);
+						bDto.setMovie_rank(j);
+						
+						mdao.insertBoxOffice(bDto);
+					}
 				}
 			}
 		} catch (ParseException | IOException e) {
