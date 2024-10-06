@@ -33,6 +33,15 @@
 	<select id="selectTotalRating" parameterType="_int" resultType="double">
 		SELECT MOVIE_STAR_RATE/MOVIE_RATE_CNT FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
 	</select>
+	<select id="selectRatingCount" parameterType="_int" resultType="_int">
+		SELECT MOVIE_RATE_CNT FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
+	<select id="searchSimilarGenreCnt" parameterType="string" resultType="_int">
+		SELECT count(*) FROM MOVIE_DB WHERE MOVIE_GENRE LIKE '%' || #{genre} || '%'
+	</select>
+	<select id="selectSimilarMovie" parameterType="string" resultType="moviedto">
+		SELECT * FROM MOVIE_DB WHERE MOVIE_GENRE LIKE '%' || #{first_genre} || '%' AND rownum &lt; 8
+	</select>
 </mapper>
 
 

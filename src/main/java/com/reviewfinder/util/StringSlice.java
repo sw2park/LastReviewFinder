@@ -1,6 +1,7 @@
 package com.reviewfinder.util;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -77,5 +78,32 @@ public class StringSlice {
 			return Arrays.asList(temp);
 		}
 		return null;
+	}
+	
+	// 장르 슬라이스
+	public static List<String> sliceGenre(MovieDTO movie){
+		String[] genre = movie.getMovie_genre().split(",");
+		List<String> genreList = new ArrayList<String>();
+		
+		if(genre.length>1) {
+			for(int i=0;i<genre.length;i++) {
+				if(genre[i].equals("멜로/로맨스")) {
+					genreList.add("멜로");
+					genreList.add("로맨스");
+				}else {
+					genreList.add(genre[i]);
+				}
+			}
+			return genreList;
+		}
+		
+		if(genre[0].equals("멜로/로맨스")) {
+			genreList.add("멜로");
+			genreList.add("로맨스");
+		}else {
+			genreList = Arrays.asList(genre);
+		}
+		
+		return genreList;
 	}
 }

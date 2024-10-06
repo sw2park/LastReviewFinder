@@ -58,6 +58,25 @@ $(document).ready(function () {
 		       alert("이미 평가하셨습니다.");
 		   });
 	});
+	function adjustMargin() {
+        // 각각의 movie-banner 요소에 대해 처리
+        $('.movie-banner').each(function() {
+            let banner = $(this); // 현재 movie-banner 요소
+            let movieStill = banner.find('.movie-still'); // 해당 banner 안의 movie-still 이미지
+
+            // 높이 비교 후 overflow 여부 확인
+            if (movieStill.height() > banner.height()) {
+                // 가운데 정렬을 위한 margin-top 계산식
+                let marginTopValue = -( (movieStill.height() - banner.height()) / 2 ) + 'px';
+                movieStill.css('margin-top', marginTopValue);
+            } else {
+                // overflow가 발생하지 않으면 margin-top을 0으로 설정
+                movieStill.css('margin-top', '0');
+            }
+        });
+    }
+	adjustMargin();
+	$(window).resize(adjustMargin);
 });
 
 let currentIndex = 0;
@@ -187,7 +206,6 @@ function comment(){
 		}
 	});
 }
-
 
 
 

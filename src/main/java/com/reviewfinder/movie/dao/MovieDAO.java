@@ -130,6 +130,18 @@ public class MovieDAO {
 	public double selectTotalRating(int movie_num) {
 		return session.selectOne("Movie.selectTotalRating", movie_num);
 	}
+
+	public int selectRatingCount(int movie_num) {
+		return session.selectOne("Movie.selectRatingCount",movie_num);
+	}
+
+	public int searchSimilarGenreCnt(String genre) {
+		return session.selectOne("Movie.searchSimilarGenreCnt",genre);
+	}
+
+	public List<MovieDTO> selectSimilarMovie(String first_genre) {
+		return session.selectList("Movie.selectSimilarMovie",first_genre);
+	}
 }
 
 
