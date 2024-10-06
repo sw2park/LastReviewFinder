@@ -1,6 +1,7 @@
 package com.reviewfinder.movie;
 
-import java.util.List;import javax.xml.stream.events.Comment;
+import java.util.List;
+import javax.xml.stream.events.Comment;
 
 import com.reviewfinder.action.Action;
 import com.reviewfinder.action.ActionForward;

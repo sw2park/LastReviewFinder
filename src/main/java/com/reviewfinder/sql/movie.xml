@@ -33,6 +33,9 @@
 	<select id="selectTotalRating" parameterType="_int" resultType="double">
 		SELECT MOVIE_STAR_RATE/MOVIE_RATE_CNT FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
 	</select>
+	<select id="checkBoxOfficeRank" resultType="_int">
+		SELECT COUNT(MOVIE_NUM) FROM BOXOFFICE_RANK
+	</select>
 </mapper>
 
 

@@ -31,9 +31,7 @@
 		<mapper resource="com/reviewfinder/sql/board.xml"/>
 		<mapper resource="com/reviewfinder/sql/rec.xml"/>
 		<mapper resource="com/reviewfinder/sql/comment.xml"/>
+		<mapper resource="com/reviewfinder/sql/main.xml"/>
 		<mapper resource="com/reviewfinder/sql/wishlist.xml"/>
 	</mappers>
 </configuration>
-
-
-
