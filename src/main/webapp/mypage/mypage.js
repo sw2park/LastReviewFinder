@@ -68,7 +68,7 @@ window.onclick = function(event) {
  	    if (password !== confirmPassword) {
  	       pwmessage2.textContent = '비밀번호가 일치하지 않습니다.';
  	    } else {
- 	    	pwmessage2.textContent = '';
+ 	    	pwmessage2.textContent = '사용 가능한 비밀번호입니다.';
  	    	isPasswordValid2 = true;
  	    }
  	});
@@ -92,7 +92,7 @@ nameInput.addEventListener('input', () => {
      } else if (!namePattern.test(nameValue)) {
      	namemessage.textContent = '이름은 2자 이상 20자 이하이며, 특수문자를 포함할 수 없습니다';
      } else {
-     	 namemessage.textContent = '';
+     	 namemessage.textContent = '사용 가능한 이름입니다.';
           // 중복 체크
          checkName(nameValue);
      }
@@ -129,3 +129,15 @@ document.getElementById('UpdateName').addEventListener('submit', function(event)
 					 alert("회원 탈퇴를 취소합니다.");
 				 }
 		  	}
+
+function returnProfile(){
+let time = new Date().getTime();
+ $("#profile").attr("src", "${member.profile }?"+time());
+ }
+
+function UpdateProfile(){
+	const file = event.target.files[0]; // 선택된 파일
+	alert("file.name")
+	console.log(file)
+		document.UpdateProfile.submit();
+}

@@ -84,11 +84,11 @@ public class BoardDAO {
 		return result;
 	}
 	
-	public boolean updateReply(int boardnum, String adminreply) {
+	public boolean updateReply(int boardnum, String admin_reply) {
 		boolean result = false;
 		HashMap<String, Object> datas = new HashMap<>();
 		datas.put("boardnum", boardnum);
-		datas.put("adminreply", adminreply);
+		datas.put("admin_reply", admin_reply);
 		
 		if (Session.update("Board.UpdateReply", datas) == 1) {
 			result = true;

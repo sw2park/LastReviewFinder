@@ -23,7 +23,7 @@
 	</select>
 
 	<insert id="insertBoard" parameterType="BoardDTO">
-  		INSERT INTO QNABOARD VALUES (board_seq.nextval, #{boardcate}
+  		INSERT INTO QNABOARD VALUES (board_seq.nextval, #{boardcate}, #{userid}
   		, #{username}, #{boardtitle}, #{boardcontents}, sysdate, NULL)
   	</insert>
   	
@@ -41,11 +41,11 @@
   	</update>
   	
   	<update id="UpdateReply" parameterType="hashmap">
-  		UPDATE QNABOARD SET adminreply = #{adminreply} WHERE BOARDNUM = #{boardnum}
+  		UPDATE QNABOARD SET admin_reply = #{admin_reply} WHERE BOARDNUM = #{boardnum}
   	</update>
   	
   	<update id="deleteReply" parameterType="_int">
-  		UPDATE QNABOARD SET adminreply = NULL WHERE BOARDNUM = #{boardnum}
+  		UPDATE QNABOARD SET admin_reply = NULL WHERE BOARDNUM = #{boardnum}
   	</update>
   	
   	<delete id="deleteBoard" parameterType="_int">

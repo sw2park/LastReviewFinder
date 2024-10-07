@@ -63,6 +63,5 @@
  	 	  </c:choose>
  	 	 </table>
  	 	</div>  
-
 </body>
 </html>
