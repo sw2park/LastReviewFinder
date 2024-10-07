@@ -22,6 +22,12 @@
 	    justify-content: center; /* 수평 중앙 정렬 */
 	    background-color: #f0f0f0; /* 배경색 (예시) */
 	}
+	
+	.profile img {
+    width: 100%; /* 부모 요소의 너비에 맞추기 */
+    height: 100%; /* 부모 요소의 높이에 맞추기 */
+    object-fit: cover; /* 이미지 비율 유지하면서 자르기 */
+	}
 
 	.rounded {
 	    border: 1px solid #f7175a; /* 테두리 색 */
@@ -73,6 +79,12 @@
         white-space: nowrap; /* 줄 바꿈 방지 */
         width: 100%; /* 컨테이너 너비 */
     }
+    
+     #openModal {
+    	width: 30px;
+    	height: 30px;
+    }
+    
 </style>
 </head>
 <body>
@@ -109,22 +121,29 @@
 	<div class = "userInfo">
 		<table class="rounded" style="width: 60%">
 		<c:set var="member" value="${sessionScope.session_id }"/>
-			<tr><td style="text-align: right"><input type="button" value="설정" id="openModal"></td></tr>
+			<tr><td style="text-align: right"><img src="setting.png" value="설정" id="openModal"></td></tr>
 			<tr><td></td></tr>
-			<tr><td class="profile">${member.profile }</td></tr>
+			 <form name="UpdateProfile" id="UpdateProfile" method="post" action="/mypage/UpdateProfile.mp" enctype="multipart/form-data">
+				<input type="hidden" id="userid" name="userid" value="${sessionScope.session_id.userid}">
+	            	<tr><td class="profile"><img src="${member.profile }" id="profile" onclick="document.getElementById('fileInput').click()"></td>
+			</tr>
+			<tr><td style="text-align: left" ><a href="/mypage/ReturnProfile.mp">기본이미지로 변경</a></td></tr>
+			<input type="file" id="fileInput" accept="image/gif, image/png, image/jpeg" style="display: none;" onchange="UpdateProfile()">
+			
 			<tr><td></td></tr>
 			<tr><td class="rounded">${member.username }</td></tr>
 			<tr><td class="rounded">${member.userid}</td></tr>
+		</form>
 		</table>
 	</div>
 	<br/>
 	<br/>
 	<div class = "userContents">
-	<c:set var="contentsList" value="${sessionScope.contentsList }"/>
+	<c:set var="contentsList" value="${requestScope.contentsList }"/>
 		<table class="rounded" style="width: 60%">
-			<td align="right"><a href="/mypage/ShowMyContents.mp">더보기</a></td>
 			<c:choose>
 		     	 <c:when test = "${contentsList != null and fn:length(contentsList)>0 }">
+					<td align="right" colspan="${fn:length(contentsList) + 1}"><a href="/mypage/ShowMyContents.mp">더보기</a></td>
 						<tr align="center" valign="middle">
 						</tr>
 							<tr align="center" valign="middle">
@@ -137,6 +156,7 @@
 				         </tr>
 				</c:when>
 			<c:otherwise> <%-- 내용 없을 때 --%>
+			<td align="right"><a href="/mypage/ShowMyContents.mp">더보기</a></td>
 				<tr style="height:50px;">
 		            <td colspan="5" style="text-align:center;">아직 '좋아요'한 영화가 없습니다.</td>
 		        </tr>

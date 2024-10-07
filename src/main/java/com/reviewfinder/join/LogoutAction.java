@@ -21,8 +21,6 @@ public class LogoutAction implements Action{
 		Session.removeAttribute("session_id");
 		Session.invalidate();
 		
-		System.out.println("로그아웃 성공");
-		
 		try {
 			resp.sendRedirect("/main/main.jsp");
 		} catch (IOException e) {
