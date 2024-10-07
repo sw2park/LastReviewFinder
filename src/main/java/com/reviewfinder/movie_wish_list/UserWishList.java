@@ -1,4 +1,4 @@
-package com.reviewfinder.movie_favorite_list;
+package com.reviewfinder.movie_wish_list;
 
 import java.io.IOException;
 

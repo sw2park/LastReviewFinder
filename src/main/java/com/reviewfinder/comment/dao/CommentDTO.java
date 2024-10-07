@@ -2,7 +2,7 @@ package com.reviewfinder.comment.dao;
 
 public class CommentDTO {
 	private int comment_num;
-	private String username;
+	private String userid;
 	private int movie_num;
 	private String comment_contents;
 	private String comment_date;
@@ -14,11 +14,11 @@ public class CommentDTO {
 	public void setComment_num(int comment_num) {
 		this.comment_num = comment_num;
 	}
-	public String getUsername() {
-		return username;
+	public String getUserid() {
+		return userid;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public int getMovie_num() {
 		return movie_num;
@@ -44,4 +44,5 @@ public class CommentDTO {
 	public void setComment_like(int comment_like) {
 		this.comment_like = comment_like;
 	}
+	
 }

@@ -1,4 +1,4 @@
-package com.reviewfinder.movie_favorite_list;
+package com.reviewfinder.movie_wish_list;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("*.fv")
-public class MovieFavoriteListFrontcontroller extends HttpServlet{
+public class MovieWishListFrontcontroller extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
