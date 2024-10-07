@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+html {
+font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
+}
+
+body {
+	margin: 0 15%;
+}
+	    
+table {
+	margin: 0 auto;
+	width: 900px;
+}
+	
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	border: 1px solid #f7175a; 
+	border-radius: 15px; 
+	overflow: hidden;
+}
+	
+.row {
+	display: flex;
+	padding: 10px 20px;
+}
+	
+.label {
+	flex: 0 0 150px;
+	text-align: center;
+	font-weight: bold;
+	color: #f7175a;
+	line-height: 30px; 
+}
+	
+.content {
+	flex: 1;
+	border: 1px solid #f7175a;
+	border-radius: 25px;
+	padding: 10px 20px;
+}
+	
+.BacktoList {
+	border: 1px solid #f7175a; 
+	border-radius: 25px; 
+	background-color: #f7175a; 
+	padding: 10px 20px; 
+	color : white;
+}
+        
+.Answer{
+	border: 1px solid #f7175a; 
+	border-radius: 25px; 
+	color: #f7175a; 
+	padding: 10px 20px; 
+	background-color : white;
+}
