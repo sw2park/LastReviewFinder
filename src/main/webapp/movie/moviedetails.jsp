@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>영화 상세 페이지</title>
+<link rel="stylesheet" href="/qnaboard/comment-write.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="/movie/moviedetails.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
@@ -100,6 +102,16 @@
 						</button>
 					</div>
 				</section>
+				<!-- 코멘트 작성 모달 (초기에는 숨김 처리) -->
+				<div id="commentModal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<!-- 코멘트 작성 JSP 파일을 비동기적으로 불러와서 이 div 안에 삽입할 예정 -->
+						<div id="commentFormContainer">
+							<!-- 여기에 comment-write.jsp 내용이 들어감 -->
+						</div>
+					</div>
+				</div>
 				<hr />
 				<!-- 줄거리 섹션 -->
 				<section>
@@ -204,6 +216,7 @@
 			</section>
 		</c:if>
 	</main>
+
 	<script src="/movie/moviedetails.js"></script>
 </body>
 </html>

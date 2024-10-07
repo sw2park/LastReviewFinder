@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>댓글 작성 페이지</title>
-<link rel="stylesheet" href="comment-write.css">
+<link rel="stylesheet" href="/qnaboard/comment-write.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
 <body>
@@ -23,8 +23,8 @@
   </div>
       
   <div class="button">
-	<button type="button" disabled="" class="reset">취소</button>
-	<button type="button" disabled="" class="set">작성</button>
+	<button type="button" class="reset">취소</button>
+	<button type="button" class="set">작성</button>
   </div>
 </div>
 </body>
