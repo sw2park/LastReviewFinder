@@ -8,7 +8,7 @@
 		SELECT * FROM MEMBER WHERE USERID = #{userid} AND USERPW = #{userpw}
 	</select>
 	<insert id="join" parameterType="MemberDTO">
-		INSERT INTO MEMBER VALUES (#{userid}, #{userpw}, #{username}, 'BASIC', null)
+		INSERT INTO MEMBER VALUES (#{userid}, #{userpw}, #{username}, 'BASIC', 'profile.png')
 	</insert>
 	<select id="checkId" parameterType="string" resultType="_int">
 		select count(*) FROM MEMBER WHERE userid = #{userid}
@@ -23,6 +23,14 @@
   	
   	<update id="UpdateName" parameterType="hashmap">
   		UPDATE MEMBER SET username = #{username} WHERE USERID = #{userid}
+  	</update>
+  	
+  	<update id="UpdateContentsUserName" parameterType="hashmap">
+  		UPDATE QNABOARD SET username = #{username} WHERE USERID = #{userid}
+  	</update>
+  	
+  	<update id="UpdateProfile" parameterType="hashmap">
+  		UPDATE MEMBER SET profile = #{profile, jdbcType=VARCHAR} WHERE USERID = #{userid, jdbcType=VARCHAR}
   	</update>
 
 	<delete id="DeleteMemberContents" parameterType="string">

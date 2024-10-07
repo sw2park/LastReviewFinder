@@ -120,7 +120,8 @@
 	    		xhr.onreadystatechange = function(){
 	    			if(xhr.status == 200 && xhr.readyState == XMLHttpRequest.DONE){
 						if(xhr.responseText.trim() === "OK"){
-									isIDValid = true;
+								idmessage.textContent ="사용 가능한 아이디입니다.";	
+								isIDValid = true;
 							} else {
 									idmessage.textContent ="사용 중인 아이디입니다.";
 									isIDValid = false;
@@ -179,7 +180,8 @@
     		xhr.onreadystatechange = function(){
     			if(xhr.status == 200 && xhr.readyState == XMLHttpRequest.DONE){
 					if(xhr.responseText.trim() === "OK"){
-								isNameValid = true;
+							namemessage.textContent ="사용 가능한 이름입니다.";		
+							isNameValid = true;
 						} else {
 								namemessage.textContent ="사용 중인 이름입니다.";
 								isNameValid = false;

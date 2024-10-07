@@ -21,7 +21,7 @@ public class UpdateNameAction implements Action{
 		String username = req.getParameter("username");
 		if(mdao.updateName(userid, username)) {
 			forward.setRedirect(true);
-			forward.setPath("../mypage/mypage.jsp");
+			forward.setPath("/mypage/ShowMyContentsMain.mp");
 		}
 		HttpSession session = req.getSession();
 		MemberDTO mdto = (MemberDTO)session.getAttribute("session_id");

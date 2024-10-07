@@ -66,13 +66,28 @@ public class MemberDAO {
 		HashMap<String, String> datas = new HashMap<>();
 		datas.put("userid", userid);
 		datas.put("username", username);
+		// 게시판에서 회원 이름 변경
+		Session.update("Member.UpdateContentsUserName", userid);
+		//실제 회원 이름 변경
 		if (Session.update("Member.UpdateName", datas) == 1) {
+			result = true;
+		}
+		return result;
+	}
+	
+	public boolean updateProfile(String userid, String profile) {
+		boolean result = false;
+		HashMap<String, String> datas = new HashMap<>();
+		datas.put("userid", userid);
+		datas.put("profile", profile);
+		if (Session.update("Member.UpdateProfile", datas) == 1) {
 			result = true;
 		}
 		return result;
 	}
 
 	public boolean deleteMember(String userid) {
+
 		boolean result = false;
 		//찜목록 삭제
 		Session.delete("Member.DeleteMemberContents", userid);
