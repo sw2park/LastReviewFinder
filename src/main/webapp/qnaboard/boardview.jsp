@@ -13,7 +13,7 @@
 <body onload="checkUserRole()">
 
 	<c:set var="board" value="${requestScope.board }"/>
- 
+   
 	<div class="container">
 	  <div class="row">
 	    <div class="label">제 목</div>
@@ -90,7 +90,7 @@
          </table>
        	 <div style="text-align: right">
    			<input type="button" id="Modify" value="수정하기" class="Answer" onclick="location.href='/qnaboard/boardupdate.jsp?boardnum='+${board.boardnum };">
-   			<input type="button" id="Delete" value="삭제하기" class="Answer" onclick="location.href='/qnaboard/DeleteBoard.bo?boardnum='+${board.boardnum };">
+   			<input type="button" id="Delete" value="삭제하기" class="Answer" onclick="deleteBoard(${board.boardnum });">
    		</div>
    		<div style="text-align: center">
    			<input type="button" value="목록" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';">
@@ -112,7 +112,7 @@
 		document.getElementById('replyUP'+boardnum).readOnly = false;
    	}
    	
-   	function deleteReply(boardnum, password){
+   	function deleteReply(boardnum){
 		 var result = confirm("정말로 삭제할까요?");
 			 if(result){
 			document.replyForm2.action = "/qnaboard/DeleteReply.bo?boardnum="+boardnum;
@@ -121,6 +121,15 @@
 				 alert("삭제를 취소합니다.");
 			 }
    	}
+   	
+ 	function deleteBoard(boardnum){
+		 var result = confirm("정말로 삭제할까요?");
+			 if(result){
+				 location.href='/qnaboard/DeleteBoard.bo?boardnum='+boardnum;
+			 } else{
+				 alert("삭제를 취소합니다.");
+			 }
+  	}
    	
     function checkUserRole() {
         var userRole = '${sessionScope.session_id.usergrade}';

@@ -18,7 +18,7 @@
 	        <option>전체선택</option>
 	        <option>공지</option>
 	        <option>추천</option>
-	        <option>문의</option>            
+	        <option>문의</option> 
 	    </select>
 
 	   	<input type="button" value="내가 작성한 글만 보기" class="myqnachoice" onclick="location.href='/qnaboard/Mywrite_view.bo';">
@@ -46,7 +46,7 @@
 			<c:choose>
 		     	  <c:when test = "${boardList != null and fn:length(boardList)>0 }">
 						<c:forEach var="board" items="${boardList }">	
-						  <c:if test="${board.boardcate == '공지'}">
+						  <c:if test="${board.username == sessionScope.session_id.username}">
 				         	 <tr align="center" valign="middle" onmouseover="this.style.background='#bbdefb'"onmouseout="this.style.background=''">
 				           	   <td height="23px" class="${board.boardcate == '공지' ? 'change-color' : ''}">${board.boardcate }</td>
 				               <td height="23px" class="${board.boardcate == '공지' ? 'change-num' : ''}">${board.boardnum }</td>
@@ -56,34 +56,16 @@
 				            </tr>
 				           </c:if>
 				         </c:forEach>
-				         
-				         <c:forEach var="board" items="${boardList}">
-				              <c:if test="${board.boardcate != '공지'}">
-				          <tr align="center" valign="middle" onmouseover="this.style.background='#bbdefb'"
-				            		onmouseout="this.style.background=''">
-				            <td height="23px">${board.boardcate }</td>
-				               <td height="23px">${board.boardnum }</td>
-				               <td height="23px"><a href="/qnaboard/BoardView.bo?boardnum=${board.boardnum }" > ${board.boardtitle }</a> </td>
-				               <td height="23px">${board.username }</td>
-				               <td height="23px">${board.boarddate }</td>
-				            </tr>
-				           </c:if>
-						</c:forEach>
-				</c:when>
-				
-				<c:otherwise> <%-- 내용 없을 때 --%>
-		            <tr style="height:50px;">
-			            <td colspan="5" style="text-align:center; color:#f7175a;">아직 등록된 게시물이 없습니다.</td>
-			        </tr>
-	       	 	</c:otherwise>
- 	 	  </c:choose>
-		</table><br/>
-		
-		<hr align="left" style="border-top: 1px solid #f7175a; width:100%;"/>
-
-		<%-- 페이징 처리 --%>
-			
-		<table style="border:0px; width:100%;">
+					</c:when>
+					<c:otherwise> <%-- 내용 없을 때 --%>
+							<tr style="height:50px;">
+					            <td colspan="5" style="text-align:center; color:#f7175a;">아직 등록된 게시물이 없습니다.</td>
+					        </tr>
+			       	 </c:otherwise>
+		 	  </c:choose>
+ 	 	  
+			<%-- 페이징 처리 --%>
+			<table style="border:0px; width:100%;">
 				<tr align="center" valign="middle">
 					<td>
 						<c:if test="${nowPage>1 }">
@@ -105,6 +87,5 @@
 				</tr>
 			</table>
 	</div>
-
 </body>
 </html>

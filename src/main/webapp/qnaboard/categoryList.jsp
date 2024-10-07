@@ -15,10 +15,10 @@
 		<h2>게시판</h2>
         <select name="category" onchange="location.href='/qnaboard/Category_view.bo?boardcate='+this.value;">
         	<option disabled selected>-- 카테고리 --</option>
-	        <option>전체선택</option>
-	        <option>공지</option>
-	        <option>추천</option>
-	        <option>문의</option>            
+	        <option value="전체">전체선택</option>
+	        <option value="공지">공지</option>
+	        <option value="추천">추천</option>
+	        <option value="문의">문의</option>            
 	    </select>
 
 	   	<input type="button" value="내가 작성한 글만 보기" class="myqnachoice" onclick="location.href='/qnaboard/Mywrite_view.bo';">
@@ -28,6 +28,7 @@
 		<hr align="left" style="border-top: 2px solid #f7175a; width:100%;"/>
 		
 		<c:set var="boardList" value="${requestScope.boardList }"/>
+		<c:set var="Category" value="${requestScope.boardcate }"/>
 		<c:set var="totalCnt" value="${requestScope.totalCnt }"/>
 		<c:set var="nowPage" value="${requestScope.nowPage }"/>
 		<c:set var="startPage" value="${requestScope.startPage }"/>
@@ -46,7 +47,7 @@
 			<c:choose>
 		     	  <c:when test = "${boardList != null and fn:length(boardList)>0 }">
 						<c:forEach var="board" items="${boardList }">	
-						  <c:if test="${board.boardcate == '공지'}">
+						  <c:if test="${board.boardcate == Category}">
 				         	 <tr align="center" valign="middle" onmouseover="this.style.background='#bbdefb'"onmouseout="this.style.background=''">
 				           	   <td height="23px" class="${board.boardcate == '공지' ? 'change-color' : ''}">${board.boardcate }</td>
 				               <td height="23px" class="${board.boardcate == '공지' ? 'change-num' : ''}">${board.boardnum }</td>
@@ -56,34 +57,16 @@
 				            </tr>
 				           </c:if>
 				         </c:forEach>
-				         
-				         <c:forEach var="board" items="${boardList}">
-				              <c:if test="${board.boardcate != '공지'}">
-				          <tr align="center" valign="middle" onmouseover="this.style.background='#bbdefb'"
-				            		onmouseout="this.style.background=''">
-				            <td height="23px">${board.boardcate }</td>
-				               <td height="23px">${board.boardnum }</td>
-				               <td height="23px"><a href="/qnaboard/BoardView.bo?boardnum=${board.boardnum }" > ${board.boardtitle }</a> </td>
-				               <td height="23px">${board.username }</td>
-				               <td height="23px">${board.boarddate }</td>
-				            </tr>
-				           </c:if>
-						</c:forEach>
-				</c:when>
-				
-				<c:otherwise> <%-- 내용 없을 때 --%>
-		            <tr style="height:50px;">
-			            <td colspan="5" style="text-align:center; color:#f7175a;">아직 등록된 게시물이 없습니다.</td>
-			        </tr>
-	       	 	</c:otherwise>
- 	 	  </c:choose>
-		</table><br/>
-		
-		<hr align="left" style="border-top: 1px solid #f7175a; width:100%;"/>
-
-		<%-- 페이징 처리 --%>
-			
-		<table style="border:0px; width:100%;">
+					</c:when>
+					<c:otherwise> <%-- 내용 없을 때 --%>
+							<tr style="height:50px;">
+					            <td colspan="5" style="text-align:center; color:#f7175a;">아직 등록된 게시물이 없습니다.</td>
+					        </tr>
+			       	 </c:otherwise>
+		 	  </c:choose>
+ 	 	  
+			<%-- 페이징 처리 --%>
+			<table style="border:0px; width:100%;">
 				<tr align="center" valign="middle">
 					<td>
 						<c:if test="${nowPage>1 }">
@@ -105,6 +88,5 @@
 				</tr>
 			</table>
 	</div>
-
 </body>
 </html>
