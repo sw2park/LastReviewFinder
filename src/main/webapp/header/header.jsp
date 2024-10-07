@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/header/css_header.css" />
 </head>
 <body>
-	<header>
+	<header class="_header">
 		<nav>
 			<section>
 				<ul class="header_ul">

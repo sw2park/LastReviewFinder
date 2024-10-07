@@ -209,11 +209,10 @@ function comment(){
 
 // 코멘트 모달 요소 선택
 const commentModal = document.getElementById("commentModal");
-const commentBtn = document.getElementById("comment-button");
 const closeModal = document.getElementsByClassName("close")[0];
 
 // 모달 열기 후 textarea 크기 조정
-commentBtn.onclick = function () {
+function comment() {
     $.ajax({
         url: "/qnaboard/comment-write.jsp",
         type: "GET",
@@ -257,5 +256,22 @@ window.onclick = function(event) {
     }
 };
 
+function reset(){
+	commentModal.style.display = "none";
+}
 
-
+function write_comment(){
+	$.ajax({
+		type: "POST",
+		data: {
+			rating: rating
+		},
+		url: "/movie/SetMovieRating.mv",
+		success: function(response){
+			$("#rating-score").html(response);
+		},
+		error: function(xhr, status, error){
+			alert("AJAX 오류: " + error);
+		}
+	});
+}
