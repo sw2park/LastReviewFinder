@@ -24,13 +24,12 @@ nav {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 0;
-    margin: 0 15%;
     list-style: none;
     height: 60px;    
     font-family: 'Pretendard';
     color: gray;
     vertical-align: middle;
+    margin: 0 15%;
 }
 
 li {

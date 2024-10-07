@@ -5,7 +5,7 @@ html {
 	    
 body {
 	margin:0 15%;
-	padding: 10px;
+/* 	padding: 10px; */
 	display: flex;
 	flex-direction: column;
 }
@@ -24,10 +24,10 @@ a:link {
 	text-decoration:none;
 }
 
-form {
-	border: 1px solid #f7175a; /* 테두리 색상 */
-	border-radius: 25px; /* 둥근 모서리 */
-}
+/* form { */
+/* 	border: 1px solid #f7175a; 테두리 색상 */
+/* 	border-radius: 25px; 둥근 모서리 */
+/* } */
                
 .myqnachoice {
 	font-family: 'Pretendard';

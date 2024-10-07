@@ -9,9 +9,6 @@
 <title>영화 추천</title>
 </head>
 <body>
-	<div>
-		<header class="header"></header>
-	</div>
 	<form action="/rec/RecSelectedRound.rec">
 		<div id="wrap">
 			<div id="img">
@@ -31,10 +28,4 @@
 		</div>
 	</form>
 </body>
-<script>
-		$(function() {
-			$(".header").load("../header/header.html");
-			$(".footer").load("../footer/footer.html");
-		});
-	</script>
 </html>

@@ -11,6 +11,7 @@
     <title>영화 추천 결과 화면</title>
 </head>
 <body>
+	<jsp:include page="/header/header.jsp"></jsp:include>
 	<c:set var="movie" value="${requestScope.movie }"/>
     <div id="wrap">
         <div id="title">
