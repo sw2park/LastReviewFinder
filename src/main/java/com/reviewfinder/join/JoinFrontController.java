@@ -31,19 +31,23 @@ public class JoinFrontController extends HttpServlet {
 		
 		switch(requestURI) {
 		case "/join/login.lo":
-			//로그인
+			// 로그인
 			forward = new LoginAction().execute(request, response);
 			break;
-			
 		case "/join/join.lo":
-			//회원가입
+			// 회원가입
 			forward = new JoinAction().execute(request, response);
 			break;
-		
-    case "/join/logout.lo":
-      //로그아웃
-      forward = new LogoutAction().execute(request, response);
-      break;
+		case "/join/logout.lo":
+			// 로그아웃
+			forward = new LogoutAction().execute(request, response);
+			break;
+		case "/login/login.lo":
+			forward = new ActionForward(true, "/join/login.jsp");
+			break;
+		case "/login/join.lo":
+			forward = new ActionForward(true, "/join/join_view.jsp");
+			break;
 		}
 		
 		if(forward != null) {

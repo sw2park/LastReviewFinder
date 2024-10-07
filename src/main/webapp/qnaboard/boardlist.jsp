@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
 <body>
+	<jsp:include page="/header/header.jsp"></jsp:include>
 	<div>
 		<h2>게시판</h2>
 		<select name="category" onchange="location.href='/qnaboard/Category_view.bo?boardcate='+this.value;">
@@ -104,5 +105,6 @@
 				</tr>
 			</table>
 	</div>
+	<jsp:include page="/footer/footer.jsp"></jsp:include>
 </body>
 </html>
