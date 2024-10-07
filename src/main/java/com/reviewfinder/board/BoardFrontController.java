@@ -85,7 +85,9 @@ public class BoardFrontController extends HttpServlet{
 			//댓글 삭제
 			forward = new DeleteReplyAction().execute(request, response);
 			break;
-			
+		case "/qnaboard/board.bo":
+			forward = new ActionForward(true, "/qnaboard/boardlist.jsp"); 
+			break;
 		}
 
 		if(forward != null) {

@@ -10,14 +10,13 @@
 <title>ReviewFinder</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="../main/css_main.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
 <body>
 	<c:set var="boxOffice" value="${requestScope.mainDTO }" />
 	<c:set var="lastBoxOffice" value="${requestScope.lastDTO }" />
 	<c:set var="lastLastBoxOffice" value="${requestScope.lastLastDTO }" />
-	<div>
-		<header class="header"></header>
-	</div>
+	<jsp:include page="/header/header.jsp"></jsp:include>
 	<div class="content">
 		<h2 class="BOtitle">이번 달 박스오피스</h2>
 		<!-- BOcontainer -->
@@ -108,15 +107,7 @@
 		</div>
 	</div>
 	</div>
-	<div>
-		<footer class="footer"></footer>
-	</div>
+	<jsp:include page="/footer/footer.jsp"></jsp:include>
 	<script type="text/javascript" src="../main/js_main.js"></script>
-	<script>
-		$(function() {
-			$(".header").load("../header/header.html");
-			$(".footer").load("../footer/footer.html");
-		});
-	</script>
 </body>
 </html>
