@@ -75,3 +75,4 @@ build
 *.class
 *.project
 *.sql
+*.settings
