@@ -1,9 +1,11 @@
 package com.reviewfinder.util;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.reviewfinder.main.dao.MainDTO;
 import com.reviewfinder.movie.dao.MovieDTO;
 
 public class StringSlice {
@@ -22,6 +24,22 @@ public class StringSlice {
 
 		return poster;
 	}
+	// 포스터 url 하나만 가져오기 MainDTO 오버로딩
+	public static String slicePosterUrl(MainDTO main) {
+		String poster = main.getMovie_poster();
+
+		poster = poster.trim();
+
+		if (poster != null || poster.equals("")) {
+			int idx = poster.indexOf("|");
+			if (idx != -1) {
+				poster = poster.substring(0, idx);
+			}
+		}
+
+		return poster;
+	}
+	
 	
 	// 스틸이미지 url 하나만 가져오기
 	public static String sliceStillUrl(MovieDTO movie) {
@@ -77,5 +95,32 @@ public class StringSlice {
 			return Arrays.asList(temp);
 		}
 		return null;
+	}
+	
+	// 장르 슬라이스
+	public static List<String> sliceGenre(MovieDTO movie){
+		String[] genre = movie.getMovie_genre().split(",");
+		List<String> genreList = new ArrayList<String>();
+		
+		if(genre.length>1) {
+			for(int i=0;i<genre.length;i++) {
+				if(genre[i].equals("멜로/로맨스")) {
+					genreList.add("멜로");
+					genreList.add("로맨스");
+				}else {
+					genreList.add(genre[i]);
+				}
+			}
+			return genreList;
+		}
+		
+		if(genre[0].equals("멜로/로맨스")) {
+			genreList.add("멜로");
+			genreList.add("로맨스");
+		}else {
+			genreList = Arrays.asList(genre);
+		}
+		
+		return genreList;
 	}
 }

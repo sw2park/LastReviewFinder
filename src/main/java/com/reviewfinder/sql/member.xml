@@ -4,20 +4,51 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="Member">
-
-	<select id="login" parameterType="hashmap" resultType="_int">
-		select count(*) FROM MEMBER WHERE userid = #{userid} and userpw = #{userpw}
+	<select id="login" parameterType="hashmap" resultType="MemberDTO">
+		SELECT * FROM MEMBER WHERE USERID = #{userid} AND USERPW = #{userpw}
 	</select>
-	
 	<insert id="join" parameterType="MemberDTO">
-		INSERT INTO MEMBER VALUES (#{userid}, #{userpw}, #{username}, 'BASIC', null)
+		INSERT INTO MEMBER VALUES (#{userid}, #{userpw}, #{username}, 'BASIC', 'profile.png')
 	</insert>
-
 	<select id="checkId" parameterType="string" resultType="_int">
 		select count(*) FROM MEMBER WHERE userid = #{userid}
 	</select>
- 
 	<select id="checkName" parameterType="string" resultType="_int">
 		select count(*) FROM MEMBER WHERE username = #{username}
 	</select>
+	
+	<update id="UpdatePassword" parameterType="hashmap">
+  		UPDATE MEMBER SET USERPW = #{userpw} WHERE USERID = #{userid}
+  	</update>
+  	
+  	<update id="UpdateName" parameterType="hashmap">
+  		UPDATE MEMBER SET username = #{username} WHERE USERID = #{userid}
+  	</update>
+  	
+  	<update id="UpdateContentsUserName" parameterType="hashmap">
+  		UPDATE QNABOARD SET username = #{username} WHERE USERID = #{userid}
+  	</update>
+  	
+  	<update id="UpdateProfile" parameterType="hashmap">
+  		UPDATE MEMBER SET profile = #{profile, jdbcType=VARCHAR} WHERE USERID = #{userid, jdbcType=VARCHAR}
+  	</update>
+
+	<delete id="DeleteMemberContents" parameterType="string">
+    	DELETE FROM MEMBER_CONTENTS WHERE USERID = #{userid}
+	</delete>
+		
+	<delete id="DeleteMember" parameterType="string">
+    	DELETE FROM MEMBER WHERE USERID = #{userid}
+	</delete>
+	
+	<select id="getContentsList" parameterType="string" resultType="MemberContentsDTO">
+	SELECT "MEMBER".username, MOVIE_DB.movie_title,
+	CASE WHEN INSTR(MOVIE_DB.movie_poster, '|') > 0 THEN SUBSTR(MOVIE_DB.movie_poster, 1, INSTR(MOVIE_DB.movie_poster, '|') - 1)
+	ELSE MOVIE_DB.movie_poster END AS movie_poster
+	FROM MEMBER_CONTENTS
+	INNER JOIN MOVIE_DB ON MEMBER_CONTENTS.movie_num = MOVIE_DB.movie_num
+	INNER JOIN "MEMBER" ON MEMBER_CONTENTS.userid = "MEMBER".userid
+	WHERE MEMBER_CONTENTS.USERID = #{userid}
+  	</select>
+  	
 </mapper>

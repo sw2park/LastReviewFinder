@@ -11,7 +11,14 @@ public class MovieDTO {
 	private int movie_star_rate;
 	private String movie_actor;
 	private String movie_director;
+	private int movie_rate_cnt;
 	
+	public int getMovie_rate_cnt() {
+		return movie_rate_cnt;
+	}
+	public void setMovie_rate_cnt(int movie_rate_cnt) {
+		this.movie_rate_cnt = movie_rate_cnt;
+	}
 	public String getMovie_actor() {
 		return movie_actor;
 	}

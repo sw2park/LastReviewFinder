@@ -7,75 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-
-	html {
-	  	  font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
-	    }
-	    
-	    
-	table {
-	   margin: 0 auto;
-	   width: 900px;
-	}
-	
-	
-	.container {
-	    display: flex;
-	    flex-direction: column;
-	    width: 100%;
-	    border: 1px solid #f7175a; 
-	    border-radius: 15px; 
-	    overflow: hidden; /* 둥근 테두리 안에서 내용이 넘치지 않도록 */
-	  }
-	
-	  .row {
-	    display: flex;
-	    padding: 10px 20px;
-	  }
-	
-	
-	  .label {
-	    flex: 0 0 150px;
-	    text-align: center;
-	    font-weight: bold;
-	    color: #f7175a;
-	    line-height: 30px; 
-	  }
-	
-	  .content {
-	    flex: 1;
-	    border: 1px solid #f7175a;
-	    border-radius: 25px;
-	    padding: 10px 20px;
-	  }
-	
-	
-	    .BacktoList {
-            border: 1px solid #f7175a; 
-            border-radius: 25px; 
-            background-color: #f7175a; 
-            padding: 10px 20px; 
-            color : white;
-        }
-        
-        .Answer{
-            border: 1px solid #f7175a; 
-            border-radius: 25px; 
-            color: #f7175a; 
-            padding: 10px 20px; 
-            background-color : white;
-        }
-        
-        
-</style>
+<link rel="stylesheet" href="boardview.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
 <body onload="checkUserRole()">
 
 	<c:set var="board" value="${requestScope.board }"/>
-   
-   
+ 
 	<div class="container">
 	  <div class="row">
 	    <div class="label">제 목</div>
