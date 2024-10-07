@@ -1,4 +1,4 @@
-package com.reviewfinder.movie;
+package com.reviewfinder.movie_favorite_list;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("*.mv")
-public class MovieFrontController extends HttpServlet{
+@WebServlet("*.fv")
+public class MovieFavoriteListFrontcontroller extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
@@ -27,18 +27,9 @@ public class MovieFrontController extends HttpServlet{
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
 		
-		if(requestURI.equals("/movie/MovieBasicSetteing.mv")) {
-			forward = new MovieBasicInsertAction().execute(request, response);
-		}else if(requestURI.equals("/movie/InsertMovieDB.mv")) {
-			forward = new InsertMovieAction().execute(request, response);
-		}else if(requestURI.equals("/movie/InsertBoxoffice.mv")){
-			forward = new InsertBoxofficeAction().execute(request, response);
-		}else if(requestURI.equals("/movie/MovieDetails.mv")) {	//임시
-			forward = new MovieDetails().execute(request, response);
-		}else if(requestURI.equals("/movie/SetMovieRating.mv")) {
-			new SetMovieRating().execute(request, response);
+		if(requestURI.equals("/movie/WishList.fv")) {
+			forward = new UserWishList().execute(request, response);
 		}
-		
 		
 		if(forward!=null) {
 			if(forward.isRedirect()) {
@@ -49,14 +40,4 @@ public class MovieFrontController extends HttpServlet{
 			}
 		}
 	}
-	
 }
-
-
-
-
-
-
-
-
-

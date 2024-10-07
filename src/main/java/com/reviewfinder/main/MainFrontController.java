@@ -27,9 +27,12 @@ public class MainFrontController extends HttpServlet{
 		String requestURI = req.getRequestURI();
 		ActionForward forward = null;
 		
-		if(requestURI.equals("/main.ma")) {
+		if(requestURI.equals("/main/main.ma")) {
 			// path 추가
 			forward = new MoveMainAction().execute(req, resp);
+		}else if(requestURI.equals("/main/GetBoxOffice.ma")) {
+			// /main/main.ma 요청 받은 후 boxOffice 가져오기
+			forward = new GetBoxOfficeAction().execute(req, resp);
 		}
 		
 		// 한꺼번에 보내기

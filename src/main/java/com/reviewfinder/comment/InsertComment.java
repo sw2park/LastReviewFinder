@@ -1,20 +1,18 @@
-package com.reviewfinder.movie;
+package com.reviewfinder.comment;
 
 import com.reviewfinder.action.Action;
 import com.reviewfinder.action.ActionForward;
-import com.reviewfinder.movie.dao.MovieDAO;
+import com.reviewfinder.comment.dao.CommentDAO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class InsertMovieToGenre implements Action {
+public class InsertComment implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
-		ActionForward forward = new ActionForward();
+		CommentDAO cdao = new CommentDAO();
 		
-		MovieDAO mdao = new MovieDAO();
-//		String genre = ""
 		
-		return forward;
+		return null;
 	}
 }

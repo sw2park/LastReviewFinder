@@ -12,6 +12,7 @@ html {
 body {
     font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
     background-color: white;
+    
 }
 
 .content {
@@ -86,11 +87,13 @@ body {
     position: relative;
 }
 
+
 /* 슬라이더 안의 내용물 */
 .slider-wrapper {
     display: flex; /* 슬라이드들을 가로로 나열 */
     transition: transform 0.5s ease; /* 슬라이드 애니메이션 */
 }
+
 
 /* 슬라이드 아이템 */
 .slide-item {

@@ -4,45 +4,27 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.ibatis.javassist.Loader.Simple;
+
 public class DateController {
-	// 오늘날짜 구해서 yyyyMMdd로 변환
-	public String getToday() {
+	// 반복문 용 통합
+	public String getDay(int i) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		Date nowDate = new Date();
-		String nowStr = format.format(nowDate);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd");
 		
-		return nowStr;
-	}
-	
-	// 저번달 1일 구해서 yyyyMMdd로 변환
-	public String getLastMonth() {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		Date date = new Date();
+		String strDate = dateFormat.format(date);
+		int nowDate = Integer.parseInt(strDate);
 		
 		Calendar cal = Calendar.getInstance();
-		cal.add(cal.MONTH, -1); // 저번 달로 이동
-		cal.set(Calendar.DAY_OF_MONTH,1); // 해당 월의 1일로 변경
+		cal.add(cal.MONTH, i);
+		cal.set(Calendar.DAY_OF_MONTH, nowDate-1); // 해당 월의 어제 날짜로 변경
 		
 		// Calendear을 Date로 변환
-		Date lastMonthDate = cal.getTime();
+		Date nowDay = cal.getTime();
 		
-		String lastMonth = format.format(lastMonthDate);
+		String day = format.format(nowDay);
 		
-		return lastMonth;
-	}
-	
-	// 저저번달 1일 구해서 yyyyMMdd로 변환
-	public String getLastLastMonth() {
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		
-		Calendar cal = Calendar.getInstance();
-		cal.add(cal.MONTH, -2); // 저번 달로 이동
-		cal.set(Calendar.DAY_OF_MONTH,1); // 해당 월의 1일로 변경
-		
-		// Calendear을 Date로 변환
-		Date lastMonthDate = cal.getTime();
-		
-		String lastMonth = format.format(lastMonthDate);
-		
-		return lastMonth;
+		return day; 
 	}
 }

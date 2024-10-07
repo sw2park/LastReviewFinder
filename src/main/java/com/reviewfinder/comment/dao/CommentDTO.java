@@ -5,7 +5,6 @@ public class CommentDTO {
 	private String username;
 	private int movie_num;
 	private String comment_contents;
-	private int star_rating;
 	private String comment_date;
 	private int comment_like;
 	
@@ -32,12 +31,6 @@ public class CommentDTO {
 	}
 	public void setComment_contents(String comment_contents) {
 		this.comment_contents = comment_contents;
-	}
-	public int getStar_rating() {
-		return star_rating;
-	}
-	public void setStar_rating(int star_rating) {
-		this.star_rating = star_rating;
 	}
 	public String getComment_date() {
 		return comment_date;
