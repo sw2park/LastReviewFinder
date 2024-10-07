@@ -18,7 +18,7 @@
 					<li class="recomend"><a type="button" href="/rec/RecMain.rec">
 							<span> 영화 추천 </span>
 					</a></li>
-					<li class="board"><a type="button" href="/qnaboard/board.bo">
+					<li class="board"><a type="button" href="/qnaboard/BoardList.bo">
 							<span> 게시판 </span>
 					</a></li>
 					<li class="search">

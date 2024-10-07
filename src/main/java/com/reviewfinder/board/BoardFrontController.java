@@ -72,7 +72,7 @@ public class BoardFrontController extends HttpServlet{
 			break;
 			
 		case "/qnaboard/AddReply.bo":
-			//댓글 수정
+			//댓글 달기
 			forward = new AddReplyAction().execute(request, response);
 			break;
 			
