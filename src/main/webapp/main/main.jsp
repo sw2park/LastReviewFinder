@@ -9,10 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ReviewFinder</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="../main/css_main.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="/main/css_main.css" />
 </head>
-<body>
+<body class="_body">
 	<c:set var="boxOffice" value="${requestScope.mainDTO }" />
 	<c:set var="lastBoxOffice" value="${requestScope.lastDTO }" />
 	<c:set var="lastLastBoxOffice" value="${requestScope.lastLastDTO }" />
@@ -27,8 +28,8 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}"> 
-									<img src="${box.movie_poster }" alt="${box.movie_title }">
+									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>
 								</div>
@@ -57,8 +58,9 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}"> 
-									<img src="${box.movie_poster }" alt="${box.movie_title }">
+									<a
+										href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>
 								</div>
@@ -87,8 +89,9 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}"> <img src="${box.movie_poster }"
-										alt="${box.movie_title }">
+									<a
+										href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>
 								</div>
@@ -105,7 +108,6 @@
 				<button class="nextBtn" id="nextBtnLastLastMonth">&gt;</button>
 			</div>
 		</div>
-	</div>
 	</div>
 	<jsp:include page="/footer/footer.jsp"></jsp:include>
 	<script type="text/javascript" src="../main/js_main.js"></script>
