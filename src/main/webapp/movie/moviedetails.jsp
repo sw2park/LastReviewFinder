@@ -19,6 +19,11 @@
 	<c:set var="actors" value="${requestScope.actors }"/>
 	<c:set var="directors" value="${requestScope.directors }"/>
 	<c:set var="commentList" value="${requestScope.commentList }"/>
+	<c:set var="user" value="${sessionScope.session_id}"/>
+	<c:set var="similar_movie_list" value="${requestScope.similar_movie_list }"/>
+	<c:set var="first_genre" value="${requestScope.first_genre }"/>
+	<input id="movie_num" type="text" value="${movie.movie_num }" hidden=true/>
+	<input id="userid" type="text" value="${user.userid }" hidden=true/>
 	<main>
 		<!-- 영화 스틸 이미지와 영화 정보 섹션 -->
 		<section class="movie-banner">
@@ -54,19 +59,42 @@
 						<span class="star" data-value="5">&#9733;</span>
 					</div>
 					<div class="total-rating">
-						<button type="button" id="total-rating" class="btn">
-							<img src="../movie/img/star.png"><br>평점 매기기
-						</button>
-						<!-- 기존 0점 부분 -->
-						<span id="rating-score">&nbsp;&nbsp;&nbsp;0점</span>
+						<c:choose>
+							<c:when test="${user==null }">
+								<button type="button" id="n-total-rating" class="btn total-rating">					
+								<img src="../movie/img/star.png"><br>평점 매기기
+								</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button" id="total-rating" class="btn total-rating">	
+								<img src="../movie/img/star.png"><br>평점 매기기
+								</button>	
+							</c:otherwise>
+						</c:choose>
+						<!-- 평점(평균) 보이는 부분 -->
+						<span>&nbsp;&nbsp;&nbsp;</span><span id="rating-score">${requestScope.rating }</span><span style="font-size: large;">점</span>
 						<!-- 기존 total-rating 내에 버튼 추가 -->
 					</div>
 					<!-- 버튼을 추가 -->
 					<div class="wishlist-comment-buttons">
-						<button id="wishlist-button" class="btn">
+						<c:choose>
+							<c:when test="${user==null }">
+								<button id="wishlist-button" class="btn" onclick="user_null()">
+							</c:when>
+							<c:otherwise>
+								<button id="wishlist-button" class="btn" onclick="wishlist()"> <!-- userid, movienum 넘기기 -->
+							</c:otherwise>
+						</c:choose>
 							<img src="../movie/img/+.png"><br> <br>보고싶어요
 						</button>
-						<button id="comment-button" class="btn">
+						<c:choose>
+							<c:when test="${user==null }">
+								<button id="comment-button" class="btn" onclick="user_null()">
+							</c:when>
+							<c:otherwise>
+								<button id="comment-button" class="btn" onclick="comment()">
+							</c:otherwise>
+						</c:choose>
 							<img src="../movie/img/coment.png"><br> <br>코멘트
 							달기
 						</button>
@@ -88,20 +116,32 @@
 			<table class="cast-table">
 				<h2>출연/제작</h2>
 				<c:if test="${actors != null}">
-					<c:set var="i" value="0"/>
-					<c:forEach var="actor" items="${actors }">
-						<c:if test="${i>3 }">
-							<tr>
-						</c:if>
-							<td><img src="../movie/img/profile.png"> ${actor }</td>
-							<span hidden>${i=i+1 }</span>
-						<c:if test="${i>3 }">
-							</tr>
-							<span hidden>${i=0 }</span>
-						</c:if>
-					</c:forEach>
+					<c:choose>
+						<c:when test="${fn:length(actors) >10}">
+							<c:forEach var="i" begin="0" end="8" step="4">
+								<tr>
+									<c:forEach var="j" begin="${i }" end="${i+3 }" step="1">
+										<td><img src="../movie/img/profile.png"> ${actors[j] }</td>
+									</c:forEach>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<c:set var="i" value="0"/>
+								<c:forEach var="actor" items="${actors }">
+									<c:if test="${i>3 }">
+										<tr>
+									</c:if>
+										<td><img src="../movie/img/profile.png"> ${actor }</td>
+										<span hidden>${i=i+1 }</span>
+									<c:if test="${i>3 }">
+										</tr>
+										<span hidden>${i=0 }</span>
+									</c:if>
+								</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</c:if>
-				
 			</table>
 		</section>
 		<br> <br>
@@ -153,17 +193,16 @@
 		</c:if>
 
 		<!-- 비슷한 작품 섹션 -->
-		<section class="similar">
-			<h2>비슷한 작품</h2>
-			<ul>
-				<li><img src="../movie/img/poster_1.jpg"></li>
-				<li><img src="../movie/img/poster_2.jpg"></li>
-				<li><img src="../movie/img/poster_1.jpg"></li>
-				<li><img src="../movie/img/poster_2.jpg"></li>
-				<li><img src="../movie/img/poster_1.jpg"></li>
-				<li><img src="../movie/img/poster_2.jpg"></li>
-			</ul>
-		</section>
+		<c:if test="${fn:length(similar_movie_list) >0}">
+			<section class="similar">
+				<h2>비슷한 작품 (장르: ${first_genre })</h2>
+				<ul>
+					<c:forEach var="similar_movie" items="#{similar_movie_list }">
+						<li><img src="${similar_movie.movie_poster }" onclick="location.href='/movie/MovieDetails.mv?movie_title=${similar_movie.movie_title}&movie_date=${similar_movie.movie_date }'" ></li>
+					</c:forEach>
+				</ul>
+			</section>
+		</c:if>
 	</main>
 	<script src="/movie/moviedetails.js"></script>
 </body>

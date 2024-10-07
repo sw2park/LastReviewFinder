@@ -7,22 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
- <link rel="stylesheet" href="boardlist.css">	
- 
+<link rel="stylesheet" href="/qnaboard/boardlist.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
-
 <body>
 	<div>
-         	<select name="category" onchange="location.href='/qnaboard/Category_view.bo?boardcate='+this.value;">
-         		<option disabled selected>-- 카테고리 --</option>
-	            <option value="Allchoice">전체선택</option>
-	            <option value="notice">notice</option>
-	            <option value="recommend">recommend</option>
-	            <option value="ask">ask</option>            
-	        </select>
-    		<input type="button" value="내가 작성한 글만 보기" class="myqnachoice" onclick="location.href='/qnaboard/Mywrite_view.bo';">
-		<br/>
+		<h2>게시판</h2>
+		<select name="category" onchange="location.href='/qnaboard/Category_view.bo?boardcate='+this.value;">
+         	<option disabled selected>-- 카테고리 --</option>
+	        <option value="Allchoice">전체선택</option>
+	        <option value="notice">notice</option>
+	        <option value="recommend">recommend</option>
+	        <option value="ask">ask</option>            
+		</select>
+		
+		<input type="button" value="내가 작성한 글만 보기" class="myqnachoice" onclick="location.href='/qnaboard/Mywrite_view.bo';">
+		<input type="button" value="글 쓰기" class="write" onclick="location.href='/qnaboard/BoardWrite.bo';">
 		<br/>
 		<hr align="left" style="border-top: 2px solid #f7175a; width:100%;"/>
 		
@@ -33,17 +33,17 @@
 		<c:set var="endPage" value="${requestScope.endPage }"/>
 		<c:set var="totalPage" value="${requestScope.totalPage }"/>
 	
-		<table>
+		<table class="title_tb">
 			<tr align="center" valign="middle" class="title">
-				<td height="40px" width="8%">카테고리</td>
-				<td height="40px" width="4%">번호</td>  
-				<td height="40px" width="50%">제목</td>
-				<td height="40px" width="15%">작성자</td>
-				<td height="40px" width="17%">날짜</td>
+				<td width="10%">카테고리</td>
+				<td width="5%">번호</td>  
+				<td width="55%">제목</td>
+				<td width="15%">작성자</td>
+				<td width="15%">날짜</td>
 			</tr>
-			<%-- 글 목록 --%>
 			
-				<c:choose>
+			<%-- 글 목록 --%>
+			<c:choose>
 		     	  <c:when test = "${boardList != null and fn:length(boardList)>0 }">
 						<c:forEach var="board" items="${boardList }">	
 						  <c:if test="${board.boardcate == 'notice'}">
@@ -56,6 +56,7 @@
 				            </tr>
 				           </c:if>
 				         </c:forEach>
+				         
 				         <c:forEach var="board" items="${boardList}">
 				              <c:if test="${board.boardcate != 'notice'}">
 				          <tr align="center" valign="middle" onmouseover="this.style.background='#bbdefb'"
@@ -68,25 +69,20 @@
 				            </tr>
 				           </c:if>
 						</c:forEach>
-			</c:when>
+				</c:when>
+			
 			<c:otherwise> <%-- 내용 없을 때 --%>
 				<tr style="height:50px;">
 		            <td colspan="5" style="text-align:center; color:#f7175a;">아직 등록된 게시물이 없습니다.</td>
 		        </tr>
        	 	</c:otherwise>
  	 	  </c:choose>
- 	 	  
-		
 		</table><br/>
-		<hr align="left" style="border-top: 1px solid #f7175a; width:100%;"/>
-			<table style="border: 0px;">
-			<tr align="left" valign="middle">
-				<td><input type="button" value="글 쓰기" class="write" onclick="location.href='/qnaboard/BoardWrite.bo';"></td>
-       
-		</table>
+		
+		<hr align="left" style="border-top: 2px solid #f7175a; width:100%;"/>
+		
 			<%-- 페이징 처리 --%>
-			
-			<table style="border:0px; width:900px;">
+			<table style="border:0px; width:100%;">
 				<tr align="center" valign="middle">
 					<td>
 						<c:if test="${nowPage>1 }">
@@ -107,8 +103,6 @@
 					</td>
 				</tr>
 			</table>
-			
 	</div>
-
 </body>
 </html>

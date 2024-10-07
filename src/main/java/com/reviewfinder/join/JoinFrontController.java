@@ -34,17 +34,16 @@ public class JoinFrontController extends HttpServlet {
 			//로그인
 			forward = new LoginAction().execute(request, response);
 			break;
-		
-		case "/join/find_it.lo":
-			//아이디/비밀번호 찾기
-			System.out.println("----------------회의해보고----------------");
-			break;
 			
 		case "/join/join.lo":
 			//회원가입
 			forward = new JoinAction().execute(request, response);
 			break;
-			
+		
+    case "/join/logout.lo":
+      //로그아웃
+      forward = new LogoutAction().execute(request, response);
+      break;
 		}
 		
 		if(forward != null) {

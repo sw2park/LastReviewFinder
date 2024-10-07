@@ -35,14 +35,16 @@ public class BoardFrontController extends HttpServlet{
 		
 		case "/qnaboard/BoardList.bo":
 			//게시글 목록 노출
+			forward = new BoardListAction().execute(request, response);
 			break;	
 			
 		case "/qnaboard/Category_view.bo":
-			//카테고리 선택 시 해당 카테고리 게시글만 볼 수 있게 처리
+			forward = new CategoryViewAction().execute(request, response);
 			break;
 			
 		case "/qnaboard/Mywrite_view.bo":
 			//버튼 클릭 시 본인이 작성한 게시글만 볼 수 있게 처리
+			System.out.println("이걸 누르면 내가 쓴 글만 볼 수 있게 할 거야");
 			break;
 			
 		case "/qnaboard/BoardWrite.bo":
@@ -51,34 +53,37 @@ public class BoardFrontController extends HttpServlet{
 			
 		case "/qnaboard/BoardWriteOk.bo":
 			//게시글 작성(db에 반영)
+			forward = new BoardWriteOKAction().execute(request, response);
 			break;
 		
-		case "/qnaboard/UpdateWrite.bo":
-			//게시글 수정페이지로 이동
-			break;
-			
-		case "/qnaboard/UpdateWriteOK.bo":
+		case "/qnaboard/UpdateBoardAction.bo":
 			//게시글 수정(db에 반영)
+			forward = new UpdateBoardAction().execute(request, response);
 			break;
 			
-		case "/qnaboard/DeleteWrite.bo":
+		case "/qnaboard/DeleteBoard.bo":
 			//게시글 삭제
+			forward = new DeleteBoardAction().execute(request, response);
 			break;
 			
 		case "/qnaboard/BoardView.bo":
 			//게시글 상세 페이지로 이동
+			forward = new BoardViewAction().execute(request, response);
 			break;
 			
 		case "/qnaboard/AddReply.bo":
-			//댓글 작성
+			//댓글 수정
+			forward = new AddReplyAction().execute(request, response);
 			break;
 			
 		case "/qnaboard/UpdateReply.bo":
 			//댓글 수정
+			forward = new UpdateReplyAction().execute(request, response);
 			break;
 		
 		case "/qnaboard/DeleteReply.bo":
 			//댓글 삭제
+			forward = new DeleteReplyAction().execute(request, response);
 			break;
 			
 		}
