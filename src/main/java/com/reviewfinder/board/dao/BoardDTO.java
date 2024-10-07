@@ -5,10 +5,11 @@ public class BoardDTO {
 	private int boardnum;
 	private String boardcate;
 	private String username;
+	private String userid;
 	private String boardtitle;
 	private String boardcontents;
 	private String boarddate;
-	private String admin_reply;
+	private String adminreply;
 	
 	public int getBoardnum() {
 		return boardnum;
@@ -46,10 +47,10 @@ public class BoardDTO {
 	public void setBoarddate(String boarddate) {
 		this.boarddate = boarddate;
 	}
-	public String getAdmin_reply() {
-		return admin_reply;
+	public String getAdminreply() {
+		return adminreply;
 	}
-	public void setAdminreply(String admin_reply) {
-		this.admin_reply = admin_reply;
+	public void setAdminreply(String adminreply) {
+		this.adminreply = adminreply;
 	}
 }
