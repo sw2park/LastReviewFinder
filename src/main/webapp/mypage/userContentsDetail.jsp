@@ -11,6 +11,7 @@
 	html {
 	  	  font-family: 'Pretendard';
 	    }
+	    
     .table-container {
         overflow-x: auto; /* 가로 스크롤 가능 */
         white-space: nowrap; /* 줄 바꿈 방지 */
@@ -42,11 +43,7 @@
 <%-- 가로정렬 --%>
 	<div class="table-container">
 		<table>
-			<tr align="center" valign="middle" class="title">
-				<td height="40px" width="4%"></td>  
-				<td height="40px" width="50%"></td>
-			</tr>
-			
+	
 			<c:choose>
 		     	  <c:when test = "${contentsList != null and fn:length(contentsList)>0 }">
 						    <tr align="center" valign="middle">
@@ -64,33 +61,5 @@
  	 	  </c:choose>
  	 	</div>  
  	 	
- 	 	<br/>
- 	 	<br/>
- 	 	
-<%-- 세로정렬 --%> 	 	
- 	 	<div>
-		<table>
-			<tr align="center" valign="middle" class="title">
-				<td height="40px" width="4%"></td>  
-				<td height="40px" width="50%"></td>
-			</tr>
-			<%-- 글 목록 --%>
-			
-			<c:choose>
-		     	  <c:when test = "${contentsList != null and fn:length(contentsList)>0 }">
-					<c:forEach var="list" items="${contentsList }">	
-					    <tr align="center" valign="middle" onmouseover="this.style.background='#bbdefb'" onmouseout="this.style.background=''">
-				               <td height="23px"><a href="영화상세페이지=${list.movie_num }"><img src="${list.movie_poster}"></a><br/>
-					              ${list.movie_title }</td>
-			            </tr>
-	         		</c:forEach>
-			</c:when>
-			<c:otherwise> <%-- 내용 없을 때 --%>
-				<tr style="height:50px;">
-		            <td colspan="5" style="text-align:center; color:#f7175a;">아직 '좋아요'한 영화가 없습니다.</td>
-		        </tr>
-       	 	</c:otherwise>
- 	 	  </c:choose>
- 	 	</div>  
 </body>
 </html>

@@ -16,8 +16,8 @@ public class UpdateReplyAction implements Action{
 		BoardDAO bdao = new BoardDAO();
 		
 		int boardnum = Integer.parseInt(req.getParameter("boardnum"));
-		String adminreply = req.getParameter("replyUP"+boardnum);
-		if(bdao.updateReply(boardnum, adminreply)) {
+		String admin_reply = req.getParameter("replyUP"+boardnum);
+		if(bdao.updateReply(boardnum, admin_reply)) {
 			forward.setRedirect(true);
 			forward.setPath("/qnaboard/BoardView.bo?boardnum="+boardnum);
 		}

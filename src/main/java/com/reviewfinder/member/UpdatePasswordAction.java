@@ -20,7 +20,7 @@ public class UpdatePasswordAction implements Action{
 
 		if(mdao.updatePassword(userid, userpw)) {
 			forward.setRedirect(true);
-			forward.setPath("../mypage/mypage.jsp");
+			forward.setPath("/mypage/ShowMyContentsMain.mp");
 		}
 		
 		return forward;
