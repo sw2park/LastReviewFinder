@@ -17,8 +17,10 @@
 		</script>
 	</c:if>
 	
-    <c:set var="board" value="${requestScope.board }"/>
-      
+      <c:set var="board" value="${requestScope.board }"/>
+      <%    // URL 쿼리 파라미터에서 boardnum 값을 가져옴
+    String boardNum = request.getParameter("boardnum"); %>
+    
    <div class="wrap">
       <form method="post" name="ModifyForm" action="/qnaboard/UpdateBoardAction.bo">
          <table border="0" style="border-collapse:collapse;">
@@ -32,7 +34,7 @@
 		            <option id="noticeOption">공지</option>
 		            <option>추천</option>
 		            <option>문의</option>            
-	        	</select>
+	        </select>
                </td>
             </tr>
             <tr height="30px">
@@ -49,6 +51,7 @@
                </th>
                <td style="color: #f7175a;">
                   <input type="hidden" name="username" value="${sessionScope.session_id.username}">${sessionScope.session_id.username}
+                  <input type="hidden" name="boardnum" value="<%= boardNum %>">
                </td>
             </tr>
             <tr height="300px">

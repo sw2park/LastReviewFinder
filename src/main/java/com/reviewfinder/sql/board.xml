@@ -5,25 +5,25 @@
 <mapper namespace = "Board">
 	<select id="getBoardList" parameterType="hashmap" resultType="BoardDTO">
 	SELECT * FROM (SELECT rownum R, A.* FROM 
-		(SELECT * FROM QNABOARD ORDER BY BOARDNUM DESC) A) B
+		(SELECT * FROM BOARD ORDER BY BOARDNUM DESC) A) B
 			WHERE b.R BETWEEN #{startRow} AND #{endRow}
   	</select>
 
 	<select id="getBoardCnt" resultType="_int">
-		SELECT count(*) FROM QNABOARD
+		SELECT count(*) FROM BOARD
   	</select>
 
 	<select id="getCategoryCnt" parameterType="string" resultType="_int">
-		SELECT COUNT(*) FROM QNABOARD WHERE BOARDCATE = #{boardcate}
+		SELECT COUNT(*) FROM BOARD WHERE BOARDCATE = #{boardcate}
 	</select>
 	
 	
 	<select id="getCategory" parameterType="hashmap" resultType="BoardDTO">
-		SELECT * FROM QNABOARD WHERE BOARDCATE = #{boardcate} ORDER BY boardnum DESC LIMIT #{startRow}, #{endRow}
+		SELECT * FROM BOARD WHERE BOARDCATE = #{boardcate} ORDER BY boardnum DESC LIMIT #{startRow}, #{endRow}
 	</select>
 
 	<insert id="insertBoard" parameterType="BoardDTO">
-  		INSERT INTO QNABOARD VALUES (board_seq.nextval, #{boardcate}, #{userid}
+  		INSERT INTO BOARD VALUES (board_seq.nextval, #{boardcate}, #{userid}
   		, #{username}, #{boardtitle}, #{boardcontents}, sysdate, NULL)
   	</insert>
   	
@@ -32,24 +32,24 @@
   	</select>
   	
   	 <select id="getDetail" parameterType="_int" resultType="boardDTO">
-		SELECT * FROM QNABOARD WHERE BOARDNUM = #{boardnum}
+		SELECT * FROM BOARD WHERE BOARDNUM = #{boardnum}
   	</select>
   	
   	<update id="UpdateBoard" parameterType="hashmap">
-  		UPDATE QNABOARD SET boardcate = #{boardcate}, boardtitle = #{boardtitle}, boardcontents = #{boardcontents}
+  		UPDATE BOARD SET boardcate = #{boardcate}, boardtitle = #{boardtitle}, boardcontents = #{boardcontents}
   		WHERE BOARDNUM = #{boardnum}
   	</update>
   	
   	<update id="UpdateReply" parameterType="hashmap">
-  		UPDATE QNABOARD SET admin_reply = #{admin_reply} WHERE BOARDNUM = #{boardnum}
+  		UPDATE BOARD SET adminreply = #{adminreply} WHERE BOARDNUM = #{boardnum}
   	</update>
   	
   	<update id="deleteReply" parameterType="_int">
-  		UPDATE QNABOARD SET admin_reply = NULL WHERE BOARDNUM = #{boardnum}
+  		UPDATE BOARD SET adminreply = NULL WHERE BOARDNUM = #{boardnum}
   	</update>
   	
   	<delete id="deleteBoard" parameterType="_int">
-    	DELETE FROM QNABOARD WHERE BOARDNUM = #{boardnum}
+    	DELETE FROM BOARD WHERE BOARDNUM = #{boardnum}
 	</delete>
 
 </mapper>

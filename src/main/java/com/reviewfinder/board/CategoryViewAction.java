@@ -51,7 +51,7 @@ public class CategoryViewAction implements Action{
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);		
 		
-		forward.setPath("/qnaboard/boardlist.jsp");
+		forward.setPath("/qnaboard/categoryList.jsp");
 		forward.setRedirect(false);//foward이동
 		
 		return forward;

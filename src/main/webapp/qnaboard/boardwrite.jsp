@@ -9,6 +9,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="boardwrite.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+	html {
+	  	  font-family: 'Pretendard';
+	    }
+	</style>
 </head>
 <body onload="checkUserRole()">
 
@@ -29,9 +34,9 @@
                <td>
                   <select name="boardcate">
 		            <option disabled selected>유형을 선택하세요</option>
-		            <option id="noticeOption">notice</option>
-		            <option>recommend</option>
-		            <option>ask</option>            
+		            <option id="noticeOption">공지</option>
+		            <option>추천</option>
+		            <option>문의</option>            
 	        </select>
                </td>
             </tr>
@@ -64,8 +69,7 @@
             <tr>
                <td>
                 	<input type="button" value="작성 완료" class="WriteOK" onclick="document.boardForm.submit();">
-                    <input type="button" value="취소" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';">
-              	</td>
+                    <input type="button" value="취소" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';"></td>
             </tr>
          </table>
       </form>
