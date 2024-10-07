@@ -207,6 +207,55 @@ function comment(){
 	});
 }
 
+// 코멘트 모달 요소 선택
+const commentModal = document.getElementById("commentModal");
+const commentBtn = document.getElementById("comment-button");
+const closeModal = document.getElementsByClassName("close")[0];
+
+// 모달 열기 후 textarea 크기 조정
+commentBtn.onclick = function () {
+    $.ajax({
+        url: "/qnaboard/comment-write.jsp",
+        type: "GET",
+        success: function (data) {
+            // 코멘트 작성 폼을 모달 콘텐츠에 삽입
+            $("#commentFormContainer").html(data);
+            // 모달 보이기
+            commentModal.style.display = "block";
+            
+			// textarea 크기 동적 조정
+			const textarea = document.querySelector(".write textarea");
+			if (textarea) {
+			    const modalContent = document.querySelector(".modal-content");
+			    
+			    // 모달 콘텐츠의 너비와 높이 가져오기
+			    const modalHeight = modalContent.clientHeight;
+			    const modalWidth = modalContent.clientWidth;
+
+			    // 모달 콘텐츠 높이의 70%를 textarea 높이로 설정
+			    textarea.style.height = (modalHeight * 0.7) + "px";
+			    
+			    // 모달 콘텐츠 너비의 90%를 textarea 너비로 설정
+			    textarea.style.width = (modalWidth * 0.87) + "px";
+			}
+        },
+        error: function () {
+            alert("코멘트 작성 페이지를 불러오는 데 실패했습니다.");
+        }
+    });
+};
+
+// 모달 닫기 버튼 클릭 시 모달 닫기
+closeModal.onclick = function() {
+    commentModal.style.display = "none";
+};
+
+// 모달 외부 클릭 시 모달 닫기
+window.onclick = function(event) {
+    if (event.target === commentModal) {
+        commentModal.style.display = "none";
+    }
+};
 
 
 
