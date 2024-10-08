@@ -30,9 +30,8 @@ public class MovieDetails implements Action{
 		MovieDTO movie = new MovieDTO();
 		CommentDAO cdao = new CommentDAO();
 		
-		List<CommentDTO> commentList = cdao.getCommentList();
-		
 		movie = mdao.selectMovieFromDB(movie_title, movie_date);
+		
 		
 		List<MovieDTO> similar_movie = new ArrayList<MovieDTO>();
 		String first_genre = StringSlice.sliceGenre(movie).get(0);
@@ -69,6 +68,9 @@ public class MovieDetails implements Action{
 		if(mdao.selectRatingCount(movie.getMovie_num())!=0) {
 			rating = ""+((int)mdao.selectTotalRating(movie.getMovie_num()));
 		}
+		
+		List<CommentDTO> commentList = cdao.getCommentList(movie);
+		
 		req.setAttribute("rating", rating);
 		
 		req.setAttribute("moviedto", movie);

@@ -3,11 +3,18 @@ package com.reviewfinder.comment.dao;
 public class CommentDTO {
 	private int comment_num;
 	private String userid;
+	private String username;
 	private int movie_num;
 	private String comment_contents;
 	private String comment_date;
 	private int comment_like;
 	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public int getComment_num() {
 		return comment_num;
 	}

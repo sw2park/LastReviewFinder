@@ -34,7 +34,7 @@
 		            <option disabled selected>유형을 선택하세요</option>
 		            <option id="noticeOption">공지</option>
 		            <option>추천</option>
-		            <option>문의</option>            
+		            <option>질문</option>            
 	        </select>
                </td>
             </tr>

@@ -6,88 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-<style>
-html {
-	font-family: 'Pretendard';
-}
-
-.profile {
-	width: 150px; /* 프로필 사진의 너비 */
-	height: 150px; /* 프로필 사진의 높이 */
-	border-radius: 50%; /* 원형 테두리 */
-	overflow: hidden; /* 자식 요소가 경계를 넘어가지 않도록 */
-	display: flex; /* 중앙 정렬을 위해 플렉스 사용 */
-	align-items: center; /* 수직 중앙 정렬 */
-	justify-content: center; /* 수평 중앙 정렬 */
-	background-color: #f0f0f0; /* 배경색 (예시) */
-}
-
-.profile img {
-	width: 100%; /* 부모 요소의 너비에 맞추기 */
-	height: 100%; /* 부모 요소의 높이에 맞추기 */
-	object-fit: cover; /* 이미지 비율 유지하면서 자르기 */
-}
-
-.rounded {
-	border: 1px solid #f7175a; /* 테두리 색 */
-	border-radius: 15px; /* 둥근 사각형 테두리 */
-	padding: 10px; /* 여백 */
-	background-color: #ffffff; /* 배경색 */
-	align-items: center; /* 수직 중앙 정렬 */
-	justify-content: center; /* 수평 중앙 정렬 */
-	text-align: center;
-	margin: auto;
-	margin-top: 80px;
-}
-
-a {
-	color: #f7175a;
-	text-decoration: none;
-}
-
-.modal {
-	display: none; /* 기본적으로 모달을 숨김 */
-	position: fixed;
-	z-index: 1; /* 화면 위에 표시 */
-	left: 0;
-	top: 0px;
-	width: 100%; /* 전체 화면 너비 */
-	height: 100%; /* 전체 화면 높이 */
-	overflow: auto; /* 필요시 스크롤 */
-	background-color: rgb(0, 0, 0); /* 배경색 */
-	background-color: rgba(0, 0, 0, 0.4); /* 투명 배경 */
-}
-
-.modal_body {
-	background-color: #fefefe;
-	margin: 15% auto; /* 화면 중앙 정렬 */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 30%; /* 너비 */
-}
-
-.close {
-	cursor: pointer; /* 포인터 모양으로 변경 */
-}
-
-.newInput {
-	display: none; /* 기본적으로 숨김 */
-}
-
-.userContents {
-	overflow-x: auto; /* 가로 스크롤 가능 */
-	white-space: nowrap; /* 줄 바꿈 방지 */
-	width: 100%; /* 컨테이너 너비 */
-	margin-bottom: 15px;
-}
-
-#openModal {
-	width: 30px;
-	height: 30px;
-}
-</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../mypage/mypage.css">	
 </head>
 <body>
 	<jsp:include page="/header/header.jsp"></jsp:include>
@@ -133,13 +53,12 @@ a {
 		</div>
 	</div>
 
-
+<div class="mypage-wrap">
 	<div class="userInfo">
-		<table class="rounded" style="width: 60%">
-			<c:set var="member" value="${sessionScope.session_id }" />
+		<table class="rounded" style="width: 50%">
+			<c:set var="member" value="${sessionScope.session_id }"/>
 			<tr>
-				<td style="text-align: right"><img src="setting.png" value="설정"
-					id="openModal"></td>
+				<td style="text-align: right"><img src="setting.png" value="설정" id="openModal"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -164,7 +83,7 @@ a {
 					<td></td>
 				</tr>
 				<tr>
-					<td class="rounded">${member.username }</td>
+					<td class="rounded"><h2>${member.username }</h2></td>
 				</tr>
 				<tr>
 					<td class="rounded">${member.userid}</td>
@@ -176,7 +95,7 @@ a {
 	<br />
 	<div class="userContents">
 		<c:set var="contentsList" value="${requestScope.contentsList }" />
-		<table class="rounded" style="width: 60%">
+		<table class="rounded" style="width: 50%">
 			<c:choose>
 				<c:when
 					test="${contentsList != null and fn:length(contentsList)>0 }">
@@ -187,8 +106,9 @@ a {
 					<tr align="center" valign="middle">
 						<c:forEach var="list" items="${contentsList }" varStatus="status">
 							<c:if test="${status.index < 4}">
-								<td height="23px"><a href="영화상세페이지=${list.movie_num }"><img
-										src="${list.movie_poster}"></a><br /> ${list.movie_title }</td>
+								<td height="23px"><a href="영화상세페이지=${list.movie_num }">
+								<img src="${list.movie_poster}"></a><br/>${list.movie_title }
+								</td>
 							</c:if>
 						</c:forEach>
 					</tr>
@@ -204,9 +124,10 @@ a {
 			</c:choose>
 		</table>
 	</div>
+
 	<jsp:include page="/footer/footer.jsp"></jsp:include>
 	<script src="mypage.js">
-		
 	</script>
+</div>
 </body>
 </html>

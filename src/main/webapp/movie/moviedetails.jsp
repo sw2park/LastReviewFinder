@@ -30,6 +30,7 @@
 	<input id="movie_num" type="text" value="${movie.movie_num }"
 		hidden=true />
 	<input id="userid" type="text" value="${user.userid }" hidden=true />
+	<input id="username" type="text" value="${user.username }" hidden=true />
 	<main>
 		<!-- 영화 스틸 이미지와 영화 정보 섹션 -->
 		<section class="movie-banner">
@@ -165,32 +166,35 @@
 		</section>
 		<br> <br>
 		<!-- 코멘트 섹션 -->
-		<c:if test="${fn:length(commentList)!=0 }">
 			<section class="comment">
 				<table class="comment-table">
 					<h2>코멘트</h2>
-					<c:if test="${commentList != null}">
-						<c:set var="i" value="0" />
-						<c:forEach var="comment" items="${commentList }">
-							<c:if test="${i>3 }">
-								<tr>
-							</c:if>
-							<td><img src="../movie/img/profile.png">
-								${comment.username }
-								<div>
-									<hr>
-									${comment.comment_contents }
-								</div></td>
-							<span hidden>${i=i+1 }</span>
-							<c:if test="${i>3 }">
-								</tr>
-								<span hidden>${i=0 }</span>
-							</c:if>
-						</c:forEach>
-					</c:if>
+					<c:choose>
+						<c:when test="${fn:length(commentList)!=0 }">
+							<c:set var="i" value="0" />
+							<c:forEach var="comment" items="${commentList }">
+								<c:if test="${i>3 }">
+									<tr>
+								</c:if>
+								<td><img src="../movie/img/profile.png">
+									${comment.username }
+									<div>
+										<hr>
+										${comment.comment_contents }
+									</div></td>
+								<span hidden>${i=i+1 }</span>
+								<c:if test="${i>3 }">
+									</tr>
+									<span hidden>${i=0 }</span>
+								</c:if>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<h3 style="color:gray">코멘트가 없습니다.</h2>
+						</c:otherwise>
+					</c:choose>
 				</table>
 			</section>
-		</c:if>
 		<br> <br>
 		<!-- 갤러리 섹션 -->
 		<c:if test="${movie.movie_still_image != null}">
@@ -211,7 +215,6 @@
 				<button class="nextBtn" id="nextBtn">&gt;</button>
 			</div>
 		</c:if>
-		
 		<!-- 비슷한 작품 섹션 -->
 		<c:if test="${fn:length(similar_movie_list) >0}">
 			<section class="similar">

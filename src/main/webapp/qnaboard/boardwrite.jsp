@@ -54,6 +54,7 @@
                </th>
                <td style="color: #f7175a;">
                   <input type="hidden" name="username" value="${sessionScope.session_id.username}">${sessionScope.session_id.username}
+                  <input type="hidden" name="userid" value="${sessionScope.session_id.userid}">
                </td>
             </tr>
             <tr height="300px">

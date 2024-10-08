@@ -33,12 +33,6 @@ public class BoardDAO {
 		return boardList;
 	}
 
-	public int getCategoryCnt(String boardcate) {
-		return Session.selectOne("Board.getCategoryCnt");
-	}
-	
-	
-
 	public boolean insertBoard(BoardDTO bdto) {
 		boolean result = false;
 		System.out.println();
@@ -52,23 +46,9 @@ public class BoardDAO {
 		return Session.selectOne("Board.getSeq");
 	}
 	
-	
 	public BoardDTO getDetail(int boardnum) {
 		return(BoardDTO)Session.selectOne("Board.getDetail", boardnum);
 	}
-	
-	public List<BoardDTO> CategoryView(String boardcate, int startRow, int endRow) {
-		HashMap<String, Object> datas = new HashMap<>();
-		datas.put("boardcate", boardcate);
-		datas.put("startRow", startRow);
-		datas.put("endRow", endRow);
-		
-		List<BoardDTO> boardList = new ArrayList<>();
-		boardList = Session.selectList("Board.getCategory", datas);
-		
-		return boardList;
-	}
-
 	
 	public boolean updateBoard(int boardnum, String boardcate, String boardtitle, String boardcontents) {
 		boolean result = false;
@@ -112,7 +92,5 @@ public class BoardDAO {
 		}
 		return result;
 	}
-
-	
 	
 }
