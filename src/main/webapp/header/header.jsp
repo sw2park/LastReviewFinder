@@ -50,7 +50,7 @@
 			</section>
 		</nav>
 	</header>
-
+<!-- 로그인 모달부분  -->
 	<div class="login_modal">
 		<div class="login_modalBody">
 			<form action="/join/login.lo" method="post" name="frm">

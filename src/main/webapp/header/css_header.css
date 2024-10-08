@@ -94,7 +94,7 @@ span:hover {
     border-radius: 5px;
 }
 
-/* 로그인 모달 부분 작업 완료 */
+/* 로그인 모달 부분 */
 .login_modal {
 	display: none;
 	position: fixed;

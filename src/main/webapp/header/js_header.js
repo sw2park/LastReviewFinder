@@ -2,7 +2,7 @@
  * 
  */
 
-/* 헤더 모달 On Off 완료  */
+/* 헤더 모달 On Off */
 const loginModal = document.querySelector('.login_modal');
 const loginModal_open = document.querySelector('.login');
 const loginModal_close = document.querySelector('.loginModal_closeBtn');
