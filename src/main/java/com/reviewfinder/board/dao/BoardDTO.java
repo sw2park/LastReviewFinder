@@ -53,4 +53,12 @@ public class BoardDTO {
 	public void setAdminreply(String adminreply) {
 		this.adminreply = adminreply;
 	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	
+	
 }

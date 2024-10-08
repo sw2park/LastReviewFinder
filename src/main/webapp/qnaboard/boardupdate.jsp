@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
 	<body onload="checkUserRole()">
+<jsp:include page="/header/header.jsp"></jsp:include>
 	<c:if test="${not param.flag and not empty param.flag }">
 		<script>
 			alert("게시글 수정 실패. 다시 시도하세요.");
@@ -33,7 +34,7 @@
 		            <option disabled selected>유형을 선택하세요</option>
 		            <option id="noticeOption">공지</option>
 		            <option>추천</option>
-		            <option>문의</option>            
+		            <option>질문</option>            
 	        </select>
                </td>
             </tr>
