@@ -27,7 +27,7 @@
 					<li class="search">
 						<div>
 							<form action="">
-								<label for=""> <input autocomplete="off" type="text"
+								<label for=""><img style="display:inline-block; width:30px; heigh:30px;" alt="search" src="/header/search_icon.png"> <input autocomplete="off" type="text"
 									class="searchBox" id="" name=""
 									placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." value>
 								</label>
