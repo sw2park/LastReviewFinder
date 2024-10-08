@@ -22,7 +22,7 @@ public class LogoutAction implements Action{
 		Session.invalidate();
 		
 		try {
-			resp.sendRedirect("/main/main.jsp");
+			resp.sendRedirect("/main/main.ma");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

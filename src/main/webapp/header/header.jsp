@@ -19,10 +19,10 @@
 							class="logoImg" src="/header/logo.png">
 					</a></li>
 					<li class="recomend"><a type="button" href="/rec/RecMain.rec">
-							<span> 영화 추천 </span>
+							<span class="header_liSpan"> 영화 추천 </span>
 					</a></li>
 					<li class="board"><a type="button"
-						href="/qnaboard/BoardList.bo"> <span> 게시판 </span>
+						href="/qnaboard/BoardList.bo"> <span class="header_liSpan"> 게시판 </span>
 					</a></li>
 					<li class="search">
 						<div>
@@ -36,17 +36,17 @@
 					</li>
 					<c:choose>
 						<c:when test="${memberDTO==null }">
-							<li class="login"><span> 로그인 </span></li>
+							<li class="login"><span class="header_liSpan"> 로그인 </span></li>
 							<li class="join"><a type="button" href="/login/join.lo">
-									<span> 회원가입 </span>
+									<span class="header_liSpan"> 회원가입 </span>
 							</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="header_userInfo" href="">
-								<img src="${memberDTO.profile }">
-								<span>${memberDTO.username }</span>
+								<img class="header_userprofile" src="/mypage/${memberDTO.profile }">
+								<span class="header_username">${memberDTO.username }</span>
 							</li>
-							<li class="header_logout"><span>로그아웃</span></li>
+							<li class="header_logout"><span class="header_liSpan" onclick="logout()">로그아웃</span></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
