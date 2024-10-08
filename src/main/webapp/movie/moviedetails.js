@@ -261,17 +261,23 @@ function reset(){
 }
 
 function write_comment(){
-	$.ajax({
-		type: "POST",
-		data: {
-			rating: rating
-		},
-		url: "/movie/SetMovieRating.mv",
-		success: function(response){
-			$("#rating-score").html(response);
-		},
-		error: function(xhr, status, error){
-			alert("AJAX 오류: " + error);
-		}
-	});
+	let comment_contents = $("#comment_contents").val();
+	if(comment_contents==null || comment_contents.trim()==""){
+		alert("내용을 입력해 주세요");
+	}
+	else{
+		$.ajax({
+			type: "POST",
+			data: {
+				comment_contents: comment_contents
+			},
+			url: "/comment/Comment.cm",
+			success: function(response){
+				$("#rating-score").html(response);
+			},
+			error: function(xhr, status, error){
+				alert("AJAX 오류: " + error);
+			}
+		});
+	}
 }

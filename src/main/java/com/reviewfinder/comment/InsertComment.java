@@ -12,6 +12,9 @@ public class InsertComment implements Action {
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
 		CommentDAO cdao = new CommentDAO();
 		
+		String contents = req.getParameter("comment_contents");
+		
+		
 		
 		return null;
 	}
