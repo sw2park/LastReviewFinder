@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Main">
+	<select id="selectBoxOffce" parameterType="string" resultType="mainDTO">
+		SELECT br.MOVIE_NUM , br.MOVIE_RANK ,br.BOXOFFICE_DATE , md.MOVIE_TITLE , md.MOVIE_DATE, md.MOVIE_GENRE, md.MOVIE_POSTER 
+		FROM BOXOFFICE_RANK br LEFT OUTER JOIN MOVIE_DB md 
+		ON br.MOVIE_NUM = md.MOVIE_NUM
+		WHERE BOXOFFICE_DATE = #{boxoffice_date}
+	</select>
+</mapper>

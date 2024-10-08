@@ -11,14 +11,15 @@
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
 <body>
-	<div>
+<jsp:include page="/header/header.jsp"></jsp:include>
+	<div class="wrap">
 		<h2>게시판</h2>
         <select name="category" onchange="location.href='/qnaboard/Category_view.bo?boardcate='+this.value;">
         	<option disabled selected>-- 카테고리 --</option>
 	        <option value="전체">전체선택</option>
 	        <option value="공지">공지</option>
 	        <option value="추천">추천</option>
-	        <option value="문의">문의</option>            
+	        <option value="질문">질문</option>            
 	    </select>
 
 	   	<input type="button" value="내가 작성한 글만 보기" class="myqnachoice" onclick="location.href='/qnaboard/Mywrite_view.bo';">
@@ -45,9 +46,14 @@
 			</tr>
 			<%-- 글 목록 --%>
 			<c:choose>
+				<c:when test="${Category == '전체'}">
+        			<script>
+         		  		 window.location.href = '/qnaboard/BoardList.bo';
+     		  		 </script>
+   				 </c:when>
 		     	  <c:when test = "${boardList != null and fn:length(boardList)>0 }">
 						<c:forEach var="board" items="${boardList }">	
-						  <c:if test="${board.boardcate == Category}">
+						  <c:if test="${board.boardcate == Category || Category == '전체'}">
 				         	 <tr align="center" valign="middle" onmouseover="this.style.background='#bbdefb'"onmouseout="this.style.background=''">
 				           	   <td height="23px" class="${board.boardcate == '공지' ? 'change-color' : ''}">${board.boardcate }</td>
 				               <td height="23px" class="${board.boardcate == '공지' ? 'change-num' : ''}">${board.boardnum }</td>

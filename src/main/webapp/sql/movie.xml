@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Movie">
+	<select id="checkMoiveDB" resultType="_int">
+		SELECT count(*) FROM MOVIE_DB
+	</select>
+	<insert id="insertMovieDB" parameterType="moviedto">
+		INSERT INTO MOVIE_DB VALUES(
+		movie_seq.nextval, #{movie_title}, #{movie_date}, #{movie_plot}, 
+		#{movie_genre}, #{movie_poster}, #{movie_still_image}, 0, #{movie_actor}, #{movie_director} ,0
+		)
+	</insert>
+	<select id="selectMovieFromDB" parameterType="hashmap" resultType="moviedto">
+		SELECT * FROM MOVIE_DB WHERE MOVIE_TITLE = #{movie_title} AND MOVIE_DATE = #{movie_date}
+	</select>
+	<select id="checkDistinct" parameterType="moviedto" resultType="_int">
+		SELECT count(*) FROM MOVIE_DB WHERE MOVIE_TITLE = #{movie_title} AND MOVIE_DATE = #{movie_date}
+	</select>
+	<select id="selectMovieNum" parameterType="string" resultType="_int">
+		SELECT MOVIE_NUM FROM MOVIE_DB WHERE MOVIE_TITLE = #{movie_title}
+	</select>
+	<insert id="insertBoxOffice" parameterType="boxDTO">
+		INSERT INTO BOXOFFICE_RANK VALUES(#{movie_num}, #{movie_rank}, #{boxoffice_date})
+	</insert>
+	<update id="updateRating" parameterType="hashmap">
+		UPDATE MOVIE_DB SET MOVIE_STAR_RATE = MOVIE_STAR_RATE + #{rating} WHERE MOVIE_NUM = #{movie_num}
+	</update>
+	<update id="updateRatingCount" parameterType="_int">
+		UPDATE MOVIE_DB SET MOVIE_RATE_CNT = MOVIE_RATE_CNT +1 WHERE MOVIE_NUM = #{movie_num}
+	</update>
+	<select id="selectTotalRating" parameterType="_int" resultType="double">
+		SELECT MOVIE_STAR_RATE/MOVIE_RATE_CNT FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
+	<select id="selectRatingCount" parameterType="_int" resultType="_int">
+		SELECT MOVIE_RATE_CNT FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
+	<select id="searchSimilarGenreCnt" parameterType="string" resultType="_int">
+		SELECT count(*) FROM MOVIE_DB WHERE MOVIE_GENRE LIKE '%' || #{genre} || '%'
+	</select>
+	<select id="selectSimilarMovie" parameterType="string" resultType="moviedto">
+		SELECT * FROM MOVIE_DB WHERE MOVIE_GENRE LIKE '%' || #{first_genre} || '%' AND rownum &lt; 8
+	</select>
+	<select id="checkBoxOfficeRank" resultType="_int">
+		SELECT COUNT(MOVIE_NUM) FROM BOXOFFICE_RANK
+	</select>
+</mapper>
+
+
