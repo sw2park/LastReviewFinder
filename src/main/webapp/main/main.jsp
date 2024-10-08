@@ -110,6 +110,6 @@
 		</div>
 	</div>
 	<jsp:include page="/footer/footer.jsp"></jsp:include>
-	<script type="text/javascript" src="../main/js_main.js"></script>
+	<script type="text/javascript" src="/main/js_main.js"></script>
 </body>
 </html>

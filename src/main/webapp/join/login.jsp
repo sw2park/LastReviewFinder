@@ -95,37 +95,28 @@
 	<input type="button" id="loginbutton" value="로그아웃" onclick="logout()"/>
 	
 	<script>
-
  	function login(){
-	
 			let frm = document.frm;
 			let userid = frm.userid;
 			let userpw = frm.userpw;
-		
 		if (userid.value === ""){
 			alert("아이디를 입력해주세요");
 			userid.focus();
 			return false;
 		}
-			
 		if( userpw.value === "" ){
 			alert("패스워드를 입력하세요");
 			userpw.focus();
 			return false;
 		}
-		
 		frm.submit();
-	
 	 }
- 	
  	function logout(){
  		location.href="/join/logout.lo"
 	}
- 	
 /*  	function find_it() {
  		location.href="/join/find_it.lo"
 	} */
-
 	</script>
 </body>
 </html>
