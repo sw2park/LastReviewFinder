@@ -19,7 +19,7 @@
 
 		<div>
 			<div class="write">
-				<textarea maxlength="10000" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea>
+				<textarea id="comment_contents" maxlength="10000" placeholder="이 작품에 대한 생각을 자유롭게 표현해주세요."></textarea>
 			</div>
 		</div>
 
