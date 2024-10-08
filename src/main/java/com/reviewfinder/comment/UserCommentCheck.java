@@ -10,36 +10,33 @@ import com.reviewfinder.comment.dao.CommentDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class InsertComment implements Action {
+public class UserCommentCheck implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
 		CommentDAO cdao = new CommentDAO();
 		CommentDTO comment = new CommentDTO();
 		
-		
-		String contents = req.getParameter("comment_contents");
 		String userid = req.getParameter("userid");
-		String username = req.getParameter("username");
 		int movie_num = Integer.parseInt(req.getParameter("movie_num"));
 		
-		comment.setComment_contents(contents);
 		comment.setUserid(userid);
-		comment.setUsername(username);
 		comment.setMovie_num(movie_num);
 		
-		String previousComment = cdao.checkComment(comment);
+		String contents = cdao.checkComment(comment);
 		
-		if(previousComment==null || previousComment.equals("")) {
-			cdao.insertComment(comment);
+		if(contents !=null) {
+			contents = contents.trim();
+		}
+		
+		if (contents == null || contents.equals("")) {
 			try {
-				resp.getWriter().write("코멘트가 등록되었습니다.");
+				resp.getWriter().write("_1");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else{
-			cdao.updateComment(comment);
+		}else {
 			try {
-				resp.getWriter().write("코멘트가 수정되었습니다.");
+				resp.getWriter().write(contents);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

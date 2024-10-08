@@ -1,6 +1,6 @@
-package com.reviewfinder.movie_favorite_list.dao;
+package com.reviewfinder.movie_wish_list.dao;
 
-public class MovieFavoriteListDTO {
+public class MovieWishListDTO {
 	private String userid;
 	private int movie_num;
 	
