@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("*.fv")
+@WebServlet("*.wh")
 public class MovieWishListFrontcontroller extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class MovieWishListFrontcontroller extends HttpServlet{
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
 		
-		if(requestURI.equals("/movie/WishList.fv")) {
+		if(requestURI.equals("/movie/WishList.wh")) {
 			forward = new UserWishList().execute(request, response);
 		}
 		
