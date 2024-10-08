@@ -42,8 +42,10 @@
 							</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="main_userInfo"><img src="${memberDTO.profile }">
-								<span>${memberDTO.username }</span></li>
+							<li class="main_userInfo">
+								<img src="${memberDTO.profile }">
+								<span>${memberDTO.username }</span>
+							</li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
