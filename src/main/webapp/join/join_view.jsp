@@ -4,59 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
+<link rel="stylesheet" href="../join/join_view.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-<style>
-	html {
-	    font-family: 'Pretendard';
-	    }
-	* {
-	    box-sizing: border-box; /* 모든 요소의 박스 모델을 border-box로 설정 */
-		}
-	p{
-		font-size: 12px;
-	}
-	input{
-		background-color: #e9e9e9;
-		border: 2px solid #e9e9e9; /* 테두리 색상 */
-	    border-radius: 10px; /* 둥근 테두리 */
-	    padding: 10px; /* 내부 여백 */
-	    width: 300px; /* 너비 설정 */
-	    outline: none; /* 포커스 시 기본 테두리 제거 */
-	   }
-	
-	input:focus {
-	    border-color: #f7175a; /* 포커스 시 테두리 색상 변경 */
-	   }
-	 
-	.sendit {
-		
-		background-color:  #f7175a;
-		border: 2px solid  #f7175a; /* 테두리 색상 */
-        border-radius: 10px; /* 둥근 테두리 */
-        padding: 10px; /* 내부 여백 */
-        width:300px; /* 너비 설정 */
-        outline: none; /* 포커스 시 기본 테두리 제거 */
-        color : #ffffff;
-	
-	}
-	
-	.login{
-		font-style : bold;
-		color : #7e7e7e;
-		width: 300px; /* 너비 설정 */
-	}
-	
-	.login a{
-		color :  #f7175a;
-	}
-	
-	
-	
-</style>
 </head>
 <body>
-
+<div class="container">
+	<div class="login-logo">
+		<a href="/main/main.ma"><img alt="logo" src="/join/logo.png"></a>
+		<br>
+		<h3>회원가입</h3>
+	</div>
 <form action="/join/join.lo" method="post" name="joinForm">
 	<p>
 		<label>
@@ -79,12 +37,12 @@
 	<p> <input type="button" class="sendit" value="회원가입" onclick="sendit()"/> </p>	
 	
 </form>
-
+	<br>
 	<div class="login">
-		이미 가입 하셨나요?
-		<a href="/join/login.jsp"> 로그인 </a>
+		이미 가입 하셨나요?&nbsp;&nbsp;
+		<a href="/join/login.jsp">로그인</a>
 	</div>
-
+	<br>
 	<script>
 	
 	let isIDValid = false;
@@ -200,5 +158,6 @@
     }
 	
 	</script>
+</div>
 </body>
 </html>

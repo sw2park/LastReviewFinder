@@ -12,7 +12,8 @@
 </head>
 <body>
 <jsp:include page="/header/header.jsp"></jsp:include>
-	<div>
+	<div class="wrap">
+		<div>
 		<h2>게시판</h2>
         <select name="category" onchange="location.href='/qnaboard/Category_view.bo?boardcate='+this.value;">
         	<option disabled selected>-- 카테고리 --</option>
@@ -24,8 +25,9 @@
 
 	   	<input type="button" value="내가 작성한 글만 보기" class="myqnachoice" onclick="location.href='/qnaboard/Mywrite_view.bo';">
 	   	<input type="button" value="글 쓰기" class="write" onclick="location.href='/qnaboard/BoardWrite.bo';">
+		</div>
 		<br/>
-		<br/>
+		
 		<hr align="left" style="border-top: 2px solid #f7175a; width:100%;"/>
 		
 		<c:set var="boardList" value="${requestScope.boardList }"/>
