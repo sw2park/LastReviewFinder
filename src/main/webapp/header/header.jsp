@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/header/css_header.css" />
 </head>
 <body>
-	<c:set var="memberDTO" value="${requestScope.memberDTO }" />
+	<c:set var="memberDTO" value="${sessionScope.session_id }" />
 	<header class="_header">
 		<nav>
 			<section>
@@ -42,10 +42,11 @@
 							</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="main_userInfo">
+							<li class="header_userInfo" href="">
 								<img src="${memberDTO.profile }">
 								<span>${memberDTO.username }</span>
 							</li>
+							<li class="header_logout"><span>로그아웃</span></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
