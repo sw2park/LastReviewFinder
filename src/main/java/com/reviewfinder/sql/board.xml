@@ -13,18 +13,9 @@
 		SELECT count(*) FROM BOARD
   	</select>
 
-	<select id="getCategoryCnt" parameterType="string" resultType="_int">
-		SELECT COUNT(*) FROM BOARD WHERE BOARDCATE = #{boardcate}
-	</select>
-	
-	
-	<select id="getCategory" parameterType="hashmap" resultType="BoardDTO">
-		SELECT * FROM BOARD WHERE BOARDCATE = #{boardcate} ORDER BY boardnum DESC LIMIT #{startRow}, #{endRow}
-	</select>
-
 	<insert id="insertBoard" parameterType="BoardDTO">
-  		INSERT INTO BOARD VALUES (board_seq.nextval, #{boardcate}, #{userid}
-  		, #{username}, #{boardtitle}, #{boardcontents}, sysdate, NULL)
+  		INSERT INTO BOARD VALUES (board_seq.nextval, #{boardcate}, #{username}, #{userid}
+  		, #{boardtitle}, #{boardcontents}, sysdate, NULL)
   	</insert>
   	
   	<select id="getSeq" resultType="_int">

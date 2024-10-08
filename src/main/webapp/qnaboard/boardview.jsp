@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 </head>
 <body onload="checkUserRole()">
-
+<jsp:include page="/header/header.jsp"></jsp:include>
 	<c:set var="board" value="${requestScope.board }"/>
    
 	<div class="container">
