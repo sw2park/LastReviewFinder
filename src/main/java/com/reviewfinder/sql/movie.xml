@@ -60,6 +60,12 @@
 	<update id="modifyUserRate" parameterType="userratedto">
 		UPDATE USER_RATE SET USER_STAR_RATE = #{user_star_rate} WHERE MOVIE_NUM = #{movie_num} AND USERID = #{userid}
 	</update>
+	<select id="getTotalRatingCnt" resultType="_int">
+		SELECT SUM(MOVIE_RATE_CNT) FROM MOVIE_DB
+	</select>
+	<select id="selectMovieWithNum" parameterType="_int" resultType="moviedto">
+		SELECT * FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
 </mapper>
 
 

@@ -61,6 +61,7 @@ $(document).ready(function () {
 						success: function(response2){
 							$("#rating-score").html(response2);
 							alert(rating+" 점이 반영되었습니다.");
+							getTotalRatingCnt();
 						},
 						error: function(xhr, status, error){
 							alert("별점 저장 실패: " + error);
