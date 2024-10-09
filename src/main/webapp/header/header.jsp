@@ -27,7 +27,9 @@
 					<li class="search">
 						<div>
 							<form action="">
-								<label for=""><img style="display:inline-block; width:30px; heigh:30px;" alt="search" src="/header/search_icon.png"> <input autocomplete="off" type="text"
+								<label for="">
+								<!-- <img style="display:inline-block; width:30px; heigh:30px;" alt="search_icon" src="/header/search_icon.png"> --> 
+								<input autocomplete="off" type="text"
 									class="searchBox" id="" name=""
 									placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." value>
 								</label>
@@ -36,7 +38,9 @@
 					</li>
 					<c:choose>
 						<c:when test="${memberDTO==null }">
-							<li class="login"><span class="header_liSpan"> 로그인 </span></li>
+							<li class="login">
+							<span class="header_liSpan"> 로그인 </span>
+							</li>
 							<li class="join"><a type="button" href="/login/join.lo">
 									<span class="header_liSpan"> 회원가입 </span>
 							</a></li>
