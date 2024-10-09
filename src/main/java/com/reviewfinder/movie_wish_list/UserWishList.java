@@ -1,10 +1,11 @@
-package com.reviewfinder.movie_favorite_list;
+package com.reviewfinder.movie_wish_list;
 
 import java.io.IOException;
 
 import com.reviewfinder.action.Action;
 import com.reviewfinder.action.ActionForward;
-import com.reviewfinder.movie_favorite_list.dao.MovieFavoriteListDAO;
+import com.reviewfinder.movie_wish_list.dao.MovieWishListDAO;
+import com.reviewfinder.movie_wish_list.dao.MovieWishListDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,10 +16,14 @@ public class UserWishList implements Action{
 		int movie_num = Integer.parseInt(req.getParameter("movie_num"));
 		String userid = req.getParameter("userid");
 		
-		MovieFavoriteListDAO mfdao =  new MovieFavoriteListDAO();
+		MovieWishListDAO mfdao =  new MovieWishListDAO();
+		MovieWishListDTO wishList = new MovieWishListDTO();
 		
-		if(mfdao.checkWishList(userid,movie_num)==0) {
-			mfdao.insertWishList(userid, movie_num);
+		wishList.setMovie_num(movie_num);
+		wishList.setUserid(userid);
+		
+		if(mfdao.checkWishList(wishList)==0) {
+			mfdao.insertWishList(wishList);
 			try {
 				resp.setContentType("text/html;charset=UTF-8");
 				resp.getWriter().write("목록에 추가되었습니다.");
@@ -26,9 +31,10 @@ public class UserWishList implements Action{
 				e.printStackTrace();
 			}
 		}else {
+			mfdao.deleteWishList(wishList);
 			try {
 				resp.setContentType("text/html;charset=UTF-8");
-				resp.getWriter().write("이미 등록되어있습니다.");
+				resp.getWriter().write("목록에서 제거되었습니다.");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

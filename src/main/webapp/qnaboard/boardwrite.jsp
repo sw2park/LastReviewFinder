@@ -7,34 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="boardwrite.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <style>
 	html {
 	  	  font-family: 'Pretendard';
 	    }
-	    
-	   table{
-	      margin:0 auto;
-	      width:900px;
-	   }
-	   
-	    .WriteOK {
-            border: 1px solid #f7175a; 
-            border-radius: 25px; 
-            background-color: #f7175a; 
-            padding: 10px 20px; 
-            color : white;
-        }
-        
-        .BacktoList{
-            border: 1px solid #f7175a; 
-            border-radius: 25px; 
-            background-color: white; 
-            padding: 10px 20px; 
-            color : #f7175a;
-        }
-        
-     
 	</style>
 </head>
 <body onload="checkUserRole()">
@@ -56,9 +34,9 @@
                <td>
                   <select name="boardcate">
 		            <option disabled selected>유형을 선택하세요</option>
-		            <option id="noticeOption">notice</option>
-		            <option>recommend</option>
-		            <option>ask</option>            
+		            <option id="noticeOption">공지</option>
+		            <option>추천</option>
+		            <option>문의</option>            
 	        </select>
                </td>
             </tr>
@@ -76,6 +54,7 @@
                </th>
                <td style="color: #f7175a;">
                   <input type="hidden" name="username" value="${sessionScope.session_id.username}">${sessionScope.session_id.username}
+                  <input type="hidden" name="userid" value="${sessionScope.session_id.userid}">
                </td>
             </tr>
             <tr height="300px">
@@ -87,8 +66,8 @@
                </td>
             </tr>
          </table>
-         <table style="border:0px;">
-            <tr align="right" valign="middle">
+         <table class="button">
+            <tr>
                <td>
                 	<input type="button" value="작성 완료" class="WriteOK" onclick="document.boardForm.submit();">
                     <input type="button" value="취소" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';"></td>
@@ -105,8 +84,6 @@
                 document.getElementById('noticeOption').remove();
             }
         }
-        
-
     </script>
 </body>
 </html>

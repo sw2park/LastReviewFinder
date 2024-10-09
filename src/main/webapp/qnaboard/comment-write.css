@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.wrap {
+	border: 1px solid #ccc;
+	border-radius: 25px;
+	padding: 15px;
+	background-color: #fff;
+	margin-top: 20px;
+}
+
+.comment-write_header {
+	padding: 10px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.write {
+	padding: 5px 10px;
+}
+
+/* comment-write.css 파일의 textarea 스타일 수정 */
+.write textarea {
+    font-family: 'Pretendard';
+    width: 95%; /* 너비를 95%로 설정하여 더 넓게 표시 */
+    height: 70%; /* 높이를 전체 모달의 70%로 설정 */
+    border-style: none;
+    font-size: 15px;
+    resize: none; /* 사용자가 크기 조절을 못하도록 설정 */
+    padding: 10px; /* 내부 여백 추가 */
+    box-sizing: border-box; /* 패딩을 포함한 전체 너비/높이 계산 */
+}
+
+.reset, .set {
+	color:#fff;
+	background-color: #f7175a;
+	padding: 5px 10px;
+	border-radius: 10px;
+	border-style: none;
+	font-size: 13px;
+}
+
+.reset:hover, .set:hover {
+	color:#fff;
+	background-color: #ff97b6;
+}
+
+.button {
+	text-align: right;
+	margin: 10px;
+}

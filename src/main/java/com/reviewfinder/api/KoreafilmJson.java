@@ -37,7 +37,7 @@ public class KoreafilmJson extends APIController{
 		var_data.put("var2", "genre");
 		var_data.put("data2", genre);
 		var_data.put("var3", "releaseDts");
-		var_data.put("data3", "20200101");
+		var_data.put("data3", "20230101");
 		
 		String movie = callAPI(url_key, var_data);
 		

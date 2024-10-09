@@ -4,9 +4,11 @@ import com.reviewfinder.action.Action;
 import com.reviewfinder.action.ActionForward;
 import com.reviewfinder.member.dao.MemberContentsDTO;
 import com.reviewfinder.member.dao.MemberDAO;
+import com.reviewfinder.member.dao.MemberDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class ShowMyContentsMainAction implements Action{
 
@@ -15,7 +17,12 @@ public class ShowMyContentsMainAction implements Action{
 		
 		ActionForward forward = new ActionForward();
 		MemberDAO mdao = new MemberDAO();
-		String userid = req.getParameter("userid");
+		
+		HttpSession session = req.getSession();
+		MemberDTO mdto = (MemberDTO) session.getAttribute("session_id");
+		
+		String userid = mdto.getUserid();
+		
 		
 		req.setAttribute("contentsList", mdao.getContentsList(userid));
 		forward.setRedirect(false);//foward이동

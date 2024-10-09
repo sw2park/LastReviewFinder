@@ -1,4 +1,4 @@
-package com.reviewfinder.movie_favorite_list;
+package com.reviewfinder.movie_wish_list;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("*.fv")
-public class MovieFavoriteListFrontcontroller extends HttpServlet{
+@WebServlet("*.wh")
+public class MovieWishListFrontcontroller extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
@@ -27,7 +27,7 @@ public class MovieFavoriteListFrontcontroller extends HttpServlet{
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
 		
-		if(requestURI.equals("/movie/WishList.fv")) {
+		if(requestURI.equals("/movie/WishList.wh")) {
 			forward = new UserWishList().execute(request, response);
 		}
 		

@@ -6,39 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 작성 페이지</title>
+<link rel="stylesheet" href="boardupdate.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-<style>
-	html {
-	  	  font-family: 'Pretendard';
-	    }
-	     
-	   table{
-	      margin:0 auto;
-	      width:900px;
-	   }
-	   
-	    .WriteOK {
-            border: 1px solid #f7175a; 
-            border-radius: 25px; 
-            background-color: #f7175a; 
-            padding: 10px 20px; 
-            color : white;
-        }
-        
-        .BacktoList{
-            border: 1px solid #f7175a; 
-            border-radius: 25px; 
-            background-color: white; 
-            padding: 10px 20px; 
-            color : #f7175a;
-        }
-        
-     
-	</style>
 </head>
 	<body onload="checkUserRole()">
-
+<jsp:include page="/header/header.jsp"></jsp:include>
 	<c:if test="${not param.flag and not empty param.flag }">
 		<script>
 			alert("게시글 수정 실패. 다시 시도하세요.");
@@ -46,12 +19,12 @@
 	</c:if>
 	
       <c:set var="board" value="${requestScope.board }"/>
-      
-   
-   <div>
+      <%    // URL 쿼리 파라미터에서 boardnum 값을 가져옴
+    String boardNum = request.getParameter("boardnum"); %>
+    
+   <div class="wrap">
       <form method="post" name="ModifyForm" action="/qnaboard/UpdateBoardAction.bo">
          <table border="0" style="border-collapse:collapse;">
-     	  	<input type="text" name="boardnum" value="${param.boardnum }" />
         	  <tr height="30px">
                <th align="center" width="150px" style="color: #f7175a;">
                   카테고리
@@ -61,7 +34,7 @@
 		            <option disabled selected>유형을 선택하세요</option>
 		            <option id="noticeOption">공지</option>
 		            <option>추천</option>
-		            <option>문의</option>            
+		            <option>질문</option>            
 	        </select>
                </td>
             </tr>
@@ -79,6 +52,7 @@
                </th>
                <td style="color: #f7175a;">
                   <input type="hidden" name="username" value="${sessionScope.session_id.username}">${sessionScope.session_id.username}
+                  <input type="hidden" name="boardnum" value="<%= boardNum %>">
                </td>
             </tr>
             <tr height="300px">
@@ -90,11 +64,12 @@
                </td>
             </tr>
          </table>
-         <table style="border:0px;">
-            <tr align="right" valign="middle">
+         <table class="button">
+            <tr>
                <td>
                 	<input type="button" value="작성 완료" class="WriteOK" onclick="document.ModifyForm.submit();">
-                    <input type="button" value="취소" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';"></td>
+                    <input type="button" value="취소" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';">
+               </td>
             </tr>
          </table>
       </form>

@@ -1,22 +1,15 @@
-/*
-html {
-    color: #f7175a;
-    font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
-}
-*/
-
-.header {
-    margin-top: 70px;
-}
-
-body {
+._body {
     font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
     background-color: white;
-    
+    width: 100%;
+    margin:0px;
 }
 
 .content {
-    width:80%;
+	width: 100%;
+    padding-top: 60px;
+    margin-left: 310px;
+    
 }
 
 .BOcontatiner {
@@ -35,7 +28,7 @@ body {
 
 .movie img {
     width: 100%;
-    height: 340px;
+    height: 400px;
 }
 
 .movie-info {
@@ -82,7 +75,7 @@ body {
 
 /* 슬라이더 컨테이너 */
 .slider-container {
-    width: 100%; /* 화면에 보일 영역 크기 */
+    width: 1280px; /* 화면에 보일 영역 크기 */
     overflow: hidden; /* 슬라이드 영역 외는 숨김 */
     position: relative;
 }
@@ -105,11 +98,9 @@ body {
 .prevBtn,.nextBtn {
     border-radius: 20px;
     font-size:30px;
-
     position: absolute;
     top:40%;
     transform: translateY(-50%);
-    
     background-color:rgba(0, 0, 0, 0); /* 투명 */
     color:white;
     border:none;

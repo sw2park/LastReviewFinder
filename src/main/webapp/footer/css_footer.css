@@ -1,11 +1,11 @@
-footer {
-    width: 100%;
-    height: 240px;
-    font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
+.footerBody {
+	width: 100%;
+	margin: 0;
 }
 
-body {
-    margin: 0px;
+._footer {
+    height: 240px;
+    font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
 }
 
 .top {
@@ -13,18 +13,17 @@ body {
     background-color: #101113;
 }
 
-.top > span {
+.footer_star {
     color: #95aab4;
     font-size: 19px;
     display: flex;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
-
     padding-top: 18px;
 }
 
-.top > span > em {
+.footer_star > em {
     color: #ff2f6d;
 }
 
@@ -36,15 +35,15 @@ body {
     margin: 0;
 }
 
-.content {
+.contents {
     color: #575958;
     margin-top: 20px;
-    margin-left: 200px;
+    margin-left: 310px;
     
     font-size: 15px;
 }
 
-.content a {
+.contents a {
     font-weight: bold;
     color: #95aab4;
 }

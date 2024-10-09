@@ -19,19 +19,21 @@ public class BoardWriteOKAction implements Action{
 		BoardDTO bdto = new BoardDTO();
 		
 		
-		 HttpSession Session = req.getSession();  // HttpSession 객체 가져오기
-		 String Username = (String) Session.getAttribute("username"); // 세션에 저장된 "username" 가져오기
+	   HttpSession Session = req.getSession();  // HttpSession 객체 가져오기
+	  
+	   String username = req.getParameter("username"); // 세션에 저장된 "username" 가져오기
+	   String userid = req.getParameter("userid");
 		
 		String boardcate = req.getParameter("boardcate");
-		String username = req.getParameter("username");
 		String boardtitle = req.getParameter("boardtitle");
 		String boardcontents = req.getParameter("boardcontents");
 		
 		bdto.setBoardcate(boardcate);
 		bdto.setUsername(username);
+		bdto.setUserid(userid);
 		bdto.setBoardtitle(boardtitle);
 		bdto.setBoardcontents(boardcontents);
-		
+
 		forward.setRedirect(true);
 		
 		if(bdao.insertBoard(bdto)) {

@@ -44,7 +44,7 @@ public class BoardFrontController extends HttpServlet{
 			
 		case "/qnaboard/Mywrite_view.bo":
 			//버튼 클릭 시 본인이 작성한 게시글만 볼 수 있게 처리
-			System.out.println("이걸 누르면 내가 쓴 글만 볼 수 있게 할 거야");
+			forward = new MywriteAction().execute(request, response);
 			break;
 			
 		case "/qnaboard/BoardWrite.bo":
@@ -72,7 +72,7 @@ public class BoardFrontController extends HttpServlet{
 			break;
 			
 		case "/qnaboard/AddReply.bo":
-			//댓글 수정
+			//댓글 달기
 			forward = new AddReplyAction().execute(request, response);
 			break;
 			

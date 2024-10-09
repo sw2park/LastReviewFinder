@@ -41,6 +41,16 @@ public class MypageFrontController extends HttpServlet {
 			forward = new UpdateNameAction().execute(request, response);
 			break;	
 			
+		case "/mypage/UpdateProfile.mp":
+			//프로필사진 변경
+			forward = new UpdateProfileAction().execute(request, response);
+			break;	
+			
+		case "/mypage/ReturnProfile.mp":
+			//프로필사진 변경
+			forward = new ReturnProfileAction().execute(request, response);
+			break;	
+			
 		case "/mypage/DeleteMember.mp":
 			//회원 탈퇴
 			forward = new DeleteMemberAction().execute(request, response);

@@ -7,73 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="boardview.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-<style>
-	html {
-	  	  font-family: 'Pretendard';
-	    }
-	    
-	    
-	table {
-	   margin: 0 auto;
-	   width: 900px;
-	}
-	
-	
-	.container {
-	    display: flex;
-	    flex-direction: column;
-	    width: 100%;
-	    border: 1px solid #f7175a; 
-	    border-radius: 15px; 
-	    overflow: hidden; /* 둥근 테두리 안에서 내용이 넘치지 않도록 */
-	  }
-	
-	  .row {
-	    display: flex;
-	    padding: 10px 20px;
-	  }
-	
-	
-	  .label {
-	    flex: 0 0 150px;
-	    text-align: center;
-	    font-weight: bold;
-	    color: #f7175a;
-	    line-height: 30px; 
-	  }
-	
-	  .content {
-	    flex: 1;
-	    border: 1px solid #f7175a;
-	    border-radius: 25px;
-	    padding: 10px 20px;
-	  }
-	
-	
-	    .BacktoList {
-            border: 1px solid #f7175a; 
-            border-radius: 25px; 
-            background-color: #f7175a; 
-            padding: 10px 20px; 
-            color : white;
-        }
-        
-        .Answer{
-            border: 1px solid #f7175a; 
-            border-radius: 25px; 
-            color: #f7175a; 
-            padding: 10px 20px; 
-            background-color : white;
-        }
-        
-        
-</style>
 </head>
 <body onload="checkUserRole()">
-
+<jsp:include page="/header/header.jsp"></jsp:include>
 	<c:set var="board" value="${requestScope.board }"/>
-   
    
 	<div class="container">
 	  <div class="row">
@@ -151,7 +90,7 @@
          </table>
        	 <div style="text-align: right">
    			<input type="button" id="Modify" value="수정하기" class="Answer" onclick="location.href='/qnaboard/boardupdate.jsp?boardnum='+${board.boardnum };">
-   			<input type="button" id="Delete" value="삭제하기" class="Answer" onclick="location.href='/qnaboard/DeleteBoard.bo?boardnum='+${board.boardnum };">
+   			<input type="button" id="Delete" value="삭제하기" class="Answer" onclick="deleteBoard(${board.boardnum });">
    		</div>
    		<div style="text-align: center">
    			<input type="button" value="목록" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';">
@@ -173,7 +112,7 @@
 		document.getElementById('replyUP'+boardnum).readOnly = false;
    	}
    	
-   	function deleteReply(boardnum, password){
+   	function deleteReply(boardnum){
 		 var result = confirm("정말로 삭제할까요?");
 			 if(result){
 			document.replyForm2.action = "/qnaboard/DeleteReply.bo?boardnum="+boardnum;
@@ -182,6 +121,15 @@
 				 alert("삭제를 취소합니다.");
 			 }
    	}
+   	
+ 	function deleteBoard(boardnum){
+		 var result = confirm("정말로 삭제할까요?");
+			 if(result){
+				 location.href='/qnaboard/DeleteBoard.bo?boardnum='+boardnum;
+			 } else{
+				 alert("삭제를 취소합니다.");
+			 }
+  	}
    	
     function checkUserRole() {
         var userRole = '${sessionScope.session_id.usergrade}';

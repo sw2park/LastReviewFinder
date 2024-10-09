@@ -9,15 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ReviewFinder</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="../main/css_main.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="/main/css_main.css" />
 </head>
-<body>
+<body class="_body">
 	<c:set var="boxOffice" value="${requestScope.mainDTO }" />
 	<c:set var="lastBoxOffice" value="${requestScope.lastDTO }" />
 	<c:set var="lastLastBoxOffice" value="${requestScope.lastLastDTO }" />
-	<div>
-		<header class="header"></header>
-	</div>
+	<jsp:include page="/header/header.jsp"></jsp:include>
 	<div class="content">
 		<h2 class="BOtitle">이번 달 박스오피스</h2>
 		<!-- BOcontainer -->
@@ -28,8 +28,8 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}"> 
-									<img src="${box.movie_poster }" alt="${box.movie_title }">
+									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>
 								</div>
@@ -58,8 +58,8 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}"> 
-									<img src="${box.movie_poster }" alt="${box.movie_title }">
+									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>
 								</div>
@@ -88,8 +88,8 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}"> <img src="${box.movie_poster }"
-										alt="${box.movie_title }">
+									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>
 								</div>
@@ -107,16 +107,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
-	<div>
-		<footer class="footer"></footer>
-	</div>
-	<script type="text/javascript" src="../main/js_main.js"></script>
-	<script>
-		$(function() {
-			$(".header").load("../header/header.html");
-			$(".footer").load("../footer/footer.html");
-		});
-	</script>
+	<jsp:include page="/footer/footer.jsp"></jsp:include>
+	<script type="text/javascript" src="/main/js_main.js"></script>
 </body>
 </html>

@@ -39,7 +39,6 @@ $(document).ready(function () {
 	});
 	/* 평점 매기기 클릭 시 ajax로 통신 */
 	$("#total-rating").on('click', function () {
-		alert(rating+" 점이 반영되었습니다.");
 		$.ajax({
 			type: "POST",
 			data: {
@@ -51,13 +50,33 @@ $(document).ready(function () {
 				$("#rating-score").html(response);
 			},
 			error: function(xhr, status, error){
-				alert("AJAX 오류: " + error);
+				alert("별점 저장 실패: " + error);
 			}
 		});
+	   alert(rating+" 점이 반영되었습니다.");
 		$(this).off('click').on('click', function() {
 		       alert("이미 평가하셨습니다.");
 		   });
 	});
+	function adjustMargin() {
+        // 각각의 movie-banner 요소에 대해 처리
+        $('.movie-banner').each(function() {
+            let banner = $(this); // 현재 movie-banner 요소
+            let movieStill = banner.find('.movie-still'); // 해당 banner 안의 movie-still 이미지
+
+            // 높이 비교 후 overflow 여부 확인
+            if (movieStill.height() > banner.height()) {
+                // 가운데 정렬을 위한 margin-top 계산식
+                let marginTopValue = -( (movieStill.height() - banner.height()) / 2 ) + 'px';
+                movieStill.css('margin-top', marginTopValue);
+            } else {
+                // overflow가 발생하지 않으면 margin-top을 0으로 설정
+                movieStill.css('margin-top', '0');
+            }
+        });
+    }
+	adjustMargin();
+	$(window).resize(adjustMargin);
 });
 
 let currentIndex = 0;
@@ -157,21 +176,16 @@ function wishlist(){
 	$.ajax({
 		type: "POST",
 		data: {movie_num: movie_num, userid: userid},
-		url: "/movie/WishList.fv",
+		url: "/movie/WishList.wh",
 		success: function(response){
 			alert(response);
 		},
 		error: function(xhr, status, error){
-			alert("AJAX 오류: " + error);
+			alert("위시리스트 오류: " + error);
 		}
 	});
 }
 
-/*function comment(){
-	
-		
-}
-*/
 function comment(){
 	let movie_num = $("#movie_num").val();
 	let userid = $("#userid").val();
@@ -188,7 +202,104 @@ function comment(){
 	});
 }
 
+// 코멘트 모달 요소 선택
+const commentModal = document.getElementById("commentModal");
+const closeModal = document.getElementsByClassName("close")[0];
 
+// 모달 열기 후 textarea 크기 조정
+function comment() {
+	let userid = $("#userid").val();
+	let movie_num = $("#movie_num").val();
+    $.ajax({
+        url: "/qnaboard/comment-write.jsp",
+        type: "GET",
+        success: function (data) {
+            // 코멘트 작성 폼을 모달 콘텐츠에 삽입
+            $("#commentFormContainer").html(data);
+            // 모달 보이기
+            commentModal.style.display = "block";
+            
+			// textarea 크기 동적 조정
+			const textarea = document.querySelector(".write textarea");
+			if (textarea) {
+			    const modalContent = document.querySelector(".modal-content");
+			    
+			    // 모달 콘텐츠의 너비와 높이 가져오기
+			    const modalHeight = modalContent.clientHeight;
+			    const modalWidth = modalContent.clientWidth;
 
+			    // 모달 콘텐츠 높이의 70%를 textarea 높이로 설정
+			    textarea.style.height = (modalHeight * 0.7) + "px";
+			    
+			    // 모달 콘텐츠 너비의 90%를 textarea 너비로 설정
+			    textarea.style.width = (modalWidth * 0.87) + "px";
+			}
+			$.ajax({
+				type: "POST",
+				data: {
+					userid: userid,
+					movie_num: movie_num
+				},
+				url: "/comment/UserCommentCheck.cm",
+				success: function(response){
+					if(response!="_1"){
+						$("#comment_contents")[0].value = response;
+						$(".set").html("수정");
+					}
+				},
+				error: function(xhr, status, error){
+					alert("이전 코멘트 검색 실패: " + error);
+				}
+			});
+        },
+        error: function () {
+            alert("코멘트 작성 페이지를 불러오는 데 실패했습니다.");
+        }
+    });
+};
 
+// 모달 닫기 버튼 클릭 시 모달 닫기
+closeModal.onclick = function() {
+    commentModal.style.display = "none";
+};
 
+// 모달 외부 클릭 시 모달 닫기
+window.onclick = function(event) {
+    if (event.target === commentModal) {
+        commentModal.style.display = "none";
+    }
+};
+
+function reset(){
+	commentModal.style.display = "none";
+}
+
+function write_comment(){
+	let comment_contents = $("#comment_contents").val();
+	let movie_num = $("#movie_num").val();
+	let userid = $("#userid").val();
+	let username = $("#username").val();
+	
+	if(comment_contents==null || comment_contents.trim()==""){
+		alert("내용을 입력해 주세요");
+	}
+	else{
+		$.ajax({
+			type: "POST",
+			data: {
+				comment_contents: comment_contents,
+				userid: userid,
+				username: username,
+				movie_num: movie_num
+			},
+			url: "/comment/Comment.cm",
+			success: function(response){
+				alert(response);
+				location.reload();
+			},
+			error: function(xhr, status, error){
+				alert("insert 또는 update 실패: " + error);
+			}
+		});
+	}
+}

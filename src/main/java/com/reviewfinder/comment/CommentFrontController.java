@@ -28,8 +28,10 @@ public class CommentFrontController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		ActionForward forward = null;
 		
-		if(requestURI.equals("/movie/Comment.cm")) {
+		if(requestURI.equals("/comment/Comment.cm")) {
 			forward = new InsertComment().execute(request, response);
+		}else if(requestURI.equals("/comment/UserCommentCheck.cm")) {
+			forward = new UserCommentCheck().execute(request, response);
 		}
 		
 		if (forward != null) {

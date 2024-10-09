@@ -5,6 +5,7 @@ public class BoardDTO {
 	private int boardnum;
 	private String boardcate;
 	private String username;
+	private String userid;
 	private String boardtitle;
 	private String boardcontents;
 	private String boarddate;
@@ -52,4 +53,12 @@ public class BoardDTO {
 	public void setAdminreply(String adminreply) {
 		this.adminreply = adminreply;
 	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	
+	
 }
