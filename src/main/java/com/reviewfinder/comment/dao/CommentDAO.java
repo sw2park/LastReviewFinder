@@ -38,5 +38,9 @@ public class CommentDAO {
 		session.update("Comment.updateComment",comment);
 	}
 
+	public void deleteComment(String userid) {
+		session.delete("Comment.deleteComment",userid);
+	}
+
 	
 }

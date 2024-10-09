@@ -6,6 +6,7 @@
 $(document).ready(function () {
 	var rating = 0;
 	let movie_num = $("#movie_num").val();
+	let userid = $("#userid").val();
 	
 	// 마우스가 별 위로 올라갔을 때
 	$('.star').on('mouseenter', function () {
@@ -43,21 +44,58 @@ $(document).ready(function () {
 			type: "POST",
 			data: {
 				rating: rating,
-				movie_num: movie_num
+				movie_num: movie_num,
+				userid: userid
 			},
-			url: "/movie/SetMovieRating.mv",
+			url: "/movie/CheckPreviousRate.mv",
 			success: function(response){
-				$("#rating-score").html(response);
+				if(response == 'no'){
+					$.ajax({
+						type: "POST",
+						data: {
+							rating: rating,
+							movie_num: movie_num,
+							userid: userid
+						},
+						url: "/movie/SetMovieRating.mv",
+						success: function(response2){
+							$("#rating-score").html(response2);
+							alert(rating+" 점이 반영되었습니다.");
+						},
+						error: function(xhr, status, error){
+							alert("별점 저장 실패: " + error);
+						}
+					});
+				}else{
+					if(confirm("수정하시겠습니까? (이전 평점: "+response+" 점)")){
+						$.ajax({
+							type: "POST",
+							data: {
+								rating: rating,
+								movie_num: movie_num,
+								userid: userid
+							},
+							url: "/movie/ModifyMovieRating.mv",
+							success: function(response2){
+								$("#rating-score").html(response2);
+								alert(rating+" 점이 반영되었습니다.");
+							},
+							error: function(xhr, status, error){
+								alert("별점 수정 실패: " + error);
+							}
+						});
+					}else{
+						alert("수정을 취소합니다.");
+					}
+					$("#rating-score").html(response);
+				}
 			},
 			error: function(xhr, status, error){
-				alert("별점 저장 실패: " + error);
+				alert("별점 체크 실패: " + error);
 			}
 		});
-	   alert(rating+" 점이 반영되었습니다.");
-		$(this).off('click').on('click', function() {
-		       alert("이미 평가하셨습니다.");
-		   });
 	});
+	// 최상단 스틸이미지 동적으로 가운데 조정
 	function adjustMargin() {
         // 각각의 movie-banner 요소에 대해 처리
         $('.movie-banner').each(function() {
@@ -303,3 +341,25 @@ function write_comment(){
 		});
 	}
 }
+
+$(".comment_delete").on("click",function(){
+	let userid = $("#userid").val();
+	$.ajax({
+		type: "POST",
+		data: {
+			userid: userid
+		},
+		url: "/comment/DeleteComment.cm",
+		success: function(){
+			alert("삭제되었습니다");
+			location.reload();
+		},
+		error: function(xhr, status, error){
+			alert("삭제 실패: " + error);
+		}
+	})
+});
+
+
+
+

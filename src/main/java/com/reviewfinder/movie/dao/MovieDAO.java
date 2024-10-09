@@ -154,4 +154,29 @@ public class MovieDAO {
 	public List<MovieDTO> selectSimilarMovie(String first_genre) {
 		return session.selectList("Movie.selectSimilarMovie",first_genre);
 	}
+
+	public int searchPreviousRate(UserRateDTO userRate) {
+		return session.selectOne("Movie.searchPreviousRate",userRate);
+	}
+
+	public void insertUserRating(UserRateDTO userRate) {
+		session.insert("Movie.insertUserRating", userRate);
+	}
+
+	public int getPreviousRate(UserRateDTO userRate) {
+		return session.selectOne("Movie.getPreviousRate", userRate);
+	}
+
+	public void modifyRate(int rating, int movie_num, int previousRate) {
+		HashMap<String, Integer> rate = new HashMap<String, Integer>();
+		rate.put("rating", rating);
+		rate.put("movie_num", movie_num);
+		rate.put("previousRate", previousRate);
+		
+		session.update("Movie.modifyRate", rate);
+	}
+
+	public void modifyUserRate(UserRateDTO userRate) {
+		session.update("Movie.modifyUserRate",userRate);
+	}
 }
