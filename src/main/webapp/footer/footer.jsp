@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<link rel="stylesheet" href="/footer/css_footer.css" />    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body class="footerBody">
+	<c:set var="totalRatingCnt" value="${sessionScope.totalRatingCnt }"/>
     <footer class="_footer">
         <section class="top">
             <span class="footer_star">
-                지금까지 &nbsp <em>★123,456,789 개의 평가가</em>&nbsp 쌓였어요.
+                지금까지 &nbsp <em id="totalRatingCnt">★${sessionScope.totalRatingCnt } 개의 평가가</em>&nbsp 쌓였어요.
             </span>
         </section>
         <section class="bottom">
@@ -24,5 +28,7 @@
             </div>
         </section>
     </footer>
+    <script type="text/javascript" src="/footer/footer.js"></script>
+    <c:if test="${totalRatingCnt == null}"><script>getTotalRatingCnt();</script></c:if>
 </body>
 </html>

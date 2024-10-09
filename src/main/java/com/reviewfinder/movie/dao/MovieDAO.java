@@ -179,4 +179,12 @@ public class MovieDAO {
 	public void modifyUserRate(UserRateDTO userRate) {
 		session.update("Movie.modifyUserRate",userRate);
 	}
+
+	public int getTotalRatingCnt() {
+		return session.selectOne("Movie.getTotalRatingCnt");
+	}
+
+	public MovieDTO selectMovieWithNum(int movie_num) {
+		return session.selectOne("Movie.selectMovieWithNum", movie_num);
+	}
 }

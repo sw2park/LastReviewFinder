@@ -42,7 +42,7 @@
 	</delete>
 	
 	<select id="getContentsList" parameterType="string" resultType="MemberContentsDTO">
-	SELECT "MEMBER".username, MOVIE_DB.movie_title,
+	SELECT "MEMBER".username, MOVIE_DB.movie_title, MOVIE_DB.movie_num,
 	CASE WHEN INSTR(MOVIE_DB.movie_poster, '|') > 0 THEN SUBSTR(MOVIE_DB.movie_poster, 1, INSTR(MOVIE_DB.movie_poster, '|') - 1)
 	ELSE MOVIE_DB.movie_poster END AS movie_poster
 	FROM MOVIE_WISH_LIST

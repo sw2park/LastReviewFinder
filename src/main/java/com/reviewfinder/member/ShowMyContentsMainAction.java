@@ -5,6 +5,7 @@ import com.reviewfinder.action.ActionForward;
 import com.reviewfinder.member.dao.MemberContentsDTO;
 import com.reviewfinder.member.dao.MemberDAO;
 import com.reviewfinder.member.dao.MemberDTO;
+import com.reviewfinder.movie.dao.MovieDAO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
