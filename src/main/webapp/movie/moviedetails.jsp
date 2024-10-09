@@ -82,9 +82,7 @@
 						<!-- 평점(평균) 보이는 부분 -->
 						<span>&nbsp;&nbsp;&nbsp;</span><span id="rating-score">${requestScope.rating }</span><span
 							style="font-size: large;">점</span>
-						<!-- 기존 total-rating 내에 버튼 추가 -->
 					</div>
-					<!-- 버튼을 추가 -->
 					<div class="wishlist-comment-buttons">
 						<c:choose>
 							<c:when test="${user==null }">
@@ -92,7 +90,6 @@
 							</c:when>
 							<c:otherwise>
 								<button id="wishlist-button" class="btn" onclick="wishlist()">
-									<!-- userid, movienum 넘기기 -->
 							</c:otherwise>
 						</c:choose>
 						<img src="../movie/img/+.png"><br> <br>보고싶어요
@@ -113,7 +110,7 @@
 				<div id="commentModal" class="modal">
 					<div class="modal-content">
 						<span class="close">&times;</span>
-						<!-- 코멘트 작성 JSP 파일을 비동기적으로 불러와서 이 div 안에 삽입할 예정 -->
+						<!-- 코멘트 작성 JSP 파일을 ajax로 불러와서 이 div 안에 삽입할 예정 -->
 						<div id="commentFormContainer">
 							<!-- 여기에 comment-write.jsp 내용이 들어감 -->
 						</div>
@@ -178,6 +175,9 @@
 								</c:if>
 								<td><img src="../movie/img/profile.png">
 									${comment.username }
+									<c:if test="${user.username == comment.username }">
+										<button class="comment_delete">[삭제]</button>
+									</c:if>
 									<div>
 										<hr>
 										${comment.comment_contents }

@@ -18,4 +18,7 @@
 	<update id="updateComment" parameterType="commentdto">
 		UPDATE "COMMENT" SET COMMENT_CONTENTS = #{comment_contents} WHERE USERID = #{userid} AND MOVIE_NUM = #{movie_num}
 	</update>
+	<delete id="deleteComment" parameterType="string">
+		DELETE FROM "COMMENT" WHERE userid = #{userid}
+	</delete>
 </mapper>

@@ -58,6 +58,7 @@ $(document).ready(function () {
 		       alert("이미 평가하셨습니다.");
 		   });
 	});
+	// 최상단 스틸이미지 동적으로 가운데 조정
 	function adjustMargin() {
         // 각각의 movie-banner 요소에 대해 처리
         $('.movie-banner').each(function() {
@@ -303,3 +304,25 @@ function write_comment(){
 		});
 	}
 }
+
+$(".comment_delete").on("click",function(){
+	let userid = $("#userid").val();
+	$.ajax({
+		type: "POST",
+		data: {
+			userid: userid
+		},
+		url: "/comment/DeleteComment.cm",
+		success: function(){
+			alert("삭제되었습니다");
+			location.reload();
+		},
+		error: function(xhr, status, error){
+			alert("삭제 실패: " + error);
+		}
+	})
+});
+
+
+
+
