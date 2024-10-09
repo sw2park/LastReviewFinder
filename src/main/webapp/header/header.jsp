@@ -48,7 +48,7 @@
 						<c:otherwise>
 							<li class="header_userInfo" href="">
 								<img class="header_userprofile" src="/mypage/${memberDTO.profile }">
-								<span class="header_username">${memberDTO.username }</span>
+								<a class="header_username" href="/mypage/ShowMyContentsMain.mp">${memberDTO.username }</a>
 							</li>
 							<li class="header_logout"><span class="header_liSpan" onclick="logout()">로그아웃</span></li>
 						</c:otherwise>

@@ -39,7 +39,21 @@ public class StringSlice {
 
 		return poster;
 	}
-	
+	// 포스터 url 하나만 가져오기 String 오버로딩
+	public static String slicePosterUrl(String _poster) {
+		String poster = _poster;
+
+		poster = poster.trim();
+
+		if (poster != null || poster.equals("")) {
+			int idx = poster.indexOf("|");
+			if (idx != -1) {
+				poster = poster.substring(0, idx);
+			}
+		}
+
+		return poster;
+	}
 	
 	// 스틸이미지 url 하나만 가져오기
 	public static String sliceStillUrl(MovieDTO movie) {

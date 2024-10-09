@@ -52,8 +52,23 @@ span {
     color: black;
 }
 
+.header_username:link {
+	text-decoration: none;
+	color: gray;
+}
+
+.header_username:visited {
+	text-decoration: none;
+	color: gray;
+}
+
 .header_username:hover {
 	color: black;
+}
+
+.header_username:active {
+	text-decoration: none;
+	color: gray;
 }
 
 .search {
