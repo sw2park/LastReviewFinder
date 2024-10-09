@@ -58,8 +58,7 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a
-										href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
 										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>
@@ -89,8 +88,7 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a
-										href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
 										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>
