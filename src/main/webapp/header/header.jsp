@@ -58,11 +58,6 @@
 			<form action="/join/login.lo" method="post" name="frm">
 				<span class="loginModal_closeBtn">닫기</span>
 				<img class="loginModal_logo" alt="ReviewFinder" src="/header/logo.png">
-				<c:if test="${not param.flag and not empty param.flag }">
-					<script>
-						alert("아이디, 비밀번호가 맞지 않습니다.");
-					</script>
-				</c:if>
 				<p>
 					<label> <input class="login_inputBtn" autocomplete="off"
 						name="userid" placeholder="아이디" type="text">
