@@ -133,8 +133,8 @@
    	
     function checkUserRole() {
         var userRole = '${sessionScope.session_id.usergrade}';
-        var writeName = '${board.username }';
-        var userName = '${sessionScope.session_id.username}';
+        var writeID = '${board.userid }';
+        var userID = '${sessionScope.session_id.userid}';
         
         if (userRole !== 'ADMIN' && writeName !== userName ) {
             document.getElementById('Modify').remove();
