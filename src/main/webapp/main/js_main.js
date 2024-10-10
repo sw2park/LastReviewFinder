@@ -55,10 +55,8 @@ function setupCommentSlider(sliderId, prevBtnId, nextBtnId) {
         const slideWidth = slideItems[0].offsetWidth + 
                            parseInt(getComputedStyle(slideItems[0]).marginLeft) + 
                            parseInt(getComputedStyle(slideItems[0]).marginRight);
-		if(currentIndex != 3){
 	        const newTranslateX = -(currentIndex * slideWidth * itemsPerPage); // 3개씩 이동
 	        sliderWrapper.style.transform = `translateX(${newTranslateX}px)`;
-		}
     }
 
     function showPreviousSlide() {
