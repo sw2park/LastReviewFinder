@@ -55,7 +55,8 @@ function setupCommentSlider(sliderId, prevBtnId, nextBtnId) {
         const slideWidth = slideItems[0].offsetWidth + 
                            parseInt(getComputedStyle(slideItems[0]).marginLeft) + 
                            parseInt(getComputedStyle(slideItems[0]).marginRight);
-	        const newTranslateX = -(currentIndex * slideWidth * itemsPerPage); // 3개씩 이동
+	       
+						    const newTranslateX = -(currentIndex * slideWidth * itemsPerPage); // 3개씩 이동
 	        sliderWrapper.style.transform = `translateX(${newTranslateX}px)`;
     }
 
