@@ -118,7 +118,7 @@
 					<%-- 내용 없을 때 --%>
 					<td align="right"><a href="/mypage/ShowMyContents.mp">더보기</a></td>
 					<tr style="height: 50px;">
-						<td colspan="5" style="text-align: center;">아직 '좋아요'한 영화가
+						<td colspan="5" style="text-align: center;">아직 '보고싶어요'한 영화가
 							없습니다.</td>
 					</tr>
 				</c:otherwise>
