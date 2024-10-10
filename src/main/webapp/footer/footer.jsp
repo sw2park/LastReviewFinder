@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리뷰파인더 - 영화 시리즈 추천 및 평가 서비스</title>
 	<link rel="stylesheet" href="/footer/css_footer.css" />    
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
