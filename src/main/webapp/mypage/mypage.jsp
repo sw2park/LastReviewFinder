@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="../mypage/mypage.css">	
+<link rel="stylesheet" href="../mypage/mypage.css">
+<title>리뷰파인더 - 마이페이지</title>	
 </head>
 <body>
 	<jsp:include page="/header/header.jsp"></jsp:include>

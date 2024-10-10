@@ -71,6 +71,10 @@ public class MovieDetails implements Action{
 		
 		List<CommentDTO> commentList = cdao.getCommentList(movie);
 		
+		for(int i=0;i<commentList.size();i++) {
+			commentList.get(i).setComment_contents(commentList.get(i).getComment_contents().replace("\n", "</br>"));
+		}
+		
 		req.setAttribute("rating", rating);
 		
 		req.setAttribute("moviedto", movie);

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>댓글 작성 페이지</title>
+<title>리뷰파인더 - 댓글 작성 페이지</title>
 <link rel="stylesheet" href="/qnaboard/comment-write.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">

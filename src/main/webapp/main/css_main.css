@@ -206,9 +206,9 @@
 
 .bottom_top {
 	display: flex;
-	height: 20%;
+	height: 10%;
 	justify-content: flex-start; /* 왼쪽 정렬 */
-	align-items: center; /* 수직 중앙 정렬 */
+/* 	align-items: center; 수직 중앙 정렬 */
 }
 
 .comment_movieName {
@@ -224,9 +224,10 @@
 }
 
 .comment_commentText {
-	width: auto;
+	max-width: 320px;
 	height: auto;
 	padding-left: 10px;
+	word-break: break-all; 
 }
 
 .comment_container {
@@ -242,7 +243,6 @@
 
 .comment_sliderItem {
 	margin: 0 10px;
-	text-align: center;
 }
 
 /* 이전 이후 버튼*/
