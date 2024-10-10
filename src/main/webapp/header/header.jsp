@@ -26,10 +26,10 @@
 					</a></li>
 					<li class="search">
 					    <div>
-					        <form action="">
+					        <form action="/movie/SearchToTitle.mv">
 					            <div style="position: relative; display: inline-block;">
 					                <img src="/header/search_icon.png" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); width: 20px; height: 20px;" alt="search_icon">
-					                <input autocomplete="off" type="text" class="searchBox" id="" name=""
+					                <input autocomplete="off" type="text" class="searchBox" id="" name="movie_title"
 					                    placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." style="padding-left: 40px;">
 					            </div>
 					        </form>

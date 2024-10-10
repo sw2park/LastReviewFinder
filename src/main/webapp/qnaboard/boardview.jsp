@@ -135,7 +135,7 @@
         var writeID = '${board.userid }';
         var userID = '${sessionScope.session_id.userid}';
         
-        if (userRole !== 'ADMIN' && writeName !== userName ) {
+        if (userRole !== 'ADMIN' && writeID !== userID ) {
             document.getElementById('Modify').remove();
             document.getElementById('Delete').remove();
         }

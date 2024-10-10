@@ -54,12 +54,12 @@ public class KobisJson extends APIController{
 			String movieName = (String)movie.get("movieNm");
 			String movieDate = (String)movie.get("openDt");
 			
+			moviedto.setMovie_title(movieName);
+			moviedto.setMovie_date(movieDate);
+			
 			if(movieDate.equals("")) {
 				continue;
 			}
-			
-			System.out.println(moviedto.getMovie_title()); 
-			System.out.println(moviedto.getMovie_date()); 
 			
 			moviedto = new KoreafilmJson().getMovieInfo(moviedto);
 			

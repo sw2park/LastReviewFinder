@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰파인더 - 좋아요한 영화</title>
+<title>리뷰파인더 - '보고싶어요'한 영화</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 <style>
 	html {
@@ -60,7 +60,7 @@
 			</c:when>
 			<c:otherwise> <%-- 내용 없을 때 --%>
 				<tr style="height:50px;">
-		            <td colspan="5" style="text-align:center; color:#f7175a;">아직 '좋아요'한 영화가 없습니다.</td>
+		            <td colspan="5" style="text-align:center; color:#f7175a;">아직 '보고싶어요'한 영화가 없습니다.</td>
 		        </tr>
        	 	</c:otherwise>
  	 	  </c:choose>
