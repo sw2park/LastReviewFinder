@@ -52,6 +52,10 @@ span {
     color: black;
 }
 
+.header_liSpan:hover {
+    color: black;
+}
+
 .header_username:link {
 	text-decoration: none;
 	color: gray;
@@ -195,4 +199,12 @@ input:focus {
 
 .login_join a {
 	color: #f7175a;
+}
+
+/*10/9 hsj*/
+.search img {
+	width: 30px;
+	height: 30px;
+	background-color: #f5f5f5;
+	margin-top: 5px;
 }

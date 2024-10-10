@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReviewFinder</title>
+<title>리뷰파인더 - 영화 시리즈 추천 및 평가 서비스</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
@@ -30,8 +30,10 @@
 							<div class="comment_sliderItem">
 								<div class="comment_content">
 									<div class="comment_left">
+										<a href="/movie/MovieDetailsToNum.mv?movie_num=${comment.movie_num}">
 										<img class="comment_moviePoster" alt="movie_poster"
-											src="${comment.movie_poster}">
+											src="${comment.movie_poster}" >
+											</a>
 									</div>
 									<div class="comment_right">
 										<div class="comment_top">
