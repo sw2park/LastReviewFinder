@@ -12,6 +12,7 @@
 </head>
 <body onload="checkUserRole()">
 <jsp:include page="/header/header.jsp"></jsp:include>
+<div class="board_body">
 	<c:set var="board" value="${requestScope.board }"/>
    
 	<div class="container">
@@ -95,6 +96,7 @@
    		<div style="text-align: center">
    			<input type="button" value="목록" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';">
    		</div>
+   	</div>
    	<script>
 
    	
@@ -136,7 +138,7 @@
         var writeID = '${board.userid }';
         var userID = '${sessionScope.session_id.userid}';
         
-        if (userRole !== 'ADMIN' && writeName !== userName ) {
+        if (userRole !== 'ADMIN' && writeID !== userID ) {
             document.getElementById('Modify').remove();
             document.getElementById('Delete').remove();
         }
