@@ -14,7 +14,7 @@
 <body>
 	<div class="wrap">
 		<header class="comment-write_header">
-			<em>영화 제목</em>
+			<em>코멘트 작성</em>
 		</header>
 
 		<div>
