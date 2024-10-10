@@ -10,35 +10,40 @@
 <link rel="stylesheet" href="/search/css_search.css" />
 </head>
 <body class="searchBody">
+	<c:set var="movieList" value="${requestScope.movieList }"/>
 	<jsp:include page="/header/header.jsp"></jsp:include>
 	<div class="searchQuery">
-		<h3 class="queryText">"영화이름"의 검색결과</h3>
+		<h3 class="queryText">"${param.movie_title }"의 검색결과</h3>
 	</div>
 	<div class="searchResult">
-			<!-- 검색결과 없는 경우 -->
-			<h3>검색 결과가 없어요. 다른 검색어를 입력하세요.</h3>
-		<div class="searchContainer" id="searchSlider">
-			<div class="contentWrap">
-				<!-- 검색결과 있는 경우 -->
-				<c:forEach var="i" begin="1" step="1" end="10">
-					<div class="searchItem">
-						<div class="searchContent">
-							<div class="searchPoster">
-								<a href=""><img class="moviePoster" alt="영화제목" src="/search/testposter.png"></a>
+		<c:choose>
+			<c:when test="${fn:length(movieList)<1}">
+				<h3>검색 결과가 없어요. 다른 검색어를 입력하세요.</h3>
+			</c:when>
+			<c:otherwise>
+				<div class="searchContainer" id="searchSlider">
+					<div class="contentWrap">
+						<c:forEach var="movie" items="${movieList }">
+							<div class="searchItem">
+								<div class="searchContent">
+									<div class="searchPoster">
+										<a href="#"><img class="moviePoster" alt="${movie.movie_title }" src="${movie.movie_poster }"></a>
+									</div>
+									<div class="searchTitle">
+										<span class="movieTitle">${movie.movie_title }</span>
+									</div>
+									<div class="movieDate">
+										<span class="date">${movie.movie_date }</span>
+									</div>
+								</div>
 							</div>
-							<div class="searchTitle">
-								<span class="movieTitle">영화이름</span>
-							</div>
-							<div class="movieDate">
-								<span class="date">개봉일</span>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
-				</c:forEach>
-			</div>
-			<button class="prevBtn" id="prevBtnSearch">&lt;</button>
-			<button class="nextBtn" id="nextBtnSearch">&gt;</button>
-		</div>
+					<button class="prevBtn" id="prevBtnSearch">&lt;</button>
+					<button class="nextBtn" id="nextBtnSearch">&gt;</button>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<jsp:include page="/footer/footer.jsp"></jsp:include>
 	<script type="text/javascript" src="/search/js_search.js"></script>

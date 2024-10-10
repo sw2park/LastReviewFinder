@@ -1,7 +1,10 @@
 package com.reviewfinder.movie;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.json.simple.parser.ParseException;
@@ -22,7 +25,8 @@ public class SearchToTitle implements Action {
 		
 		String movie_title = req.getParameter("movie_title");
 		List<MovieDTO> movieList = new ArrayList<MovieDTO>();
-//		moviedao
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
 			movieList = new KobisJson().searchToMovieName(movie_title);
@@ -34,6 +38,18 @@ public class SearchToTitle implements Action {
 				}else {
 					movieList.get(i).setMovie_poster(StringSlice.slicePosterUrl(movieList.get(i)));
 					movieList.get(i).setMovie_still_image(StringSlice.sliceStillUrl(movieList.get(i)));
+					
+					String strDate = movieList.get(i).getMovie_date();
+					
+					Calendar cal = Calendar.getInstance();
+					int yy = Integer.parseInt(strDate.substring(0,4));
+					int mm = Integer.parseInt(strDate.substring(4,6))-1;
+					int dd = Integer.parseInt(strDate.substring(6,8));
+					
+					cal.set(yy, mm, dd);
+					Date date = cal.getTime();
+					String day = format.format(date);
+					movieList.get(i).setMovie_date(day);
 				}
 			}
 			
@@ -48,7 +64,7 @@ public class SearchToTitle implements Action {
 		} 
 		
 		forward.setRedirect(false);
-		forward.setPath("/test2.jsp");
+		forward.setPath("/search/searchResult.jsp");
 		
 		return forward;
 	}
