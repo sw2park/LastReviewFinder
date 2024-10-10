@@ -20,7 +20,7 @@
 	        <option>전체선택</option>
 	        <option>공지</option>
 	        <option>추천</option>
-	        <option>문의</option> 
+	        <option>질문</option> 
 	    </select>
 
 	   	<input type="button" value="내가 작성한 글만 보기" class="myqnachoice" onclick="location.href='/qnaboard/Mywrite_view.bo';">
