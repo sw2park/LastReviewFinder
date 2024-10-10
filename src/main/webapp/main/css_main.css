@@ -139,8 +139,8 @@
 	background-color: #f8f8f8;
 	border: solid 1px #ccc;
 	border-radius: 10px;
-	width: 600px;
-	height: 300px;
+	width: 520px;
+	height: 260px;
 }
 
 .comment_left {
@@ -174,7 +174,7 @@
 
 .comment_moviePoster {
 	width: 80%;
-	height: 80%;
+	height: 88%;
 	padding: 10%;
 }
 
@@ -229,46 +229,42 @@
 	padding-left: 10px;
 }
 
-/* .comment { */
-/* 	margin: 0px 15%; */
-/* } */
+.comment_container {
+	width: 1280px; /* 화면에 보일 영역 크기 */
+	overflow: hidden; /* 슬라이드 영역 외는 숨김 */
+	position: relative;
+}
 
-/* .commentt-table { */
-/* 	width: 100%; */
-/* 	table-layout: fixed; 셀 크기 고정을 위해 설정 */
-/* 	border-collapse: collapse; 셀 간격을 없애기 위해 설정 */
-/* } */
+.comment_sliderWrapper {
+	display: flex; /* 슬라이드들을 가로로 나열 */
+	transition: transform 0.5s ease; /* 슬라이드 애니메이션 */
+}
 
-/* .comment-table tr { */
-/* 	height: 250px; 모든 행의 높이를 동일하게 설정 */
-/* } */
+.comment_sliderItem {
+	margin: 0 10px;
+	text-align: center;
+}
 
-/* .comment-table td { */
-/* 	width: 20%; */
-/* 	max-height: 300px; 셀 높이를 행의 높이와 동일하게 설정 */
-/* 	background-color: #f8f8f8; */
-/* 	border-right: 5px solid #fff; */
-/* 	border-bottom: 5px solid #fff; */
-/* 	padding: 15px; */
-/* 	vertical-align: top; 셀의 내용을 위쪽에 정렬 */
-/* 	position: relative; 자식 요소들의 포지션 설정을 위한 부모 요소 기준 설정 */
-/* 	overflow: hidden; 넘치는 내용을 숨기기 위해 설정 */
-/* 	border-radius: 20px; */
-/* } */
+/* 이전 이후 버튼*/
+.commentPrevBtn, .commentNextBtn {
+	border-radius: 20px;
+	font-size: 30px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0); /* 투명 */
+	color: black;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+}
 
-/* .comment-table tr td img { */
-/* 	width: 25px; */
-/* 	height: 25px; */
-/* 	margin-right: 10px; */
-/* 	border-radius: 20px; */
-/* } */
+/* 이전 버튼 */
+.commentPrevBtn {
+	left: 0;
+}
 
-/* .comment-table td div { */
-/* 	max-height: 250px; 부모인 td 높이와 동일하게 설정 */
-/* 	overflow: hidden; 넘치는 내용 숨김 */
-/* 	text-overflow: ellipsis; 텍스트 잘림을 ... 으로 표시 */
-/* 	word-wrap: break-word; 긴 단어 줄바꿈 */
-/* 	word-break: break-all; 단어가 셀 너비를 넘을 때 줄바꿈 */
-/* 	white-space: normal; 자동 줄바꿈 허용 */
-/* 	padding-top: 10px; 이미지와 텍스트 사이 여백 */
-/* } */
+/* 이후 버튼 */
+.commentNextBtn {
+	right: 0;
+}
