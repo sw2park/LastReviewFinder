@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리뷰파인더 - 좋아요 한 영화</title>
 <style>
     .table-container {
         overflow-x: auto; /* 가로 스크롤 가능 */

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리뷰파인더 - 영화 시리즈 추천 및 평가 서비스</title>
 <link rel="stylesheet" href="/header/css_header.css" />
 </head>
 <body>
@@ -25,16 +25,15 @@
 						href="/qnaboard/BoardList.bo"> <span class="header_liSpan"> 게시판 </span>
 					</a></li>
 					<li class="search">
-						<div>
-							<form action="">
-								<label for="">
-								<!-- <img style="display:inline-block; width:30px; heigh:30px;" alt="search_icon" src="/header/search_icon.png"> --> 
-								<input autocomplete="off" type="text"
-									class="searchBox" id="" name=""
-									placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." value>
-								</label>
-							</form>
-						</div>
+					    <div>
+					        <form action="">
+					            <div style="position: relative; display: inline-block;">
+					                <img src="/header/search_icon.png" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); width: 20px; height: 20px;" alt="search_icon">
+					                <input autocomplete="off" type="text" class="searchBox" id="" name=""
+					                    placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." style="padding-left: 40px;">
+					            </div>
+					        </form>
+					    </div>
 					</li>
 					<c:choose>
 						<c:when test="${memberDTO==null }">
