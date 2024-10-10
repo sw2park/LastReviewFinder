@@ -35,6 +35,7 @@
         height: auto; /* 비율에 맞게 높이 자동 조정 */
     }
     .userBody {
+    
     	margin:0 15%;
     }
 </style>
