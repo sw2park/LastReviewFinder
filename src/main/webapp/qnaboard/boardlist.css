@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+html {
+	font-family: 'Pretendard';
+}
+	    
+.wrap {
+	margin: 0 15%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+a:visited{
+	color:#f7175a;
+	text-decoration:none;
+}
+
+a:hover{
+	color:#f7175a;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+a:link {
+	color:#f7175a;
+	text-decoration:none;
+}
+               
+.myqnachoice {
+	font-family: 'Pretendard';
+	border: 0px solid #f7175a;
+	border-radius: 10px; 
+	background-color: #f7175a; 
+	padding: 10px 10px; 
+	color : white;
+	width : 150px;
+}
+        
+.write{
+	font-family: 'Pretendard';
+	border: 1px solid #f7175a; 
+	border-radius: 10px; 
+	background-color: #f7175a; 
+	padding: 10px 10px; 
+	color : white;
+	width: 100px;
+}
+        
+.change-color{
+	color: #f7175a;
+}
+        
+.change-num {
+	position: relative; /* before/after 사용을 위한 position 설정 */
+	color: transparent; /* 기존 텍스트 숨기기 */
+}
+
+.change-num::before {
+	content: ''; 
+	position: absolute; /* 절대 위치로 설정 */
+	top: 0;
+	left: 0;
+}
+        
+select[name="category"]{
+	font-family: 'Pretendard';
+	border: 1px solid #f7175a; 
+	border-radius: 10px; 
+	padding: 10px 10px; 
+	background-color: white;
+	width : 150px;
+	text-align: center;
+}
+
+.title_tb {
+	width: 100%;
+}
+
+.title td {
+	height: 40px;
+}

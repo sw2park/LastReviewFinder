@@ -1,0 +1,52 @@
+@charset "UTF-8";
+body {
+	margin: 0 15%;
+	font-family: 'Pretendard';
+	background-color: #ccc;
+}
+
+form {
+	margin:20px auto 0 auto;
+	border: 1px solid #ccc;
+	border-radius: 25px;
+	width: 80%;
+	height: 450px;
+	padding-top: 15px;
+	background-color: #fff;
+}  
+
+table{
+	margin:0 auto;
+	width:900px;
+}
+  
+.WriteOK {
+	border: 1px solid #f7175a; 
+	border-radius: 25px; 
+	background-color: #f7175a; 
+	padding: 10px 20px; 
+	color : white;
+	font-family: 'Pretendard';
+}
+        
+.BacktoList {
+	border: 1px solid #f7175a; 
+	border-radius: 25px; 
+	background-color: white; 
+	padding: 10px 20px; 
+	color : #f7175a;
+	font-family: 'Pretendard';
+}
+
+.WriteOK:hover, .BacktoList:hover {
+	background-color: #ff97b6;
+	border: none;
+}
+
+.boardcate {
+	font-family: 'Pretendard';
+}
+
+.button {
+	text-align: center;
+}

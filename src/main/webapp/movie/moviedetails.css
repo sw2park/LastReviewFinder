@@ -1,0 +1,373 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+body {
+	font-family: 'Pretendard';
+	color: #333;
+	margin: 0 0px;
+	line-height: 25px;
+}
+
+/* 공통 스타일 */
+.container {
+	max-width: 100%;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.movie-banner {
+	margin-top:62px;
+	position: relative;
+	height: 550px;
+	overflow: hidden;
+}
+
+.movie-still {
+	width: 100%;
+	height: 70%;
+	object-fit: cover;
+}
+
+.movie-info-overlay {
+	position: absolute;
+	bottom: 50px;
+	color: white;
+	margin-left: 15%;
+}
+
+/* 타이틀, 세부 정보 관련 스타일 */
+.movie-title {
+	font-size: 2.5rem;
+	margin-bottom: 15px;
+}
+
+.movie-release-date, .movie-genre, .movie-runtime {
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+}
+
+.movie-details {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 3vh;
+	background-color: #f8f8f8;
+}
+
+.movie-info {
+	flex-grow: 1;
+}
+
+.movie-rating {
+	margin-right: 15%;
+	margin-left: 30px;
+	margin-top: 30px
+}
+
+/* 영화 포스터 */
+.movie-poster {
+	margin-left: 15%;
+	margin-top: 30px;
+	margin-bottom: 30px
+}
+
+.movie-poster img {
+	width: 250px;
+	height: auto;
+}
+
+/* 리뷰 및 별점 관련 */
+.reviews {
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	margin-right: 15%;
+}
+
+.comments {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.comments li {
+	margin-bottom: 10px;
+}
+
+.star-rating {
+	display: inline-block;
+	font-size: 40px;
+	color: lightgray;
+	cursor: pointer;
+	transition: color 0.3s;
+	margin-bottom: 10px;
+	margin-top: 50px;
+}
+
+.star-rating .star.hovered, .star-rating .star.selected {
+	color: #FF3D68;
+}
+
+.rating-text {
+	margin-top: 10px;
+	font-size: 18px;
+	color: gray;
+}
+
+.total-rating {
+	display: inline-block; /* Flexbox를 사용해 한 줄 배치 */
+	align-items: center; /* 0점과 버튼 수직 중앙 정렬 */
+}
+
+/* 버튼의 정렬을 위해 기존 스타일 조정 */
+.wishlist-comment-buttons {
+	display: inline-block;
+	gap: 10px; /* 버튼 사이 간격 */
+	float: right;
+}
+
+/* 버튼 스타일 */
+.wishlist-comment-buttons .btn, .total-rating {
+	font-family: 'Pretendard';
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	background-color: #f8f8f8;
+}
+
+.wishlist-comment-buttons img:hover {
+	transform: scale(1.1);
+}
+
+.total-rating img:hover {
+	transform: scale(1.1);
+	background-image: url('../movie/img/star_full.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.wishlist-comment-buttons img {
+	width: 50px;
+	height: 50px;
+}
+
+.total-rating img {
+	width: 50px;
+	height: 50px;
+	margin-bottom: 5px;
+}
+
+/* 평점 크기 */
+#rating-score {
+	font-size: large;
+}
+
+/*출연, 제작 인물 정보 */
+.cast {
+	margin: 0px 15%;
+}
+
+.cast-table {
+	width: 100%;
+	height: 250px;
+}
+
+.cast-table tr td img {
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+	border-radius: 5px;
+}
+
+/*코멘트*/
+.comment {
+	margin: 0px 15%;
+}
+
+.commentt-table {
+	width: 100%;
+	table-layout: fixed; /* 셀 크기 고정을 위해 설정 */
+	border-collapse: collapse; /* 셀 간격을 없애기 위해 설정 */
+}
+
+.comment-table tr {
+	height: 250px; /* 모든 행의 높이를 동일하게 설정 */
+}
+
+.comment-table td {
+	width: 250px;
+	max-height: 300px; /* 셀 높이를 행의 높이와 동일하게 설정 */
+	background-color: #f8f8f8;
+	border-right: 5px solid #fff;
+	border-bottom: 5px solid #fff;
+	padding: 15px;
+	vertical-align: top; /* 셀의 내용을 위쪽에 정렬 */
+	position: relative; /* 자식 요소들의 포지션 설정을 위한 부모 요소 기준 설정 */
+	overflow: hidden; /* 넘치는 내용을 숨기기 위해 설정 */
+	border-radius: 20px;
+}
+
+.comment-table tr td img {
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+	border-radius: 20px;
+}
+
+.comment-table td div {
+	max-height: 250px; /* 부모인 td 높이와 동일하게 설정 */
+	overflow: hidden; /* 넘치는 내용 숨김 */
+	text-overflow: ellipsis; /* 텍스트 잘림을 ... 으로 표시 */
+	word-wrap: break-word; /* 긴 단어 줄바꿈 */
+	word-break: break-all; /* 단어가 셀 너비를 넘을 때 줄바꿈 */
+	white-space: normal; /* 자동 줄바꿈 허용 */
+	padding-top: 10px; /* 이미지와 텍스트 사이 여백 */
+}
+
+/*갤러리*/
+/* .gallery {
+	margin: 0 15%;
+}
+
+.gallery img {
+	width: 430px;
+	height: 300px;
+	margin-right: 10px;
+} */
+
+/*비슷한 작품 추천*/
+.similar {
+	margin: 0 15%;
+}
+
+.similar ul {
+	padding-left: 0px;
+}
+
+.similar ul li {
+	list-style: none;
+	display: inline;
+}
+
+.similar ul li img {
+	width: 200px;
+	height: 300px;
+	margin-right: 16px;
+}
+
+/* 슬라이더 컨테이너 */
+.slider-container {
+	width: 69%;
+	overflow: hidden;
+	position: relative;
+	margin: 0px 15%;
+}
+
+/* 슬라이더 래퍼 */
+.slider-wrapper {
+	display: flex;
+	transition: transform 0.5s ease;
+}
+
+/* 슬라이드 아이템 */
+.slide-item {
+	flex: 0 0 auto;
+	width: 300px;
+	height: 200px; /* 높이 고정 */
+	margin: 0 10px;
+	text-align: center;
+}
+
+/* 갤러리 컨테이너 */
+.gallery {
+	width: 100%;
+	height: 100%; /* 부모 요소에 맞춤 */
+	background-color: white;
+	overflow: hidden;
+}
+
+/* 이미지 스타일 */
+.gallery img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover; /* 컨테이너를 가득 채우도록 */
+	display: block; /* 여백 제거 */
+}
+
+/* 이전 이후 버튼 */
+.prevBtn, .nextBtn {
+	border-radius: 20px;
+	font-size: 30px;
+	position: absolute;
+	top: 61%; /* 수직 중앙 정렬 */
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0);
+	color: white;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	z-index: 1; /* 버튼이 이미지 위에 표시되도록 */
+}
+
+/* 이전 버튼 */
+.prevBtn {
+	left: 0;
+}
+
+/* 이후 버튼 */
+.nextBtn {
+	right: 0;
+}
+
+/* 모달 배경 */
+.modal {
+    display: none; /* 초기에는 숨김 */
+    position: fixed;
+    z-index: 1000; /* 다른 요소들 위에 위치 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* 스크롤 가능 */
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정색 배경 */
+}
+
+/* 모달 콘텐츠 크기 조정 */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* 모달 창 너비를 60%로 설정 */
+    height: 60%; /* 모달 창 높이를 60%로 줄임 */
+    overflow: auto; /* 내부 스크롤 가능 */
+}
+
+/* 닫기 버튼 */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.comment_delete{
+	font-size: medium;
+	float: right;
+	border: none;
+	background: none;
+	color: red;
+	cursor: pointer;
+}

@@ -1,0 +1,210 @@
+/*
+html {
+    color: #f7175a;
+    font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
+}
+*/
+._header {
+    background-color: white;
+    width: 100%;
+    height: 62px;
+    z-index: 999;
+    position:fixed;
+    top:0px;
+}
+
+nav {
+    width: 100%;
+    height: 62px;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.header_ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    height: 60px;    
+    font-family: 'Pretendard';
+    color: gray;
+    vertical-align: middle;
+    margin: 0 15%;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0; /* 자식 요소가 오른쪽으로 밀리지 않도록 설정 */
+}
+
+li > a {
+    text-decoration-line: none;
+}
+
+span {
+    font-family: Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic", sans-serif;
+    color: gray;
+    vertical-align: middle;
+}
+
+.header_liSpan:hover {
+    color: black;
+}
+
+.header_liSpan:hover {
+    color: black;
+}
+
+.header_username:link {
+	text-decoration: none;
+	color: gray;
+}
+
+.header_username:visited {
+	text-decoration: none;
+	color: gray;
+}
+
+.header_username:hover {
+	color: black;
+}
+
+.header_username:active {
+	text-decoration: none;
+	color: gray;
+}
+
+.search {
+    height: 62px;
+    margin-left: 400px;
+}
+
+.searchBox {
+    text-align: left;
+    vertical-align: middle;
+    width: 300px;
+    height: 38px;
+    letter-spacing: normal;
+    outline: none;
+    border: 0;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.logo {
+    height: 100%;
+}
+
+.logoImg {
+    height: 64px;
+    margin-top: 2px;
+}
+
+.recomend, .login, .join, .board, .header_userInfo, .header_username {
+    margin-left: 0px;
+    padding: 0px 16px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    white-space : nowrap;
+    cursor: pointer;
+}
+
+.logintext, .jointext {
+    padding:7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.header_userprofile {
+	height: 38px;
+	width: 38px;
+	border-radius: 60px;
+	border: 1px solid #ccc;
+}
+
+
+/* 로그인 모달 부분 */
+.login_modal {
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background:  rgba(0,0,0,0.5);
+	font-family: 'Pretendard';
+	z-index: 2;
+}
+
+.loginModal_logo {
+	width: 100%;
+	height: 109px;
+}
+
+.loginModal_closeBtn {
+	float: right;
+}
+
+.login_modalBody {
+	position: fixed;
+	top:20%;
+	left: 40%;
+	padding: 50px;
+	background: white;
+	border-radius: 10px;
+}
+
+.login_inputBtn {
+	background-color: #e9e9e9;
+	border: 2px solid #e9e9e9; /* 테두리 색상 */
+	border-radius: 10px; /* 둥근 테두리 */
+	padding: 10px; /* 내부 여백 */
+	width: 278px; /* 너비 설정 */
+	outline: none; /* 포커스 시 기본 테두리 제거 */
+}
+
+input:focus {
+	border-color: #f7175a; /* 포커스 시 테두리 색상 변경 */
+}
+
+#loginbutton {
+	background-color: #f7175a;
+	border: 2px solid #f7175a; /* 테두리 색상 */
+	border-radius: 10px; /* 둥근 테두리 */
+	padding: 10px; /* 내부 여백 */
+	width: 300px; /* 너비 설정 */
+	outline: none; /* 포커스 시 기본 테두리 제거 */
+	color: #ffffff;
+}
+
+#loginbutton:focus {
+	border-color: #e9e9e9; /* 포커스 시 테두리 색상 변경 */
+}
+
+.findItBtn {
+	background-color: #ffffff;
+	color: #f7175a;
+	border: none;
+	border-radius: 10px; /* 둥근 테두리 */
+	width: 300px; /* 너비 설정 */
+}
+
+.login_join {
+	font-style: bold;
+	color: #7e7e7e;
+	width: 300px; /* 너비 설정 */
+}
+
+.login_join a {
+	color: #f7175a;
+}
+
+/*10/9 hsj*/
+.search img {
+	width: 30px;
+	height: 30px;
+	background-color: #f5f5f5;
+	margin-top: 5px;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WishList">
+	<insert id="insertWishList" parameterType="wishlistdto">
+		INSERT INTO MOVIE_WISH_LIST values(#{userid},#{movie_num})
+	</insert>
+	<select id="checkWishList" parameterType="wishlistdto" resultType="_int">
+		SELECT count(*) FROM MOVIE_WISH_LIST WHERE userid=#{userid} AND MOVIE_NUM = #{movie_num}	
+	</select>
+	<delete id="deleteWishList" parameterType="wishlistdto">
+		DELETE FROM MOVIE_WISH_LIST WHERE userid=#{userid} AND movie_num = #{movie_num}
+	</delete>
+</mapper>

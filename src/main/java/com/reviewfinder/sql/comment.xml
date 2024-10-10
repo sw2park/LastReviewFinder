@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Comment">
+	<select id="getCommentList" parameterType="moviedto" resultType="commentdto">
+		SELECT COMMENT_NUM, USERID, USERNAME, c.MOVIE_NUM, COMMENT_CONTENTS, COMMENT_DATE, COMMENT_LIKE 
+		FROM "COMMENT" c 
+		LEFT OUTER JOIN MOVIE_DB md ON c.MOVIE_NUM = md.MOVIE_NUM 
+		WHERE md.MOVIE_TITLE = #{movie_title} AND md.MOVIE_DATE = #{movie_date}
+		ORDER BY COMMENT_NUM 
+	</select>
+	<insert id="insertComment" parameterType="commentdto">
+		INSERT INTO "COMMENT" values(comment_seq.nextval, #{userid}, #{username}, #{movie_num}, #{comment_contents}, sysdate, 0 )
+	</insert>
+	<select id="checkComment" parameterType="commentdto" resultType="string">
+		SELECT COMMENT_CONTENTS FROM "COMMENT" WHERE userid = #{userid} AND MOVIE_NUM = #{movie_num}
+	</select>
+	<update id="updateComment" parameterType="commentdto">
+		UPDATE "COMMENT" SET COMMENT_CONTENTS = #{comment_contents} WHERE USERID = #{userid} AND MOVIE_NUM = #{movie_num}
+	</update>
+	<delete id="deleteComment" parameterType="string">
+		DELETE FROM "COMMENT" WHERE userid = #{userid}
+	</delete>
+</mapper>
