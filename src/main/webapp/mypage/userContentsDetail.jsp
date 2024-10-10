@@ -30,7 +30,7 @@
     }
 
     img {
-        max-width: 100px; /* 이미지 최대 너비 설정 */
+        max-width: 300px; /* 이미지 최대 너비 설정 */
         height: auto; /* 비율에 맞게 높이 자동 조정 */
     }
 </style>
