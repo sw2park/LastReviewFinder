@@ -48,7 +48,7 @@
 		     	  <c:when test = "${contentsList != null and fn:length(contentsList)>0 }">
 						    <tr align="center" valign="middle">
 								<c:forEach var="list" items="${contentsList }">	
-					               <td height="23px"><a href="영화상세페이지=${list.movie_num }"><img src="${list.movie_poster}"></a><br/>
+					               <td height="23px"><a href="/movie/MovieDetailsToNum.mv?movie_num=${list.movie_num }"><img src="${list.movie_poster}"></a><br/>
 						              ${list.movie_title }</td>
 				         		</c:forEach>
 				            </tr>
