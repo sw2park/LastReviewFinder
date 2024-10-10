@@ -4,8 +4,11 @@ html {
 }
 
 body {
-	margin: 0 15%;
-	background-color: #ccc;
+	background-color: #f5f5f5;
+}
+
+.board_body {
+	margin: 80px 15% 0 15%;
 }
 	     
 table {

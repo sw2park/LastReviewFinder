@@ -12,6 +12,7 @@
 </head>
 	<body onload="checkUserRole()">
 <jsp:include page="/header/header.jsp"></jsp:include>
+<div class="board_body">
 	<c:if test="${not param.flag and not empty param.flag }">
 		<script>
 			alert("게시글 수정 실패. 다시 시도하세요.");
@@ -67,14 +68,14 @@
          <table class="button">
             <tr>
                <td>
-                	<input type="button" value="작성 완료" class="WriteOK" onclick="document.ModifyForm.submit();">
+                	<input type="button" value="수정 완료" class="WriteOK" onclick="document.ModifyForm.submit();">
                     <input type="button" value="취소" class="BacktoList" onclick="location.href='/qnaboard/BoardList.bo';">
                </td>
             </tr>
          </table>
       </form>
    </div>
-   
+  </div>
  <script>
         function checkUserRole() {
             var userRole = '${sessionScope.session_id.usergrade}';
