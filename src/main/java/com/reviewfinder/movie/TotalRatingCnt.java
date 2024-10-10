@@ -1,33 +1,25 @@
-package com.reviewfinder.join;
+package com.reviewfinder.movie;
 
 import java.io.IOException;
 
 import com.reviewfinder.action.Action;
 import com.reviewfinder.action.ActionForward;
+import com.reviewfinder.movie.dao.MovieDAO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 
-public class LogoutAction implements Action{
-
+public class TotalRatingCnt implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
-
-		ActionForward forward = new ActionForward();
-		HttpSession Session = req.getSession();
+		MovieDAO mdao = new MovieDAO();
+		HttpSession session_ratingCnt = req.getSession();
 		
-		Session.removeAttribute("session_id");
-		Session.invalidate();
+		int totalRatingCnt = mdao.getTotalRatingCnt();
 		
-		try {
-			resp.sendRedirect("/main/main.ma");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		session_ratingCnt.setAttribute("totalRatingCnt", totalRatingCnt);
 		
 		return null;
 	}
-
 }

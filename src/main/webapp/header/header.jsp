@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/header/css_header.css" />
 </head>
 <body>
-	<c:set var="memberDTO" value="${requestScope.memberDTO }" />
+	<c:set var="memberDTO" value="${sessionScope.session_id }" />
 	<header class="_header">
 		<nav>
 			<section>
@@ -19,15 +19,17 @@
 							class="logoImg" src="/header/logo.png">
 					</a></li>
 					<li class="recomend"><a type="button" href="/rec/RecMain.rec">
-							<span> 영화 추천 </span>
+							<span class="header_liSpan"> 영화 추천 </span>
 					</a></li>
 					<li class="board"><a type="button"
-						href="/qnaboard/BoardList.bo"> <span> 게시판 </span>
+						href="/qnaboard/BoardList.bo"> <span class="header_liSpan"> 게시판 </span>
 					</a></li>
 					<li class="search">
 						<div>
 							<form action="">
-								<label for=""> <input autocomplete="off" type="text"
+								<label for="">
+								<!-- <img style="display:inline-block; width:30px; heigh:30px;" alt="search_icon" src="/header/search_icon.png"> --> 
+								<input autocomplete="off" type="text"
 									class="searchBox" id="" name=""
 									placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." value>
 								</label>
@@ -36,16 +38,19 @@
 					</li>
 					<c:choose>
 						<c:when test="${memberDTO==null }">
-							<li class="login"><span> 로그인 </span></li>
+							<li class="login">
+							<span class="header_liSpan"> 로그인 </span>
+							</li>
 							<li class="join"><a type="button" href="/login/join.lo">
-									<span> 회원가입 </span>
+									<span class="header_liSpan"> 회원가입 </span>
 							</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="main_userInfo">
-								<img src="${memberDTO.profile }">
-								<span>${memberDTO.username }</span>
+							<li class="header_userInfo" href="">
+								<img class="header_userprofile" src="/mypage/${memberDTO.profile }">
+								<a class="header_username" href="/mypage/ShowMyContentsMain.mp">${memberDTO.username }</a>
 							</li>
+							<li class="header_logout"><span class="header_liSpan" onclick="logout()">로그아웃</span></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
@@ -58,11 +63,6 @@
 			<form action="/join/login.lo" method="post" name="frm">
 				<span class="loginModal_closeBtn">닫기</span>
 				<img class="loginModal_logo" alt="ReviewFinder" src="/header/logo.png">
-				<c:if test="${not param.flag and not empty param.flag }">
-					<script>
-						alert("아이디, 비밀번호가 맞지 않습니다.");
-					</script>
-				</c:if>
 				<p>
 					<label> <input class="login_inputBtn" autocomplete="off"
 						name="userid" placeholder="아이디" type="text">

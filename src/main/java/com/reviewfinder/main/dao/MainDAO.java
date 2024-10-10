@@ -22,4 +22,33 @@ public class MainDAO {
 		
 		return mainDto;
 	}
+
+	public boolean selectCommentCnt() {
+		boolean result = false;
+		int commentCnt = session.selectOne("Main.selectCommentCnt");
+		
+		if(commentCnt > 0) {
+			result = true;
+		}
+		
+		return result;
+	}
+
+	public List<MainCommentDTO> selectCommentList() {
+		List<MainCommentDTO> commentDTO = session.selectList("Main.selectCommentList");
+		
+		return commentDTO;
+	}
+
+	public String selectMoviePoster(int movie_num) {
+		String posterUrl = session.selectOne("Main.selectMoviePoster", movie_num);
+		
+		return posterUrl;
+	}
+
+	public String selectMovieTitle(int movieNum) {
+		String movieTitle = session.selectOne("Main.selectMovieTitle", movieNum);
+		
+		return movieTitle;
+	}
 }

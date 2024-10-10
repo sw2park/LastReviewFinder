@@ -17,7 +17,44 @@
 	<c:set var="boxOffice" value="${requestScope.mainDTO }" />
 	<c:set var="lastBoxOffice" value="${requestScope.lastDTO }" />
 	<c:set var="lastLastBoxOffice" value="${requestScope.lastLastDTO }" />
+	<c:set var="commentDTO" value="${requestScope.commentDTO }"/>
 	<jsp:include page="/header/header.jsp"></jsp:include>
+	<!-- 코멘트 -->
+	<div class="main_comment">
+			<h2 class="commentTitle">지금 뜨는 코멘트</h2>
+			<c:choose>
+				<c:when test="${fn:length(commentDTO)!=0 }">
+					<c:forEach var="comment" items="${commentDTO }">
+						<div class="comment_content">
+							<div class="comment_left">
+								<img class="comment_moviePoster" alt="movie_poster" src="${comment.movie_poster}">
+							</div>
+							<div class="comment_right">
+								<div class="comment_top">
+									<div class="top_left">
+										<img class="comment_userProfile" alt="user_profile" src="../movie/img/profile.png">
+									</div>
+									<div class="top_right">
+										<span class="comment_userName">${comment.username }</span>
+									</div>
+								</div>
+								<div class="comment_bottom">
+									<div class="bottom_top">
+										<strong class="comment_movieName">${comment.movie_title }</strong>
+									</div>
+									<div class="bottom_bot">
+										<span class="comment_commentText">${comment.comment_contents }</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<span class="main_noComment">코멘트가 없습니다.</span>
+				</c:otherwise>
+			</c:choose>
+	</div>
 	<div class="content">
 		<h2 class="BOtitle">이번 달 박스오피스</h2>
 		<!-- BOcontainer -->
@@ -28,7 +65,8 @@
 						<div class="slide-item">
 							<div class="movie">
 								<div class="contents-wrap">
-									<a href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
+									<a
+										href="/movie/MovieDetails.mv?movie_title=${box.movie_title}&movie_date=${box.movie_date}">
 										<img src="${box.movie_poster }" alt="${box.movie_title }">
 										<div class="ranking">${box.movie_rank}</div>
 									</a>

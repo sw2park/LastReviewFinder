@@ -9,4 +9,16 @@
 		ON br.MOVIE_NUM = md.MOVIE_NUM
 		WHERE BOXOFFICE_DATE = #{boxoffice_date}
 	</select>
+	<select id="selectCommentCnt" resultType="_int">
+		SELECT COUNT(COMMENT_NUM) FROM "COMMENT"
+	</select>
+	<select id="selectCommentList" resultType="maincommentDTO">
+		SELECT * FROM "COMMENT"
+	</select>
+	<select id="selectMoviePoster" parameterType="_int" resultType="string">
+		SELECT MOVIE_POSTER FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
+	<select id="selectMovieTitle" parameterType="_int" resultType="string">
+		SELECT MOVIE_TITLE FROM MOVIE_DB WHERE MOVIE_NUM = #{movieNum}
+	</select>
 </mapper>

@@ -8,6 +8,7 @@
 		FROM "COMMENT" c 
 		LEFT OUTER JOIN MOVIE_DB md ON c.MOVIE_NUM = md.MOVIE_NUM 
 		WHERE md.MOVIE_TITLE = #{movie_title} AND md.MOVIE_DATE = #{movie_date}
+		ORDER BY COMMENT_NUM 
 	</select>
 	<insert id="insertComment" parameterType="commentdto">
 		INSERT INTO "COMMENT" values(comment_seq.nextval, #{userid}, #{username}, #{movie_num}, #{comment_contents}, sysdate, 0 )
@@ -18,4 +19,7 @@
 	<update id="updateComment" parameterType="commentdto">
 		UPDATE "COMMENT" SET COMMENT_CONTENTS = #{comment_contents} WHERE USERID = #{userid} AND MOVIE_NUM = #{movie_num}
 	</update>
+	<delete id="deleteComment" parameterType="string">
+		DELETE FROM "COMMENT" WHERE userid = #{userid}
+	</delete>
 </mapper>

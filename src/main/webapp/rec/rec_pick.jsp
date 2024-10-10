@@ -11,7 +11,7 @@
     <title>영화 추천</title>
 </head>
 <body>
-	<%-- <jsp:include page="/header/header.jsp"></jsp:include> --%>
+	<jsp:include page="/header/header.jsp"></jsp:include>
 	<c:if test="${param.flag==null }">
 		<script>
 			location.href="/rec/RecGetSelectMovie.rec";

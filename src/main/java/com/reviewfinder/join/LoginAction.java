@@ -31,10 +31,10 @@ public class LoginAction implements Action{
 		
 		if (mdto != null){ //로그인 성공(성공 시 메인 페이지로 연결해야함)
 			Session.setAttribute("session_id", mdto);
-			forward.setPath("/mypage/mypage.jsp");
+			forward.setPath("/main/main.ma");
 			mdto.setUserpw(null);
 		} else {						//로그인 실패
-			forward.setPath("../join/login.jsp?flag=false");
+			forward.setPath("/join/login.jsp?flag=false");
 		}
 	
 		return forward;

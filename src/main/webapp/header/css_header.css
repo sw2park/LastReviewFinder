@@ -48,13 +48,32 @@ span {
     vertical-align: middle;
 }
 
-span:hover {
+.header_liSpan:hover {
     color: black;
+}
+
+.header_username:link {
+	text-decoration: none;
+	color: gray;
+}
+
+.header_username:visited {
+	text-decoration: none;
+	color: gray;
+}
+
+.header_username:hover {
+	color: black;
+}
+
+.header_username:active {
+	text-decoration: none;
+	color: gray;
 }
 
 .search {
     height: 62px;
-    margin-left: 480px;
+    margin-left: 400px;
 }
 
 .searchBox {
@@ -65,7 +84,7 @@ span:hover {
     letter-spacing: normal;
     outline: none;
     border: 0;
-    background-color: gainsboro;
+    background-color: #f5f5f5;
     border-radius: 10px;
     margin-top: 10px;
 }
@@ -79,13 +98,14 @@ span:hover {
     margin-top: 2px;
 }
 
-.recomend, .login, .join, .board {
+.recomend, .login, .join, .board, .header_userInfo, .header_username {
     margin-left: 0px;
     padding: 0px 16px;
     height: 62px;
     display: flex;
     align-items: center;
     white-space : nowrap;
+    cursor: pointer;
 }
 
 .logintext, .jointext {
@@ -93,6 +113,14 @@ span:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.header_userprofile {
+	height: 38px;
+	width: 38px;
+	border-radius: 60px;
+	border: 1px solid #ccc;
+}
+
 
 /* 로그인 모달 부분 */
 .login_modal {

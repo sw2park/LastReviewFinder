@@ -32,6 +32,8 @@ public class CommentFrontController extends HttpServlet {
 			forward = new InsertComment().execute(request, response);
 		}else if(requestURI.equals("/comment/UserCommentCheck.cm")) {
 			forward = new UserCommentCheck().execute(request, response);
+		}else if(requestURI.equals("/comment/DeleteComment.cm")) {
+			forward = new DeleteComment().execute(request, response);
 		}
 		
 		if (forward != null) {

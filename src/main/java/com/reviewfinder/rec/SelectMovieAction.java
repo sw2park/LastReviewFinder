@@ -11,11 +11,6 @@ public class SelectMovieAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) {
 		ActionForward forward = new ActionForward();
-		try {
-			Thread.sleep(700);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		
 		RecDAO rdao = new RecDAO();
 		
@@ -25,6 +20,11 @@ public class SelectMovieAction implements Action {
 		rdao.deleteUnSelectedMovie(movie_num);
 		
 		// /rec/RecGetSelectMovie.rec 로 flag=null 로 보내기
+		try {
+			Thread.sleep(2500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		forward.setRedirect(true);
 		forward.setPath("/rec/RecGetSelectMovie.rec");

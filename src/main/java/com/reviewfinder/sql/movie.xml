@@ -45,6 +45,27 @@
 	<select id="checkBoxOfficeRank" resultType="_int">
 		SELECT COUNT(MOVIE_NUM) FROM BOXOFFICE_RANK
 	</select>
+	<select id="searchPreviousRate" parameterType="userratedto" resultType="_int">
+		SELECT count(*) FROM USER_RATE WHERE USERID = #{userid} AND MOVIE_NUM = #{movie_num}
+	</select>
+	<insert id="insertUserRating" parameterType="userratedto">
+		INSERT INTO USER_RATE VALUES (#{movie_num},#{userid},#{user_star_rate})
+	</insert>
+	<select id="getPreviousRate" parameterType="userratedto" resultType="_int">
+		SELECT USER_STAR_RATE FROM USER_RATE WHERE USERID = #{userid} AND MOVIE_NUM = #{movie_num}
+	</select>
+	<update id="modifyRate" parameterType="hashmap">
+		UPDATE MOVIE_DB SET MOVIE_STAR_RATE = MOVIE_STAR_RATE - #{previousRate} + #{rating} WHERE MOVIE_NUM = #{movie_num}
+	</update>
+	<update id="modifyUserRate" parameterType="userratedto">
+		UPDATE USER_RATE SET USER_STAR_RATE = #{user_star_rate} WHERE MOVIE_NUM = #{movie_num} AND USERID = #{userid}
+	</update>
+	<select id="getTotalRatingCnt" resultType="_int">
+		SELECT SUM(MOVIE_RATE_CNT) FROM MOVIE_DB
+	</select>
+	<select id="selectMovieWithNum" parameterType="_int" resultType="moviedto">
+		SELECT * FROM MOVIE_DB WHERE MOVIE_NUM = #{movie_num}
+	</select>
 </mapper>
 
 

@@ -37,6 +37,14 @@ public class MovieFrontController extends HttpServlet{
 			forward = new MovieDetails().execute(request, response);
 		}else if(requestURI.equals("/movie/SetMovieRating.mv")) {
 			new SetMovieRating().execute(request, response);
+		}else if(requestURI.equals("/movie/CheckPreviousRate.mv")) {
+			new CheckPreviousRate().execute(request, response);
+		}else if(requestURI.equals("/movie/ModifyMovieRating.mv")) {
+			new ModifyMovieRating().execute(request, response);
+		}else if(requestURI.equals("/movie/TotalRatingCnt.mv")) {
+			new TotalRatingCnt().execute(request, response);
+		}else if(requestURI.equals("/movie/MovieDetailsToNum.mv")) {
+			forward = new MovieDetailsToNum().execute(request, response);
 		}
 		
 		
