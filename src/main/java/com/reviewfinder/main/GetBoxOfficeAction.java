@@ -62,13 +62,11 @@ public class GetBoxOfficeAction implements Action {
 		/* 메인 코멘트 부분 */
 		if(mdao.selectCommentCnt()) { // comment 있으면 작동
 			List<MainCommentDTO> commentDTO = mdao.selectCommentList();
-			
 			for(int i=0; i<commentDTO.size(); i++) { // 있는거까지 반복
 				int movieNum = commentDTO.get(i).getMovie_num();
 				String moviePosterUrl = mdao.selectMoviePoster(movieNum);
 				String movieTitle = mdao.selectMovieTitle(movieNum);
 				String sliceUrl = StringSlice.slicePosterUrl(moviePosterUrl);
-				
 				commentDTO.get(i).setMovie_title(movieTitle);
 				commentDTO.get(i).setMovie_poster(sliceUrl);
 			}
