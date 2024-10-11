@@ -72,7 +72,4 @@ local.properties
 ## Add some ignore
 .classpath
 build
-*.class
 *.project
-*.sql
-*.settings
