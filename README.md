@@ -24,3 +24,5 @@ JSP_2 해보조 프로젝트 "ReviewFinder" <br/>
 - https://github.com/seojin-57/JSP_2
 ### 2.2 두 번째 리포지토리
 - https://github.com/sw2park/ReviewFinder
+
+### 질문 및 문의가 필요하신 경우 pswoo990803@gmail.com 으로 메일 부탁드리겠습니다.
